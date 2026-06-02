@@ -260,21 +260,21 @@
 | K3 | 2 | 2 | 0.231 | 296.931 | 53.61 | 28.81 | 92.43 | 18.75 | 13.90 |
 | K4 | 3 | 2 | 0.239 | 288.102 | 52.87 | 28.35 | 85.11 | 18.75 | 13.86 |
 
-    结合吞吐率、缓存命中率和 occupancy 信息来看，这组实验可以总结为：当前 kernel 的性能提升主要来自 producer-consumer 流水线重叠程度的改善，而不是 occupancy 提升或全局内存带宽提升。K1 使用 num_smem=1, num_stage=1 时，执行时间为 0.319 ms，性能只有 215.086 TFLOPS，SM Throughput 为 40.22%，Mem Throughput 为 22.90%，说明此时计算单元和内存子系统的利用率都不高，kernel 很可能存在明显的 load/compute 串行等待；由于只有一个 shared memory buffer，producer 加载下一块数据和 consumer 使用当前数据进行 WGMMA 计算之间难以重叠，导致 SM 上虽然有 active warp，但很多时候 warp 处于等待 TMA、barrier 或 WGMMA 数据依赖的状态，计算管线没有被充分填满。
+&emsp;&emsp;结合吞吐率、缓存命中率和 occupancy 信息来看，这组实验可以总结为：当前 kernel 的性能提升主要来自 producer-consumer 流水线重叠程度的改善，而不是 occupancy 提升或全局内存带宽提升。K1 使用 num_smem=1, num_stage=1 时，执行时间为 0.319 ms，性能只有 215.086 TFLOPS，SM Throughput 为 40.22%，Mem Throughput 为 22.90%，说明此时计算单元和内存子系统的利用率都不高，kernel 很可能存在明显的 load/compute 串行等待；由于只有一个 shared memory buffer，producer 加载下一块数据和 consumer 使用当前数据进行 WGMMA 计算之间难以重叠，导致 SM 上虽然有 active warp，但很多时候 warp 处于等待 TMA、barrier 或 WGMMA 数据依赖的状态，计算管线没有被充分填满。
 
-当配置变为 K2，即 num_smem=2, num_stage=1 后，时间从 0.319 ms 降到 0.242 ms，TFLOPS 从 215.086 提升到 283.750，提升约 31.9%；同时 SM Throughput 从 40.22% 提升到 50.65%，Mem Throughput 从 22.90% 提升到 27.86%。这说明双 shared memory buffer 显著改善了数据加载和计算之间的重叠：一个 buffer 可以供 consumer 执行 WGMMA，另一个 buffer 则由 producer 提前加载下一阶段数据，从而减少 consumer 等待数据的时间。这里 Mem Throughput 也有所上升，但绝对值仍然只有 27.86%，并不高，说明性能提升并不是因为打满了内存带宽，而是因为流水线更顺畅，使得 SM 计算单元能够更持续地工作。
+&emsp;&emsp;当配置变为 K2，即 num_smem=2, num_stage=1 后，时间从 0.319 ms 降到 0.242 ms，TFLOPS 从 215.086 提升到 283.750，提升约 31.9%；同时 SM Throughput 从 40.22% 提升到 50.65%，Mem Throughput 从 22.90% 提升到 27.86%。这说明双 shared memory buffer 显著改善了数据加载和计算之间的重叠：一个 buffer 可以供 consumer 执行 WGMMA，另一个 buffer 则由 producer 提前加载下一阶段数据，从而减少 consumer 等待数据的时间。这里 Mem Throughput 也有所上升，但绝对值仍然只有 27.86%，并不高，说明性能提升并不是因为打满了内存带宽，而是因为流水线更顺畅，使得 SM 计算单元能够更持续地工作。
 
-进一步看 K3，num_smem=2, num_stage=2 时，时间继续下降到 0.231 ms，性能达到 296.931 TFLOPS，是四组配置中最高的；SM Throughput 提升到 53.61%，Mem Throughput 提升到 28.81%，L2 Cache Rate 也达到最高的 92.43%。这说明在双 buffer 已经解决主要数据供给问题之后，增加 WGMMA pipeline stage 仍然可以进一步隐藏一部分异步计算、同步或数据准备延迟，使得 WGMMA 指令流更加连续，SM 利用率进一步提高。不过 K2 到 K3 的提升幅度只有约 4.6%，明显小于 K1 到 K2，说明主要瓶颈已经通过双 buffer 得到缓解，增加 stage 只是进一步优化局部流水线效率。
+&emsp;&emsp;进一步看 K3，num_smem=2, num_stage=2 时，时间继续下降到 0.231 ms，性能达到 296.931 TFLOPS，是四组配置中最高的；SM Throughput 提升到 53.61%，Mem Throughput 提升到 28.81%，L2 Cache Rate 也达到最高的 92.43%。这说明在双 buffer 已经解决主要数据供给问题之后，增加 WGMMA pipeline stage 仍然可以进一步隐藏一部分异步计算、同步或数据准备延迟，使得 WGMMA 指令流更加连续，SM 利用率进一步提高。不过 K2 到 K3 的提升幅度只有约 4.6%，明显小于 K1 到 K2，说明主要瓶颈已经通过双 buffer 得到缓解，增加 stage 只是进一步优化局部流水线效率。
 
-而 K4 使用 num_smem=3, num_stage=2 后，性能反而下降：时间从 K3 的 0.231 ms 增加到 0.239 ms，TFLOPS 从 296.931 降到 288.102，SM Throughput 也从 53.61% 降到 52.87%，Mem Throughput 从 28.81% 略降到 28.35%，L2 Cache Rate 也从 92.43% 降到 85.11%。这说明继续增加 shared memory buffer 到 3 并没有带来更有效的 load/compute overlap，反而引入了额外开销，例如更多 shared memory 占用、更复杂的 buffer index 轮转、mbarrier 管理、地址计算以及可能更长的寄存器 live range。由于当前 Mem Throughput 本身并不高，全局内存或 L2 带宽并不是主要瓶颈，因此增加更多 smem buffer 无法带来明显收益。
+&emsp;&emsp;而 K4 使用 num_smem=3, num_stage=2 后，性能反而下降：时间从 K3 的 0.231 ms 增加到 0.239 ms，TFLOPS 从 296.931 降到 288.102，SM Throughput 也从 53.61% 降到 52.87%，Mem Throughput 从 28.81% 略降到 28.35%，L2 Cache Rate 也从 92.43% 降到 85.11%。这说明继续增加 shared memory buffer 到 3 并没有带来更有效的 load/compute overlap，反而引入了额外开销，例如更多 shared memory 占用、更复杂的 buffer index 轮转、mbarrier 管理、地址计算以及可能更长的寄存器 live range。由于当前 Mem Throughput 本身并不高，全局内存或 L2 带宽并不是主要瓶颈，因此增加更多 smem buffer 无法带来明显收益。
 
-另外，四组实验的 Theoretical Occupancy 都是 18.75%，Achieved Occupancy 也几乎保持在 13.86% 到 13.92% 之间，说明这些配置的性能差异并不是由 occupancy 改变造成的。换句话说，kernel 在四种配置下的驻留能力基本相同，都是比较低 occupancy 的 Hopper WGMMA kernel；真正决定性能差异的是在相同 occupancy 下，producer/consumer 的协同效率、WGMMA stage 的重叠程度，以及 warp 是否能持续成为 eligible 状态。K3 的 SM Throughput 最高，说明它在当前资源限制下让计算管线保持了最好的忙碌程度；而 K4 虽然 buffer 更多，但额外资源和同步开销抵消了潜在收益。
+&emsp;&emsp;另外，四组实验的 Theoretical Occupancy 都是 18.75%，Achieved Occupancy 也几乎保持在 13.86% 到 13.92% 之间，说明这些配置的性能差异并不是由 occupancy 改变造成的。换句话说，kernel 在四种配置下的驻留能力基本相同，都是比较低 occupancy 的 Hopper WGMMA kernel；真正决定性能差异的是在相同 occupancy 下，producer/consumer 的协同效率、WGMMA stage 的重叠程度，以及 warp 是否能持续成为 eligible 状态。K3 的 SM Throughput 最高，说明它在当前资源限制下让计算管线保持了最好的忙碌程度；而 K4 虽然 buffer 更多，但额外资源和同步开销抵消了潜在收益。
 
  - Q: 为什么k4的性能相较于k3会有所下降？
 
 **K4 性能下降 = Shared Memory 占用 ↑ → L2 驻留质量 ↓ → 少量额外 L2 miss**
 
-K4 的 L2 Cache Hit Rate 从 92.43% 降到 85.11%，是因为 3× shared buffer 增大了每个 ThreadBlock 的 SMEM 占用，间接压缩了 L2/片上缓存中 K/V tile 的有效驻留空间或加速其驱逐；由于 2× buffer（K3）已完全隐藏 TMA 延迟，第 3 个 buffer 无法减少 stall，却带来了 L2 hit 率下降引起的微小额外显存访问延迟，这就是 K4 性能略低于 K3 的直接微观架构原因。
+&emsp;&emsp;K4 的 L2 Cache Hit Rate 从 92.43% 降到 85.11%，是因为 3× shared buffer 增大了每个 ThreadBlock 的 SMEM 占用，间接压缩了 L2/片上缓存中 K/V tile 的有效驻留空间或加速其驱逐；由于 2× buffer（K3）已完全隐藏 TMA 延迟，第 3 个 buffer 无法减少 stall，却带来了 L2 hit 率下降引起的微小额外显存访问延迟，这就是 K4 性能略低于 K3 的直接微观架构原因。
 
 
 ```c++
