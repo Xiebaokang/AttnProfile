@@ -253,7 +253,7 @@
 
 ### 测试 shape=(1, 16, 4096, 64) tile=(128, 128)含 NCU 测量的计算/访存吞吐
 
-| kernel name | num_smem | num_stage | time(ms) | tflops | SM Throughput | Mem Throughput | L2 Cache Rate(%) | Theoretical Occupancy(%) | Achieved Occupancy(%) | 
+| name | smem | stage | time(ms) | tflops | SM Throughput | Mem Throughput | L2 Cache Rate(%) | Theoretical Occupancy(%) | Achieved Occupancy(%) | 
 | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | K1 | 1 | 1 | 0.319 | 215.086 | 40.22 | 22.90 | 87.64 | 18.75 | 13.92 |
 | K2 | 2 | 1 | 0.242 | 283.750 | 50.65 | 27.86 | 81.00 | 18.75 | 13.86 |
