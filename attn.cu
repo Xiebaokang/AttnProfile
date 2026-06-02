@@ -1,5 +1,5 @@
 #include "tools.cuh"
-#include <algorithm>
+
 
 struct ProfileResult {
   unsigned long long load_q;
@@ -490,7 +490,7 @@ void runAttnKernel(fp16 *Q, fp16 *K, fp16 *V, fp16 *O, ProfileResult *profile, i
 }
 
 
-template<int B, int H, int S, int D, int BM, int BN>
+template<int B, int H, int S, int D, int BM, int BN, int NUM_THREADS=256, int NUM_STAGE=1>
 void run_one_case(
     fp16 *dQ,
     fp16 *dK,
@@ -512,7 +512,7 @@ void run_one_case(
             sizeof(ProfileResult),
             cudaMemcpyHostToDevice));
 
-        runAttnKernel<B, H, S, D, BM, BN, 256, 1>(
+        runAttnKernel<B, H, S, D, BM, BN, NUM_THREADS, NUM_STAGE>(
             dQ, dK, dV, dO, d_profile, kProfileGridX);
 
         cudaCheck(cudaGetLastError());
@@ -535,7 +535,7 @@ void run_one_case(
             sizeof(ProfileResult),
             cudaMemcpyHostToDevice));
 
-        runAttnKernel<B, H, S, D, BM, BN, 256, 1>(
+        runAttnKernel<B, H, S, D, BM, BN, NUM_THREADS, NUM_STAGE>(
             dQ, dK, dV, dO, d_profile, kProfileGridX);
 
         cudaCheck(cudaGetLastError());
@@ -632,6 +632,10 @@ int main() {
 
     printf("| BM | BN | LoadQ(avg) | LoadK(avg) | LoadV(avg) | GEMM-QK(avg) | SOFTMAX(avg) | GEMM-PV(avg) |\n");
     printf("| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+
+    // run_one_case<B, H, S, D, 128,  32, 256, 2>(dQ, dK, dV, dO, d_profile);
+    // run_one_case<B, H, S, D, 128,  64, 256, 2>(dQ, dK, dV, dO, d_profile);
+    // run_one_case<B, H, S, D, 128, 128, 256, 2>(dQ, dK, dV, dO, d_profile);
 
     run_one_case<B, H, S, D, 128,  32>(dQ, dK, dV, dO, d_profile);
     run_one_case<B, H, S, D, 128,  64>(dQ, dK, dV, dO, d_profile);

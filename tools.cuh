@@ -53,6 +53,10 @@ __device__ void warpgroup_wait() {
     asm volatile("wgmma.wait_group.sync.aligned 0;\n" ::: "memory");
 }
 
+__forceinline__ __device__ void warpgroup_fence_operand(float& reg) {
+    asm volatile("" : "+f"(reg) :: "memory");
+}
+
 // ss mode
 template<int ScaleD, int ScaleA, int ScaleB, int TransA, int TransB, int LBO, int SBO, bool Swizzle>
 __device__ void wgmma256ss(float d[16][8], fp16* sA, fp16* sB) {
@@ -200,7 +204,7 @@ __device__ void wgmma16ss(float d[1][8], fp16* sA, fp16* sB) {
 
 template<int WGMMA_N, int ScaleD=1, int ScaleA=1, int ScaleB=1, int TransA=0, int TransB=0, int LBO=16, int SBO=2048, bool Swizzle=true>
 __device__ inline void wgmma_ss(float d[WGMMA_N/16][8], fp16* sA, fp16* sB) {
-    static_assert(WGMMA_N == 32 || WGMMA_N == 64 || WGMMA_N == 128 || WGMMA_N == 256);
+    static_assert(WGMMA_N == 16 || WGMMA_N == 32 || WGMMA_N == 64 || WGMMA_N == 128 || WGMMA_N == 256);
     if constexpr (WGMMA_N == 256)
         wgmma256ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
     if constexpr (WGMMA_N == 128)
@@ -209,6 +213,8 @@ __device__ inline void wgmma_ss(float d[WGMMA_N/16][8], fp16* sA, fp16* sB) {
         wgmma64ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
     if constexpr (WGMMA_N == 32)
         wgmma32ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
+    if constexpr (WGMMA_N == 16)
+        wgmma16ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
 }
 
 // rs mode

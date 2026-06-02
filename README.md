@@ -247,3 +247,17 @@
 | V | 3 | 9506 | 263 | 3664 | 4421 | 757 |
 
 ![项目截图](./images/BM=256_BN=128.png)
+
+
+## 3.FA3的Num_Buffer和Num_Stage可调整
+run_kernel<B=1,H=16,S=4096,D=64,BM=128,BN=128,threads=384, smem=1, stage=1>
+  avg_time = 0.319 ms, throughput = 215.086 TFLOPS
+
+run_kernel<B=1,H=16,S=4096,D=64,BM=128,BN=128,threads=384, smem=2, stage=1>
+  avg_time = 0.242 ms, throughput = 283.750 TFLOPS
+
+run_kernel<B=1,H=16,S=4096,D=64,BM=128,BN=128,threads=384, smem=2, stage=2>
+  avg_time = 0.231 ms, throughput = 296.931 TFLOPS
+
+run_kernel<B=1,H=16,S=4096,D=64,BM=128,BN=128,threads=384, smem=3, stage=2>
+  avg_time = 0.239 ms, throughput = 288.102 TFLOPS

@@ -200,7 +200,7 @@ void runAttnTMAKernel(fp16 *Q, fp16 *K, fp16 *V, Profile *profile) {
     kernel<<<grid, NUM_THREADS, sMemSize>>>(B, H, S, d_tma_map_Q, d_tma_map_K, d_tma_map_V, profile);
 }
 
-template<int B, int H, int S, int D, int BM, int BN>
+template<int B, int H, int S, int D, int BM, int BN, int NUM_THREADS=384, int NUM_STAGE=1>
 void run_one_case(fp16 *dQ, fp16 *dK, fp16 *dV, Profile *d_profile) {
     Profile zero_profile{};
 
@@ -209,14 +209,14 @@ void run_one_case(fp16 *dQ, fp16 *dK, fp16 *dV, Profile *d_profile) {
 
     for (int i = 0; i < kWarmupIters; ++i) {
         cudaCheck(cudaMemcpy(d_profile, &zero_profile, sizeof(Profile), cudaMemcpyHostToDevice));
-        runAttnTMAKernel<B, H, S, D, BM, BN>(dQ, dK, dV, d_profile);
+        runAttnTMAKernel<B, H, S, D, BM, BN, NUM_THREADS, NUM_STAGE>(dQ, dK, dV, d_profile);
         cudaCheck(cudaGetLastError());
     }
     cudaCheck(cudaDeviceSynchronize());
 
     for (int i = 0; i < kCaptureIters; ++i) {
         cudaCheck(cudaMemcpy(d_profile, &zero_profile, sizeof(Profile), cudaMemcpyHostToDevice));
-        runAttnTMAKernel<B, H, S, D, BM, BN>(dQ, dK, dV, d_profile);
+        runAttnTMAKernel<B, H, S, D, BM, BN, NUM_THREADS, NUM_STAGE>(dQ, dK, dV, d_profile);
         cudaCheck(cudaGetLastError());
     }
     cudaCheck(cudaDeviceSynchronize());
@@ -310,6 +310,10 @@ int main() {
 
     printf("# TMA Load Timeline\n\n");
     printf("B = %d, H = %d, S = %d, D = %d\n", B, H, S, D);
+
+    // run_one_case<B, H, S, D, 128,  32, 384, 2>(dQ, dK, dV, d_profile);
+    // run_one_case<B, H, S, D, 128,  64, 384, 2>(dQ, dK, dV, d_profile);
+    // run_one_case<B, H, S, D, 128, 128, 384, 2>(dQ, dK, dV, d_profile);
 
     run_one_case<B, H, S, D, 128,  32>(dQ, dK, dV, d_profile);
     run_one_case<B, H, S, D, 128,  64>(dQ, dK, dV, d_profile);
