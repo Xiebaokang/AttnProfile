@@ -200,40 +200,10 @@ void runAttnTMAKernel(fp16 *Q, fp16 *K, fp16 *V, Profile *profile) {
     kernel<<<grid, NUM_THREADS, sMemSize>>>(B, H, S, d_tma_map_Q, d_tma_map_K, d_tma_map_V, profile);
 }
 
-int main() {
-    constexpr int B = 1;
-    constexpr int H = 1;
-    constexpr int S = 512;
-    constexpr int D = 128;
-    constexpr int BM = 256;
-    constexpr int BN = 128;
+template<int B, int H, int S, int D, int BM, int BN>
+void run_one_case(fp16 *dQ, fp16 *dK, fp16 *dV, Profile *d_profile) {
+    Profile zero_profile{};
 
-    const size_t numel = static_cast<size_t>(B) * H * S * D;
-    const size_t bytes = numel * sizeof(fp16);
-
-    std::vector<fp16> hQ_in(numel), hK_in(numel), hV_in(numel);
-    std::vector<fp16> hQ_out(numel), hK_out(numel), hV_out(numel);
-
-    for (size_t i = 0; i < numel; ++i) {
-        const int q_i = static_cast<int>((i * 13 + 7) % 31) - 15;
-        const int k_i = static_cast<int>((i * 17 + 5) % 29) - 14;
-        const int v_i = static_cast<int>((i * 19 + 3) % 23) - 11;
-        hQ_in[i] = __float2half_rn(static_cast<float>(q_i) * (1.0f / 128.0f));
-        hK_in[i] = __float2half_rn(static_cast<float>(k_i) * (1.0f / 128.0f));
-        hV_in[i] = __float2half_rn(static_cast<float>(v_i) * (1.0f / 128.0f));
-    }
-
-    fp16 *dQ = nullptr, *dK = nullptr, *dV = nullptr;
-    cudaCheck(cudaMalloc(&dQ, bytes));
-    cudaCheck(cudaMalloc(&dK, bytes));
-    cudaCheck(cudaMalloc(&dV, bytes));
-
-    cudaCheck(cudaMemcpy(dQ, hQ_in.data(), bytes, cudaMemcpyHostToDevice));
-    cudaCheck(cudaMemcpy(dK, hK_in.data(), bytes, cudaMemcpyHostToDevice));
-    cudaCheck(cudaMemcpy(dV, hV_in.data(), bytes, cudaMemcpyHostToDevice));
-    
-    Profile h_profile{}, zero_profile{}, *d_profile;
-    cudaCheck(cudaMalloc(&d_profile, sizeof(Profile)));
     constexpr int kWarmupIters = 10;
     constexpr int kCaptureIters = 100;
 
@@ -250,44 +220,110 @@ int main() {
         cudaCheck(cudaGetLastError());
     }
     cudaCheck(cudaDeviceSynchronize());
+
+    Profile h_profile{};
     cudaCheck(cudaMemcpy(&h_profile, d_profile, sizeof(Profile), cudaMemcpyDeviceToHost));
 
     const int slots = (h_profile.kv_iters < kProfileSlots) ? h_profile.kv_iters : kProfileSlots;
+
     unsigned long long base = h_profile.load_q_start;
     for (int i = 0; i < slots; ++i) {
         if (h_profile.load_k_starts[i] < base) base = h_profile.load_k_starts[i];
         if (h_profile.load_v_starts[i] < base) base = h_profile.load_v_starts[i];
     }
 
-    printf("Warmup iters: %d, Capture iters: %d\n", kWarmupIters, kCaptureIters);
-    printf("timeline_csv_begin\n");
-    printf("op,slot,start_abs,end_abs,start_rel,end_rel,cycles\n");
+    printf("\n### BM = %d, BN = %d\n\n", BM, BN);
+    printf("| op | slot | start_abs | end_abs | start_rel | end_rel | cycles |\n");
+    printf("| --- | ---: | ---: | ---: | ---: | ---: | ---: |\n");
 
     const unsigned long long q_start = h_profile.load_q_start;
-    const unsigned long long q_end = h_profile.load_q_end;
-    printf("Q,0,%llu,%llu,%llu,%llu,%llu\n",
-           q_start%10000, q_end%10000, q_start - base, q_end - base, q_end - q_start);
+    const unsigned long long q_end   = h_profile.load_q_end;
+
+    printf("| Q | 0 | %llu | %llu | %llu | %llu | %llu |\n",
+           q_start % 10000,
+           q_end % 10000,
+           q_start - base,
+           q_end - base,
+           q_end - q_start);
 
     for (int i = 0; i < slots; ++i) {
         const unsigned long long ks = h_profile.load_k_starts[i];
         const unsigned long long ke = h_profile.load_k_ends[i];
         const unsigned long long vs = h_profile.load_v_starts[i];
         const unsigned long long ve = h_profile.load_v_ends[i];
-        printf("K,%d,%llu,%llu,%llu,%llu,%llu\n", i, ks%10000, ke%10000, ks - base, ke - base, ke - ks);
-        printf("V,%d,%llu,%llu,%llu,%llu,%llu\n", i, vs%10000, ve%10000, vs - base, ve - base, ve - vs);
+
+        printf("| K | %d | %llu | %llu | %llu | %llu | %llu |\n",
+               i,
+               ks % 10000,
+               ke % 10000,
+               ks - base,
+               ke - base,
+               ke - ks);
+
+        printf("| V | %d | %llu | %llu | %llu | %llu | %llu |\n",
+               i,
+               vs % 10000,
+               ve % 10000,
+               vs - base,
+               ve - base,
+               ve - vs);
     }
-    printf("timeline_csv_end\n");
+}
 
+// nvcc -std=c++17 -arch=sm_90a -O3  tma_ws.cu -o tma_ws_test -lcuda
 
-    cudaCheck(cudaDeviceSynchronize());
+int main() {
+    constexpr int B = 1;
+    constexpr int H = 1;
+    constexpr int S = 512;
+    constexpr int D = 128;
 
-    cudaCheck(cudaMemcpy(hQ_out.data(), dQ, bytes, cudaMemcpyDeviceToHost));
-    cudaCheck(cudaMemcpy(hK_out.data(), dK, bytes, cudaMemcpyDeviceToHost));
-    cudaCheck(cudaMemcpy(hV_out.data(), dV, bytes, cudaMemcpyDeviceToHost));
+    const size_t numel = static_cast<size_t>(B) * H * S * D;
+    const size_t bytes = numel * sizeof(fp16);
+
+    std::vector<fp16> hQ_in(numel), hK_in(numel), hV_in(numel);
+
+    for (size_t i = 0; i < numel; ++i) {
+        const int q_i = static_cast<int>((i * 13 + 7) % 31) - 15;
+        const int k_i = static_cast<int>((i * 17 + 5) % 29) - 14;
+        const int v_i = static_cast<int>((i * 19 + 3) % 23) - 11;
+
+        hQ_in[i] = __float2half_rn(static_cast<float>(q_i) * (1.0f / 128.0f));
+        hK_in[i] = __float2half_rn(static_cast<float>(k_i) * (1.0f / 128.0f));
+        hV_in[i] = __float2half_rn(static_cast<float>(v_i) * (1.0f / 128.0f));
+    }
+
+    fp16 *dQ = nullptr;
+    fp16 *dK = nullptr;
+    fp16 *dV = nullptr;
+
+    cudaCheck(cudaMalloc(&dQ, bytes));
+    cudaCheck(cudaMalloc(&dK, bytes));
+    cudaCheck(cudaMalloc(&dV, bytes));
+
+    cudaCheck(cudaMemcpy(dQ, hQ_in.data(), bytes, cudaMemcpyHostToDevice));
+    cudaCheck(cudaMemcpy(dK, hK_in.data(), bytes, cudaMemcpyHostToDevice));
+    cudaCheck(cudaMemcpy(dV, hV_in.data(), bytes, cudaMemcpyHostToDevice));
+
+    Profile *d_profile = nullptr;
+    cudaCheck(cudaMalloc(&d_profile, sizeof(Profile)));
+
+    printf("# TMA Load Timeline\n\n");
+    printf("B = %d, H = %d, S = %d, D = %d\n", B, H, S, D);
+
+    run_one_case<B, H, S, D, 128,  32>(dQ, dK, dV, d_profile);
+    run_one_case<B, H, S, D, 128,  64>(dQ, dK, dV, d_profile);
+    run_one_case<B, H, S, D, 128, 128>(dQ, dK, dV, d_profile);
+    run_one_case<B, H, S, D, 128, 256>(dQ, dK, dV, d_profile);
+
+    run_one_case<B, H, S, D, 256,  32>(dQ, dK, dV, d_profile);
+    run_one_case<B, H, S, D, 256,  64>(dQ, dK, dV, d_profile);
+    run_one_case<B, H, S, D, 256, 128>(dQ, dK, dV, d_profile);
 
     cudaCheck(cudaFree(dQ));
     cudaCheck(cudaFree(dK));
     cudaCheck(cudaFree(dV));
     cudaCheck(cudaFree(d_profile));
+
     return 0;
 }

@@ -899,65 +899,31 @@ void runAttnKernel(fp16 *Q, fp16 *K, fp16 *V, fp16 *O, ProfileResult *profile, i
     kernel<<<grid, NUM_THREADS, sMemSize>>>(B, H, S, d_tma_map_Q, d_tma_map_K, d_tma_map_V, d_tma_map_O, profile);
 }
 
-// nvcc -std=c++17 -arch=sm_90a -O3 attn_test.cu -o attn_test -lcuda
-int main() {
-    constexpr int B = 1;
-    constexpr int H = 1;
-    constexpr int S = 512;
-    constexpr int D = 128;
-    constexpr int BM = 256;
-    constexpr int BN = 128;
-
-    const size_t numel = static_cast<size_t>(B) * H * S * D;
-    const size_t bytes = numel * sizeof(fp16);
-
-    std::vector<fp16> hQ(numel), hK(numel), hV(numel), hO(numel);
-    std::vector<float> hRef(numel, 0.0f);
-
-    auto idx4 = [=](int b, int h, int s, int d) {
-        return (((static_cast<size_t>(b) * H + h) * S + s) * D + d);
-    };
-    for (int b = 0; b < B; ++b) {
-        for (int h = 0; h < H; ++h) {
-            for (int s = 0; s < S; ++s) {
-                for (int d = 0; d < D; ++d) {
-                    const size_t idx = idx4(b, h, s, d);
-                    const int q_i = static_cast<int>((idx * 13 + 7) % 31) - 15;
-                    const int k_i = static_cast<int>((idx * 17 + 5) % 29) - 14;
-                    const int v_i = static_cast<int>((idx * 19 + 3) % 23) - 11;
-                    const float q = static_cast<float>(q_i) * (1.0f / 128.0f);
-                    const float k = static_cast<float>(k_i) * (1.0f / 128.0f);
-                    const float v = static_cast<float>(v_i) * (1.0f / 128.0f);
-                    hQ[idx] = __float2half_rn(q);
-                    hK[idx] = __float2half_rn(k);
-                    hV[idx] = __float2half_rn(v);
-                }
-            }
-        }
-    }
-
-    fp16 *dQ = nullptr, *dK = nullptr, *dV = nullptr, *dO = nullptr;
-    cudaCheck(cudaMalloc(&dQ, bytes));
-    cudaCheck(cudaMalloc(&dK, bytes));
-    cudaCheck(cudaMalloc(&dV, bytes));
-    cudaCheck(cudaMalloc(&dO, bytes));
-
-    cudaCheck(cudaMemcpy(dQ, hQ.data(), bytes, cudaMemcpyHostToDevice));
-    cudaCheck(cudaMemcpy(dK, hK.data(), bytes, cudaMemcpyHostToDevice));
-    cudaCheck(cudaMemcpy(dV, hV.data(), bytes, cudaMemcpyHostToDevice));
-    cudaCheck(cudaMemset(dO, 0, bytes));
-
-    // runAttnWSKernel<B, H, S, D, BM, BN, 384, 2>(dQ, dK, dV, dO);
-
-    ProfileResult h_profile{}, zero_profile{}, *d_profile;
-    cudaCheck(cudaMalloc(&d_profile, sizeof(ProfileResult)));
+template<int B, int H, int S, int D, int BM, int BN>
+void run_one_case(
+    fp16 *dQ,
+    fp16 *dK,
+    fp16 *dV,
+    fp16 *dO,
+    ProfileResult *d_profile
+) {
+    ProfileResult h_profile{};
+    ProfileResult zero_profile{};
 
     constexpr int kWarmupIters = 10;
     constexpr int kMeasureIters = 100;
-    constexpr int kProfileGridX = 1;  // set to 1 to reduce cross-block contention for timing stability
+    constexpr int kProfileGridX = 1;
+
     for (int i = 0; i < kWarmupIters; ++i) {
-        cudaCheck(cudaMemcpy(d_profile, &zero_profile, sizeof(ProfileResult), cudaMemcpyHostToDevice));
-        runAttnKernel<B, H, S, D, BM, BN, 256, 1>(dQ, dK, dV, dO, d_profile, kProfileGridX);
+        cudaCheck(cudaMemcpy(
+            d_profile,
+            &zero_profile,
+            sizeof(ProfileResult),
+            cudaMemcpyHostToDevice));
+
+        runAttnKernel<B, H, S, D, BM, BN, 256, 1>(
+            dQ, dK, dV, dO, d_profile, kProfileGridX);
+
         cudaCheck(cudaGetLastError());
     }
     cudaCheck(cudaDeviceSynchronize());
@@ -968,75 +934,131 @@ int main() {
     double sum_gemm_qk = 0.0;
     double sum_softmax = 0.0;
     double sum_gemm_pv = 0.0;
-    std::vector<double> samples_load_q;
-    std::vector<double> samples_load_k;
-    std::vector<double> samples_load_v;
-    std::vector<double> samples_gemm_qk;
-    std::vector<double> samples_softmax;
-    std::vector<double> samples_gemm_pv;
-    samples_load_q.reserve(kMeasureIters);
-    samples_load_k.reserve(kMeasureIters);
-    samples_load_v.reserve(kMeasureIters);
-    samples_gemm_qk.reserve(kMeasureIters);
-    samples_softmax.reserve(kMeasureIters);
-    samples_gemm_pv.reserve(kMeasureIters);
 
-    constexpr double iter_num = S / (double)BN;
+    constexpr double kv_iters = S / static_cast<double>(BN);
+
     for (int i = 0; i < kMeasureIters; ++i) {
-        cudaCheck(cudaMemcpy(d_profile, &zero_profile, sizeof(ProfileResult), cudaMemcpyHostToDevice));
-        runAttnKernel<B, H, S, D, BM, BN, 256, 1>(dQ, dK, dV, dO, d_profile, kProfileGridX);
+        cudaCheck(cudaMemcpy(
+            d_profile,
+            &zero_profile,
+            sizeof(ProfileResult),
+            cudaMemcpyHostToDevice));
+
+        runAttnKernel<B, H, S, D, BM, BN, 256, 1>(
+            dQ, dK, dV, dO, d_profile, kProfileGridX);
+
         cudaCheck(cudaGetLastError());
-        cudaCheck(cudaMemcpy(&h_profile, d_profile, sizeof(ProfileResult), cudaMemcpyDeviceToHost));
 
-        const double load_q = static_cast<double>(h_profile.load_q);
-        const double load_k = static_cast<double>(h_profile.total_load_k) / iter_num;
-        const double load_v = static_cast<double>(h_profile.total_load_v) / iter_num;
-        const double gemm_qk = static_cast<double>(h_profile.total_gemm_qk) / iter_num;
-        const double softmax = static_cast<double>(h_profile.total_softmax) / iter_num;
-        const double gemm_pv = static_cast<double>(h_profile.total_gemm_pv) / iter_num;
+        cudaCheck(cudaMemcpy(
+            &h_profile,
+            d_profile,
+            sizeof(ProfileResult),
+            cudaMemcpyDeviceToHost));
 
-        sum_load_q += load_q;
-        sum_load_k += load_k;
-        sum_load_v += load_v;
+        const double load_q   = static_cast<double>(h_profile.load_q);
+        const double load_k   = static_cast<double>(h_profile.total_load_k) / kv_iters;
+        const double load_v   = static_cast<double>(h_profile.total_load_v) / kv_iters;
+        const double gemm_qk  = static_cast<double>(h_profile.total_gemm_qk) / kv_iters;
+        const double softmax  = static_cast<double>(h_profile.total_softmax) / kv_iters;
+        const double gemm_pv  = static_cast<double>(h_profile.total_gemm_pv) / kv_iters;
+
+        sum_load_q  += load_q;
+        sum_load_k  += load_k;
+        sum_load_v  += load_v;
         sum_gemm_qk += gemm_qk;
         sum_softmax += softmax;
         sum_gemm_pv += gemm_pv;
-
-        samples_load_q.push_back(load_q);
-        samples_load_k.push_back(load_k);
-        samples_load_v.push_back(load_v);
-        samples_gemm_qk.push_back(gemm_qk);
-        samples_softmax.push_back(softmax);
-        samples_gemm_pv.push_back(gemm_pv);
     }
 
-    const double inv_n = 1.0 / kMeasureIters;
-    auto percentile = [](std::vector<double> values, double q) {
-        if (values.empty()) return 0.0;
-        std::sort(values.begin(), values.end());
-        const size_t idx = static_cast<size_t>(q * static_cast<double>(values.size() - 1));
-        return values[idx];
+    constexpr double inv_n = 1.0 / static_cast<double>(kMeasureIters);
+
+    printf("| %d | %d | %.2f | %.2f | %.2f | %.2f | %.2f | %.2f |\n",
+           BM,
+           BN,
+           sum_load_q  * inv_n,
+           sum_load_k  * inv_n,
+           sum_load_v  * inv_n,
+           sum_gemm_qk * inv_n,
+           sum_softmax * inv_n,
+           sum_gemm_pv * inv_n);
+}
+
+// nvcc -std=c++17 -arch=sm_90a -O3 attn.cu -o attn_test -lcuda
+int main() {
+    constexpr int B = 1;
+    constexpr int H = 1;
+    constexpr int S = 512;
+    constexpr int D = 128;
+
+    const size_t numel = static_cast<size_t>(B) * H * S * D;
+    const size_t bytes = numel * sizeof(fp16);
+
+    std::vector<fp16> hQ(numel), hK(numel), hV(numel);
+
+    auto idx4 = [=](int b, int h, int s, int d) {
+        return (((static_cast<size_t>(b) * H + h) * S + s) * D + d);
     };
 
-    printf("LoadQ(avg): %.2f, LoadK(avg): %.2f, LoadV(avg): %.2f, GEMM-QK(avg): %.2f, SOFTMAX(avg): %.2f, GEMM-PV(avg): %.2f cycle\n",
-            sum_load_q * inv_n, sum_load_k * inv_n, sum_load_v * inv_n,
-            sum_gemm_qk * inv_n, sum_softmax * inv_n, sum_gemm_pv * inv_n);
-    printf("LoadQ(median/p95): %.2f / %.2f, LoadK(median/p95): %.2f / %.2f, LoadV(median/p95): %.2f / %.2f cycle\n",
-            percentile(samples_load_q, 0.5), percentile(samples_load_q, 0.95),
-            percentile(samples_load_k, 0.5), percentile(samples_load_k, 0.95),
-            percentile(samples_load_v, 0.5), percentile(samples_load_v, 0.95));
-    printf("GEMM-QK(median/p95): %.2f / %.2f, SOFTMAX(median/p95): %.2f / %.2f, GEMM-PV(median/p95): %.2f / %.2f cycle\n",
-            percentile(samples_gemm_qk, 0.5), percentile(samples_gemm_qk, 0.95),
-            percentile(samples_softmax, 0.5), percentile(samples_softmax, 0.95),
-            percentile(samples_gemm_pv, 0.5), percentile(samples_gemm_pv, 0.95));
+    for (int b = 0; b < B; ++b) {
+        for (int h = 0; h < H; ++h) {
+            for (int s = 0; s < S; ++s) {
+                for (int d = 0; d < D; ++d) {
+                    const size_t idx = idx4(b, h, s, d);
+
+                    const int q_i = static_cast<int>((idx * 13 + 7) % 31) - 15;
+                    const int k_i = static_cast<int>((idx * 17 + 5) % 29) - 14;
+                    const int v_i = static_cast<int>((idx * 19 + 3) % 23) - 11;
+
+                    const float q = static_cast<float>(q_i) * (1.0f / 128.0f);
+                    const float k = static_cast<float>(k_i) * (1.0f / 128.0f);
+                    const float v = static_cast<float>(v_i) * (1.0f / 128.0f);
+
+                    hQ[idx] = __float2half_rn(q);
+                    hK[idx] = __float2half_rn(k);
+                    hV[idx] = __float2half_rn(v);
+                }
+            }
+        }
+    }
+
+    fp16 *dQ = nullptr;
+    fp16 *dK = nullptr;
+    fp16 *dV = nullptr;
+    fp16 *dO = nullptr;
+
+    cudaCheck(cudaMalloc(&dQ, bytes));
+    cudaCheck(cudaMalloc(&dK, bytes));
+    cudaCheck(cudaMalloc(&dV, bytes));
+    cudaCheck(cudaMalloc(&dO, bytes));
+
+    cudaCheck(cudaMemcpy(dQ, hQ.data(), bytes, cudaMemcpyHostToDevice));
+    cudaCheck(cudaMemcpy(dK, hK.data(), bytes, cudaMemcpyHostToDevice));
+    cudaCheck(cudaMemcpy(dV, hV.data(), bytes, cudaMemcpyHostToDevice));
+    cudaCheck(cudaMemset(dO, 0, bytes));
+
+    ProfileResult *d_profile = nullptr;
+    cudaCheck(cudaMalloc(&d_profile, sizeof(ProfileResult)));
+
+    printf("| BM | BN | LoadQ(avg) | LoadK(avg) | LoadV(avg) | GEMM-QK(avg) | SOFTMAX(avg) | GEMM-PV(avg) |\n");
+    printf("| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+
+    run_one_case<B, H, S, D, 128,  32>(dQ, dK, dV, dO, d_profile);
+    run_one_case<B, H, S, D, 128,  64>(dQ, dK, dV, dO, d_profile);
+    run_one_case<B, H, S, D, 128, 128>(dQ, dK, dV, dO, d_profile);
+    run_one_case<B, H, S, D, 128, 256>(dQ, dK, dV, dO, d_profile);
+
+    run_one_case<B, H, S, D, 256,  32>(dQ, dK, dV, dO, d_profile);
+    run_one_case<B, H, S, D, 256,  64>(dQ, dK, dV, dO, d_profile);
+    run_one_case<B, H, S, D, 256, 128>(dQ, dK, dV, dO, d_profile);
 
     cudaCheck(cudaGetLastError());
     cudaCheck(cudaDeviceSynchronize());
 
-    // free
     cudaCheck(cudaFree(d_profile));
     cudaCheck(cudaFree(dQ));
     cudaCheck(cudaFree(dK));
     cudaCheck(cudaFree(dV));
     cudaCheck(cudaFree(dO));
+
+    return 0;
 }
