@@ -260,7 +260,7 @@
 | K3 | 2 | 2 | 0.231 | 296.931 | 53.61 | 28.81 | 92.43 | 18.75 | 13.90 |
 | K4 | 3 | 2 | 0.239 | 288.102 | 52.87 | 28.35 | 85.11 | 18.75 | 13.86 |
 
-结合吞吐率、缓存命中率和 occupancy 信息来看，这组实验可以总结为：当前 kernel 的性能提升主要来自 producer-consumer 流水线重叠程度的改善，而不是 occupancy 提升或全局内存带宽提升。K1 使用 num_smem=1, num_stage=1 时，执行时间为 0.319 ms，性能只有 215.086 TFLOPS，SM Throughput 为 40.22%，Mem Throughput 为 22.90%，说明此时计算单元和内存子系统的利用率都不高，kernel 很可能存在明显的 load/compute 串行等待；由于只有一个 shared memory buffer，producer 加载下一块数据和 consumer 使用当前数据进行 WGMMA 计算之间难以重叠，导致 SM 上虽然有 active warp，但很多时候 warp 处于等待 TMA、barrier 或 WGMMA 数据依赖的状态，计算管线没有被充分填满。
+    结合吞吐率、缓存命中率和 occupancy 信息来看，这组实验可以总结为：当前 kernel 的性能提升主要来自 producer-consumer 流水线重叠程度的改善，而不是 occupancy 提升或全局内存带宽提升。K1 使用 num_smem=1, num_stage=1 时，执行时间为 0.319 ms，性能只有 215.086 TFLOPS，SM Throughput 为 40.22%，Mem Throughput 为 22.90%，说明此时计算单元和内存子系统的利用率都不高，kernel 很可能存在明显的 load/compute 串行等待；由于只有一个 shared memory buffer，producer 加载下一块数据和 consumer 使用当前数据进行 WGMMA 计算之间难以重叠，导致 SM 上虽然有 active warp，但很多时候 warp 处于等待 TMA、barrier 或 WGMMA 数据依赖的状态，计算管线没有被充分填满。
 
 当配置变为 K2，即 num_smem=2, num_stage=1 后，时间从 0.319 ms 降到 0.242 ms，TFLOPS 从 215.086 提升到 283.750，提升约 31.9%；同时 SM Throughput 从 40.22% 提升到 50.65%，Mem Throughput 从 22.90% 提升到 27.86%。这说明双 shared memory buffer 显著改善了数据加载和计算之间的重叠：一个 buffer 可以供 consumer 执行 WGMMA，另一个 buffer 则由 producer 提前加载下一阶段数据，从而减少 consumer 等待数据的时间。这里 Mem Throughput 也有所上升，但绝对值仍然只有 27.86%，并不高，说明性能提升并不是因为打满了内存带宽，而是因为流水线更顺畅，使得 SM 计算单元能够更持续地工作。
 
