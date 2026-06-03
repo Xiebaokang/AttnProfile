@@ -276,6 +276,13 @@
 
 &emsp;&emsp;K4 的 L2 Cache Hit Rate 从 92.43% 降到 85.11%，是因为 3× shared buffer 增大了每个 ThreadBlock 的 SMEM 占用，间接压缩了 L2/片上缓存中 K/V tile 的有效驻留空间或加速其驱逐；由于 2× buffer（K3）已完全隐藏 TMA 延迟，第 3 个 buffer 无法减少 stall，却带来了 L2 hit 率下降引起的微小额外显存访问延迟，这就是 K4 性能略低于 K3 的直接微观架构原因。
 
+### 流水线图Load短于Compute
+
+![项目截图](./images/duan.png)
+
+### 流水线图Load长于Compute
+
+![项目截图](./images/chang.png)
 
 ```c++
 run_kernel<B=1,H=16,S=4096,D=64,BM=128,BN=128,threads=384, smem=1, stage=1>
