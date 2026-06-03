@@ -1,15 +1,14 @@
 #include "tools.cuh"
 
-constexpr int kProfileSlots = 16;
-
+template<int NUM_SLOTS>
 struct Profile {
     unsigned long long load_q_start;
     unsigned long long load_q_end;
     int kv_iters;
-    unsigned long long load_k_starts[kProfileSlots];
-    unsigned long long load_k_ends[kProfileSlots];
-    unsigned long long load_v_starts[kProfileSlots];
-    unsigned long long load_v_ends[kProfileSlots];
+    unsigned long long load_k_starts[NUM_SLOTS];
+    unsigned long long load_k_ends[NUM_SLOTS];
+    unsigned long long load_v_starts[NUM_SLOTS];
+    unsigned long long load_v_ends[NUM_SLOTS];
 };
 
 template <int BM, int BN, int DIM, int NUM_STAGE=1>
@@ -24,14 +23,14 @@ struct SMemTMA {
     alignas(8) uint64_t Vfull[NUM_STAGE];
 };
 
-template<int BM, int BN, int DIM, int NUM_THREADS, int NUM_STAGE>
+template<int BM, int BN, int DIM, int NUM_THREADS, int NUM_STAGE, int NUM_SLOTS>
 __global__  __launch_bounds__(NUM_THREADS) 
 void attnTMAKernel(
     int B, int H, int S, 
     const __grid_constant__ CUtensorMap tensorMapQ, 
     const __grid_constant__ CUtensorMap tensorMapK, 
     const __grid_constant__ CUtensorMap tensorMapV,
-    Profile *__restrict__ profile
+    Profile<NUM_SLOTS> *__restrict__ profile
 ) {
   // WS attention
     const int bs = blockIdx.z;
@@ -67,7 +66,7 @@ void attnTMAKernel(
     __syncthreads();
     fence_view_async_shared();
     if (do_profile && tid == 0) {
-        profile->kv_iters = (kv_iters < kProfileSlots) ? kv_iters : kProfileSlots;
+        profile->kv_iters = kv_iters;
     }
 
     // TMA load
@@ -76,8 +75,8 @@ void attnTMAKernel(
         if (tid == 256) {
             int stage = 0, phase = 0;
             unsigned long long load_q_start = 0;
-            unsigned long long load_k_starts[kProfileSlots] = {0};
-            unsigned long long load_v_starts[kProfileSlots] = {0};
+            unsigned long long load_k_starts[NUM_SLOTS] = {0};
+            unsigned long long load_v_starts[NUM_SLOTS] = {0};
             // load Q
             expect_bytes(Qmbar, BM * DIM * sizeof(fp16));
             if (do_profile) { load_q_start = clock64(); }
@@ -90,18 +89,18 @@ void attnTMAKernel(
                 wait(&Kempty[stage], phase);
                 expect_bytes(&Kfull[stage], BN * DIM * sizeof(fp16));
                 const int slot = static_cast<int>(iw / BN);
-                if (do_profile && slot < kProfileSlots) { load_k_starts[slot] = clock64(); }
+                if (do_profile && slot < NUM_SLOTS) { load_k_starts[slot] = clock64(); }
                 load_async(KAddr, &tensorMapK, &Kfull[stage], bs, hn, iw, 0);
                 // load V
                 wait(&Vempty[stage], phase);
                 expect_bytes(&Vfull[stage], BN * DIM * sizeof(fp16));
-                if (do_profile && slot < kProfileSlots) { load_v_starts[slot] = clock64(); }
+                if (do_profile && slot < NUM_SLOTS) { load_v_starts[slot] = clock64(); }
                 load_async(VAddr, &tensorMapV, &Vfull[stage], bs, hn, iw, 0);
             }
             if (do_profile) {
                 profile->load_q_start = load_q_start;
                 #pragma unroll
-                for (int i = 0; i < kProfileSlots; ++i) {
+                for (int i = 0; i < NUM_SLOTS; ++i) {
                     profile->load_k_starts[i] = load_k_starts[i];
                     profile->load_v_starts[i] = load_v_starts[i];
                 }
@@ -117,8 +116,8 @@ void attnTMAKernel(
         }
         wait(Qmbar, 0);
         unsigned long long load_q_end = 0;
-        unsigned long long load_k_ends[kProfileSlots] = {0};
-        unsigned long long load_v_ends[kProfileSlots] = {0};
+        unsigned long long load_k_ends[NUM_SLOTS] = {0};
+        unsigned long long load_v_ends[NUM_SLOTS] = {0};
         if (do_profile && tid == 0) {
             load_q_end = clock64();
         }
@@ -135,7 +134,7 @@ void attnTMAKernel(
             // fp16 *VAddr = sV + stage * BN * DIM;
             const int slot = static_cast<int>(iw / BN);
             wait(&Kfull[stage], phase);
-            if (do_profile && tid == 0 && slot < kProfileSlots) {
+            if (do_profile && tid == 0 && slot < NUM_SLOTS) {
                 load_k_ends[slot] = clock64();
             }
             
@@ -146,7 +145,7 @@ void attnTMAKernel(
             arrive(&Kempty[stage]);  // 释放 tma K 前阻塞
 
             wait(&Vfull[stage], phase);
-            if (do_profile && tid == 0 && slot < kProfileSlots) {
+            if (do_profile && tid == 0 && slot < NUM_SLOTS) {
                 load_v_ends[slot] = clock64();
             }
             // // store V
@@ -158,7 +157,7 @@ void attnTMAKernel(
         if (do_profile && tid == 0) {
             profile->load_q_end = load_q_end;
             #pragma unroll
-            for (int i = 0; i < kProfileSlots; ++i) {
+            for (int i = 0; i < NUM_SLOTS; ++i) {
                 profile->load_k_ends[i] = load_k_ends[i];
                 profile->load_v_ends[i] = load_v_ends[i];
             }
@@ -206,12 +205,13 @@ __host__ static inline CUtensorMap create_tensor_map(fp16* gmem_ptr, int batch1,
 
 
 template<int B, int H, int S, int D=128, int BM=128, int BN=128, int NUM_THREADS=384, int NUM_STAGE=1>
-void runAttnTMAKernel(fp16 *Q, fp16 *K, fp16 *V, Profile *profile) {
+void runAttnTMAKernel(fp16 *Q, fp16 *K, fp16 *V, Profile<S / BN> *profile) {
     CUtensorMap d_tma_map_Q = create_tensor_map<BM, D>(Q, B, H, S, D);
     CUtensorMap d_tma_map_K = create_tensor_map<BN, D>(K, B, H, S, D);
     CUtensorMap d_tma_map_V = create_tensor_map<BN, D>(V, B, H, S, D);
 
-    auto* kernel = attnTMAKernel<BM, BN, D, NUM_THREADS, NUM_STAGE>;
+    constexpr int kProfileSlots = S / BN;
+    auto* kernel = attnTMAKernel<BM, BN, D, NUM_THREADS, NUM_STAGE, kProfileSlots>;
     constexpr size_t sMemSize = sizeof(SMemTMA<BM, BN, D, NUM_STAGE>);
     static_assert(sMemSize < 256 * 1024);
     cudaCheck(cudaFuncSetAttribute(
@@ -223,30 +223,34 @@ void runAttnTMAKernel(fp16 *Q, fp16 *K, fp16 *V, Profile *profile) {
 }
 
 template<int B, int H, int S, int D, int BM, int BN, int NUM_THREADS=384, int NUM_STAGE=1>
-void run_one_case(fp16 *dQ, fp16 *dK, fp16 *dV, Profile *d_profile) {
-    Profile zero_profile{};
+void run_one_case(fp16 *dQ, fp16 *dK, fp16 *dV) {
+    constexpr int kProfileSlots = S / BN;
+    using ProfileType = Profile<kProfileSlots>;
+    ProfileType zero_profile{};
+    ProfileType *d_profile = nullptr;
+    cudaCheck(cudaMalloc(&d_profile, sizeof(ProfileType)));
 
     constexpr int kWarmupIters = 10;
     constexpr int kCaptureIters = 100;
 
     for (int i = 0; i < kWarmupIters; ++i) {
-        cudaCheck(cudaMemcpy(d_profile, &zero_profile, sizeof(Profile), cudaMemcpyHostToDevice));
+        cudaCheck(cudaMemcpy(d_profile, &zero_profile, sizeof(ProfileType), cudaMemcpyHostToDevice));
         runAttnTMAKernel<B, H, S, D, BM, BN, NUM_THREADS, NUM_STAGE>(dQ, dK, dV, d_profile);
         cudaCheck(cudaGetLastError());
     }
     cudaCheck(cudaDeviceSynchronize());
 
     for (int i = 0; i < kCaptureIters; ++i) {
-        cudaCheck(cudaMemcpy(d_profile, &zero_profile, sizeof(Profile), cudaMemcpyHostToDevice));
+        cudaCheck(cudaMemcpy(d_profile, &zero_profile, sizeof(ProfileType), cudaMemcpyHostToDevice));
         runAttnTMAKernel<B, H, S, D, BM, BN, NUM_THREADS, NUM_STAGE>(dQ, dK, dV, d_profile);
         cudaCheck(cudaGetLastError());
     }
     cudaCheck(cudaDeviceSynchronize());
 
-    Profile h_profile{};
-    cudaCheck(cudaMemcpy(&h_profile, d_profile, sizeof(Profile), cudaMemcpyDeviceToHost));
+    ProfileType h_profile{};
+    cudaCheck(cudaMemcpy(&h_profile, d_profile, sizeof(ProfileType), cudaMemcpyDeviceToHost));
 
-    const int slots = (h_profile.kv_iters < kProfileSlots) ? h_profile.kv_iters : kProfileSlots;
+    const int slots = h_profile.kv_iters;
 
     unsigned long long base = h_profile.load_q_start;
     for (int i = 0; i < slots; ++i) {
@@ -290,14 +294,15 @@ void run_one_case(fp16 *dQ, fp16 *dK, fp16 *dV, Profile *d_profile) {
                ve - base,
                ve - vs);
     }
+    cudaCheck(cudaFree(d_profile));
 }
 
 // nvcc -std=c++17 -arch=sm_90a -O3  tma_ws.cu -o tma_ws_test -lcuda
 
 int main() {
     constexpr int B = 1;
-    constexpr int H = 1;
-    constexpr int S = 512;
+    constexpr int H = 16;
+    constexpr int S = 4096;
     constexpr int D = 128;
 
     const size_t numel = static_cast<size_t>(B) * H * S * D;
@@ -327,29 +332,24 @@ int main() {
     cudaCheck(cudaMemcpy(dK, hK_in.data(), bytes, cudaMemcpyHostToDevice));
     cudaCheck(cudaMemcpy(dV, hV_in.data(), bytes, cudaMemcpyHostToDevice));
 
-    Profile *d_profile = nullptr;
-    cudaCheck(cudaMalloc(&d_profile, sizeof(Profile)));
-
     printf("# TMA Load Timeline\n\n");
     printf("B = %d, H = %d, S = %d, D = %d\n", B, H, S, D);
 
-    // run_one_case<B, H, S, D, 128,  32, 384, 2>(dQ, dK, dV, d_profile);
-    // run_one_case<B, H, S, D, 128,  64, 384, 2>(dQ, dK, dV, d_profile);
-    // run_one_case<B, H, S, D, 128, 128, 384, 2>(dQ, dK, dV, d_profile);
+    // run_one_case<B, H, S, D, 128,  32, 384, 2>(dQ, dK, dV);
+    // run_one_case<B, H, S, D, 128,  64, 384, 2>(dQ, dK, dV);
+    // run_one_case<B, H, S, D, 128, 128, 384, 2>(dQ, dK, dV);
 
-    // run_one_case<B, H, S, D, 128,  32>(dQ, dK, dV, d_profile);
-    // run_one_case<B, H, S, D, 128,  64>(dQ, dK, dV, d_profile);
-    run_one_case<B, H, S, D, 128, 128>(dQ, dK, dV, d_profile);
-    // run_one_case<B, H, S, D, 128, 256>(dQ, dK, dV, d_profile);
+    run_one_case<B, H, S, D, 128,  32>(dQ, dK, dV);
+    run_one_case<B, H, S, D, 128,  64>(dQ, dK, dV);
+    run_one_case<B, H, S, D, 128, 128>(dQ, dK, dV);
+    run_one_case<B, H, S, D, 128, 256>(dQ, dK, dV);
 
-    // run_one_case<B, H, S, D, 256,  32>(dQ, dK, dV, d_profile);
-    // run_one_case<B, H, S, D, 256,  64>(dQ, dK, dV, d_profile);
-    // run_one_case<B, H, S, D, 256, 128>(dQ, dK, dV, d_profile);
+    run_one_case<B, H, S, D, 256,  32>(dQ, dK, dV);
+    run_one_case<B, H, S, D, 256,  64>(dQ, dK, dV);
+    run_one_case<B, H, S, D, 256, 128>(dQ, dK, dV);
 
     cudaCheck(cudaFree(dQ));
     cudaCheck(cudaFree(dK));
     cudaCheck(cudaFree(dV));
-    cudaCheck(cudaFree(d_profile));
-
     return 0;
 }

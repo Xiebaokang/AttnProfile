@@ -25,7 +25,12 @@ struct ProfileResult {
 struct Profile {
     int kv_iters;
     unsigned long long load_k_starts[kProfileSlots];
+    unsigned long long load_k_ends[kProfileSlots];
     unsigned long long load_v_starts[kProfileSlots];
+    unsigned long long load_v_ends[kProfileSlots];
+
+    unsigned long long wait_k_starts[kProfileSlots];
+    unsigned long long wait_v_starts[kProfileSlots];
 
     unsigned long long qk_starts[kProfileSlots];
     unsigned long long qk_ends[kProfileSlots];
@@ -514,7 +519,7 @@ void attnWSKernel(
     const int hn = blockIdx.y;
     const int by = blockIdx.x;
     const int tid = threadIdx.x;
-    const bool do_profile = (blockIdx.x == 0 && blockIdx.y == 0 && blockIdx.z == 0);
+    const bool do_profile = (blockIdx.x == 4 && blockIdx.y == 5 && blockIdx.z == 0);
     const int kv_iters = S / BN;
     // mma size
     assert((DIM >= 256 || DIM == 16 || DIM == 32 || DIM == 64 || DIM == 128) && "DIM ERROR!");
@@ -648,9 +653,16 @@ void attnWSKernel(
             unsigned long long softmax_end = 0;
             unsigned long long pv_start = 0;
             unsigned long long pv_end = 0;
+            unsigned long long wait_k_start = 0;
+            unsigned long long wait_v_start = 0;
+            if (do_profile && tid == 0 && slot < kProfileSlots) {
+                wait_k_start = clock64();
+            }
             wait(&Kfull[smem_i], phase);
             if (do_profile && tid == 0 && slot < kProfileSlots) {
                 qk_start = clock64();
+                profile->wait_k_starts[slot] = wait_k_start;
+                profile->load_k_ends[slot] = qk_start;
             }
             warpgroup_arrive();
             #pragma unroll
@@ -836,9 +848,14 @@ void attnWSKernel(
                 profile->softmax_ends[slot] = softmax_end;
             }
 
+            if (do_profile && tid == 0 && slot < kProfileSlots) {
+                wait_v_start = clock64();
+            }
             wait(&Vfull[smem_i], phase);
             if (do_profile && tid == 0 && slot < kProfileSlots) {
                 pv_start = clock64();
+                profile->wait_v_starts[slot] = wait_v_start;
+                profile->load_v_ends[slot] = pv_start;
             }
             warpgroup_arrive();
             #pragma unroll
@@ -1163,7 +1180,9 @@ void run_one_case_ws(
 
     for (int i = 0; i < slots; ++i) {
         update_base(h_profile.load_k_starts[i]);
+        update_base(h_profile.wait_k_starts[i]);
         update_base(h_profile.load_v_starts[i]);
+        update_base(h_profile.wait_v_starts[i]);
         update_base(h_profile.qk_starts[i]);
         update_base(h_profile.softmax_starts[i]);
         update_base(h_profile.pv_starts[i]);
@@ -1175,7 +1194,11 @@ void run_one_case_ws(
 
     for (int i = 0; i < slots; ++i) {
         const unsigned long long lk_start = h_profile.load_k_starts[i];
+        const unsigned long long lk_end = h_profile.load_k_ends[i];
+        const unsigned long long wk_start = h_profile.wait_k_starts[i];
         const unsigned long long lv_start = h_profile.load_v_starts[i];
+        const unsigned long long lv_end = h_profile.load_v_ends[i];
+        const unsigned long long wv_start = h_profile.wait_v_starts[i];
         const unsigned long long qk_start = h_profile.qk_starts[i];
         const unsigned long long qk_end = h_profile.qk_ends[i];
         const unsigned long long sm_start = h_profile.softmax_starts[i];
@@ -1183,10 +1206,14 @@ void run_one_case_ws(
         const unsigned long long pv_start = h_profile.pv_starts[i];
         const unsigned long long pv_end = h_profile.pv_ends[i];
 
-        printf("| load_k | %d | %llu | - | %llu | - | - |\n",
-               i, lk_start%1000000, lk_start - base);
-        printf("| load_v | %d | %llu | - | %llu | - | - |\n",
-               i, lv_start%1000000, lv_start - base);
+        printf("| load_k | %d | %llu | %llu | %llu | %llu | %llu |\n",
+               i, lk_start%1000000, lk_end%1000000, lk_start - base, lk_end - base, lk_end - lk_start);
+        printf("| wait_k | %d | %llu | %llu | %llu | %llu | %llu |\n",
+               i, wk_start%1000000, lk_end%1000000, wk_start - base, lk_end - base, lk_end - wk_start);
+        printf("| load_v | %d | %llu | %llu | %llu | %llu | %llu |\n",
+               i, lv_start%1000000, lv_end%1000000, lv_start - base, lv_end - base, lv_end - lv_start);
+        printf("| wait_v | %d | %llu | %llu | %llu | %llu | %llu |\n",
+               i, wv_start%1000000, lv_end%1000000, wv_start - base, lv_end - base, lv_end - wv_start);
         printf("| qk | %d | %llu | %llu | %llu | %llu | %llu |\n",
                i, qk_start%1000000, qk_end%1000000, qk_start - base, qk_end - base, qk_end - qk_start);
         printf("| softmax | %d | %llu | %llu | %llu | %llu | %llu |\n",
@@ -1261,16 +1288,17 @@ int main() {
     // run_one_case<B, H, S, D, 128,  64, 256, 2>(dQ, dK, dV, dO, d_profile);
     // run_one_case<B, H, S, D, 128, 128, 256, 2>(dQ, dK, dV, dO, d_profile);
 
-    run_one_case<B, H, S, D, 128,  32>(dQ, dK, dV, dO, d_profile);
-    run_one_case<B, H, S, D, 128,  64>(dQ, dK, dV, dO, d_profile);
-    run_one_case<B, H, S, D, 128, 128>(dQ, dK, dV, dO, d_profile);
-    run_one_case<B, H, S, D, 128, 256>(dQ, dK, dV, dO, d_profile);
+    // run_one_case<B, H, S, D, 128,  32>(dQ, dK, dV, dO, d_profile);
+    // run_one_case<B, H, S, D, 128,  64>(dQ, dK, dV, dO, d_profile);
+    // run_one_case<B, H, S, D, 128, 128>(dQ, dK, dV, dO, d_profile);
+    // run_one_case<B, H, S, D, 128, 256>(dQ, dK, dV, dO, d_profile);
 
-    run_one_case<B, H, S, D, 256,  32>(dQ, dK, dV, dO, d_profile);
-    run_one_case<B, H, S, D, 256,  64>(dQ, dK, dV, dO, d_profile);
-    run_one_case<B, H, S, D, 256, 128>(dQ, dK, dV, dO, d_profile);
+    // run_one_case<B, H, S, D, 256,  32>(dQ, dK, dV, dO, d_profile);
+    // run_one_case<B, H, S, D, 256,  64>(dQ, dK, dV, dO, d_profile);
+    // run_one_case<B, H, S, D, 256, 128>(dQ, dK, dV, dO, d_profile);
 
-    // run_one_case_ws<B, H, S, D, 128,  128, 384, 2>(dQ, dK, dV, dO, d_ws_profile);
+    run_one_case_ws<B, H, S, D, 128,  128, 384, 1>(dQ, dK, dV, dO, d_ws_profile);
+    run_one_case_ws<B, H, S, D, 128,  128, 384, 2>(dQ, dK, dV, dO, d_ws_profile);
 
     cudaCheck(cudaGetLastError());
     cudaCheck(cudaDeviceSynchronize());
