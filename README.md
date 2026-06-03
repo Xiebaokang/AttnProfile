@@ -249,7 +249,7 @@
  
 ### 对 B=1, H=16, S=4096, D=64/128 进行的WMA cycle测试
 
-[README1](tma_ws.md "TMA—WS模式下的QKV加载cycle数据")
+[TMA—WS模式下shape=(B=1, H=16, S=4096, D=64/128)的QKV加载cycle数据](tma_ws.md "TMA—WS模式下的QKV加载cycle数据")
 
 &emsp;&emsp;由于这个表太长，没有再画图展示了，但是值得注意的点是，TMA是所有的SM计算所需的数据都来源于它，所以随着我增大shape，它的block数量也随之增大，这样导致TMA的压力变大，从而导致各个load的cycle增大且不稳定，且中间无计算操作，导致tma时刻都处于load中，tma硬件单元达到带宽上限了。表中的迭代次数为：seq/bn。
 
