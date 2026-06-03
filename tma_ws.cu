@@ -42,10 +42,10 @@ void attnTMAKernel(
     const int kv_iters = S / BN;
 
     // mma size
-    assert((DIM >= 256 || DIM == 16 || DIM == 32 || DIM == 64 || DIM == 128) && "DIM ERROR!");
-    constexpr int MMA_M = 64;
-    constexpr int MMA_N = DIM <= 256 ? DIM : 256;
-    constexpr int MMA_K = 16;
+    // assert((DIM >= 256 || DIM == 16 || DIM == 32 || DIM == 64 || DIM == 128) && "DIM ERROR!");
+    // constexpr int MMA_M = 64;
+    // constexpr int MMA_N = DIM <= 256 ? DIM : 256;
+    // constexpr int MMA_K = 16;
     
     // setting shared memory
     extern __shared__ __align__(128) uint8_t smem[];
@@ -75,9 +75,12 @@ void attnTMAKernel(
         warpgroup_reg_dealloc<24>();
         if (tid == 256) {
             int stage = 0, phase = 0;
+            unsigned long long load_q_start = 0;
+            unsigned long long load_k_starts[kProfileSlots] = {0};
+            unsigned long long load_v_starts[kProfileSlots] = {0};
             // load Q
             expect_bytes(Qmbar, BM * DIM * sizeof(fp16));
-            if (do_profile) { profile->load_q_start = clock64(); }
+            if (do_profile) { load_q_start = clock64(); }
             load_async(sQ, &tensorMapQ, Qmbar, bs, hn, by * BM, 0);
             for (size_t iw=0; iw<S; iw+=BN, ++stage) {
                 if (stage >= NUM_STAGE) { stage = 0; phase ^= 1; }
@@ -87,13 +90,21 @@ void attnTMAKernel(
                 wait(&Kempty[stage], phase);
                 expect_bytes(&Kfull[stage], BN * DIM * sizeof(fp16));
                 const int slot = static_cast<int>(iw / BN);
-                if (do_profile && slot < kProfileSlots) { profile->load_k_starts[slot] = clock64(); }
+                if (do_profile && slot < kProfileSlots) { load_k_starts[slot] = clock64(); }
                 load_async(KAddr, &tensorMapK, &Kfull[stage], bs, hn, iw, 0);
                 // load V
                 wait(&Vempty[stage], phase);
                 expect_bytes(&Vfull[stage], BN * DIM * sizeof(fp16));
-                if (do_profile && slot < kProfileSlots) { profile->load_v_starts[slot] = clock64(); }
+                if (do_profile && slot < kProfileSlots) { load_v_starts[slot] = clock64(); }
                 load_async(VAddr, &tensorMapV, &Vfull[stage], bs, hn, iw, 0);
+            }
+            if (do_profile) {
+                profile->load_q_start = load_q_start;
+                #pragma unroll
+                for (int i = 0; i < kProfileSlots; ++i) {
+                    profile->load_k_starts[i] = load_k_starts[i];
+                    profile->load_v_starts[i] = load_v_starts[i];
+                }
             }
         }
     } else {  // consumer
@@ -105,8 +116,11 @@ void attnTMAKernel(
             arrive(&Vempty[st]);
         }
         wait(Qmbar, 0);
+        unsigned long long load_q_end = 0;
+        unsigned long long load_k_ends[kProfileSlots] = {0};
+        unsigned long long load_v_ends[kProfileSlots] = {0};
         if (do_profile && tid == 0) {
-            profile->load_q_end = clock64();
+            load_q_end = clock64();
         }
         // store Q
         // store_async(&tensorMapQ, sQ, bs, hn, by * BM, 0);
@@ -122,7 +136,7 @@ void attnTMAKernel(
             const int slot = static_cast<int>(iw / BN);
             wait(&Kfull[stage], phase);
             if (do_profile && tid == 0 && slot < kProfileSlots) {
-                profile->load_k_ends[slot] = clock64();
+                load_k_ends[slot] = clock64();
             }
             
             // // store K
@@ -133,13 +147,21 @@ void attnTMAKernel(
 
             wait(&Vfull[stage], phase);
             if (do_profile && tid == 0 && slot < kProfileSlots) {
-                profile->load_v_ends[slot] = clock64();
+                load_v_ends[slot] = clock64();
             }
             // // store V
             // store_async(&tensorMapV, VAddr, bs, hn, iw, 0);
             // tma_store_arrive();
             // tma_store_wait();
             arrive(&Vempty[stage]);  // 释放 tma V 前阻塞
+        }
+        if (do_profile && tid == 0) {
+            profile->load_q_end = load_q_end;
+            #pragma unroll
+            for (int i = 0; i < kProfileSlots; ++i) {
+                profile->load_k_ends[i] = load_k_ends[i];
+                profile->load_v_ends[i] = load_v_ends[i];
+            }
         }
     }
 }
@@ -315,14 +337,14 @@ int main() {
     // run_one_case<B, H, S, D, 128,  64, 384, 2>(dQ, dK, dV, d_profile);
     // run_one_case<B, H, S, D, 128, 128, 384, 2>(dQ, dK, dV, d_profile);
 
-    run_one_case<B, H, S, D, 128,  32>(dQ, dK, dV, d_profile);
-    run_one_case<B, H, S, D, 128,  64>(dQ, dK, dV, d_profile);
+    // run_one_case<B, H, S, D, 128,  32>(dQ, dK, dV, d_profile);
+    // run_one_case<B, H, S, D, 128,  64>(dQ, dK, dV, d_profile);
     run_one_case<B, H, S, D, 128, 128>(dQ, dK, dV, d_profile);
-    run_one_case<B, H, S, D, 128, 256>(dQ, dK, dV, d_profile);
+    // run_one_case<B, H, S, D, 128, 256>(dQ, dK, dV, d_profile);
 
-    run_one_case<B, H, S, D, 256,  32>(dQ, dK, dV, d_profile);
-    run_one_case<B, H, S, D, 256,  64>(dQ, dK, dV, d_profile);
-    run_one_case<B, H, S, D, 256, 128>(dQ, dK, dV, d_profile);
+    // run_one_case<B, H, S, D, 256,  32>(dQ, dK, dV, d_profile);
+    // run_one_case<B, H, S, D, 256,  64>(dQ, dK, dV, d_profile);
+    // run_one_case<B, H, S, D, 256, 128>(dQ, dK, dV, d_profile);
 
     cudaCheck(cudaFree(dQ));
     cudaCheck(cudaFree(dK));
