@@ -49,8 +49,16 @@ __device__ void warpgroup_commit_batch() {
     asm volatile("wgmma.commit_group.sync.aligned;\n" ::: "memory");
 }
 
-__device__ void warpgroup_wait() {
-    asm volatile("wgmma.wait_group.sync.aligned 0;\n" ::: "memory");
+template <int WaitGroup=0>
+__device__ __forceinline__ void warpgroup_wait() {
+    static_assert(WaitGroup >= 0 && WaitGroup <= 7,
+                  "WGMMA wait group must be in range [0, 7]");
+    asm volatile(
+        "wgmma.wait_group.sync.aligned %0;\n"
+        :
+        : "n"(WaitGroup)
+        : "memory"
+    );
 }
 
 __forceinline__ __device__ void warpgroup_fence_operand(float& reg) {

@@ -276,6 +276,16 @@
 
 &emsp;&emsp;K4 的 L2 Cache Hit Rate 从 92.43% 降到 85.11%，是因为 3× shared buffer 增大了每个 ThreadBlock 的 SMEM 占用，间接压缩了 L2/片上缓存中 K/V tile 的有效驻留空间或加速其驱逐；由于 2× buffer（K3）已完全隐藏 TMA 延迟，第 3 个 buffer 无法减少 stall，却带来了 L2 hit 率下降引起的微小额外显存访问延迟，这就是 K4 性能略低于 K3 的直接微观架构原因。
 
+ - Q: L2 Cache的命中率为什么会呈现出这样的变化？
+
+**不同 CTA / 不同时间点读取 K/V tile 时，这些 tile 是否还在 L2 中**
+
+&emsp;&emsp;K3改变了计算的顺序，CTA 间对 K/V 的访问节奏更一致，L2 复用窗口更好。K4更深的 buffer 没有提高 overlap，反而拉长了 K/V 的驻留距离，破坏了 L2 时间局部性。
+
+&emsp;&emsp;L2 Cache 命中率变化，本质上来自 K/V tile 在不同 CTA 之间的 L2 复用窗口变化：K1 单缓冲节奏慢，命中率看起来还可以但性能差；K2 双缓冲让 TMA 更流式，性能升高但 L2 hit 降低；K3 的 2-stage 计算重排让 K/V 访问节奏更集中，所以 L2 hit 和性能同时最好；K4 三缓冲预取过深、smem footprint 过大，拉长了 load 到 consume 的距离，破坏了 L2 时间局部性，因此 L2 hit 回落。
+
+
+
 ### 流水线图Load短于Compute
 
 ![项目截图](./images/duan.png)
