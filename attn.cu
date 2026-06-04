@@ -24,21 +24,7 @@ struct ProfileResult {
 
 struct Profile {
     int kv_iters;
-    unsigned long long load_k_starts[kProfileSlots];
-    unsigned long long load_k_ends[kProfileSlots];
-    unsigned long long load_v_starts[kProfileSlots];
-    unsigned long long load_v_ends[kProfileSlots];
-
-    unsigned long long wait_k_starts[kProfileSlots];
-    unsigned long long wait_v_starts[kProfileSlots];
-
     unsigned long long qk_starts[kProfileSlots];
-    unsigned long long qk_ends[kProfileSlots];
-
-    unsigned long long softmax_starts[kProfileSlots];
-    unsigned long long softmax_ends[kProfileSlots];
-
-    unsigned long long pv_starts[kProfileSlots];
     unsigned long long pv_ends[kProfileSlots];
 };
 
@@ -562,21 +548,14 @@ void attnWSKernel(
                 if (smem_i >= NUM_SMEM) { smem_i = 0; phase ^= 1; }
                 fp16 *KAddr = sK + smem_i * BN * DIM;
                 fp16 *VAddr = sV + smem_i * BN * DIM;
-                unsigned long long load_k_start = 0;
-                unsigned long long load_v_start = 0;
                 // load K
                 wait(&Kempty[smem_i], phase);
                 expect_bytes(&Kfull[smem_i], BN * DIM * sizeof(fp16));
-                const int slot = static_cast<int>(iw / BN);
-                if (do_profile && slot < kProfileSlots) { load_k_start = clock64(); }
                 load_async(KAddr, &tensorMapK, &Kfull[smem_i], bs, hn, iw, 0);
-                if (do_profile && slot < kProfileSlots) { profile->load_k_starts[slot] = load_k_start; }
                 // load V
                 wait(&Vempty[smem_i], phase);
                 expect_bytes(&Vfull[smem_i], BN * DIM * sizeof(fp16));
-                if (do_profile && slot < kProfileSlots) { load_v_start = clock64(); }
                 load_async(VAddr, &tensorMapV, &Vfull[smem_i], bs, hn, iw, 0);
-                if (do_profile && slot < kProfileSlots) { profile->load_v_starts[slot] = load_v_start; }
             }
         }
     } else {  // consumer
@@ -648,21 +627,11 @@ void attnWSKernel(
             // gemm-qk
             const int slot = static_cast<int>(iw / BN);
             unsigned long long qk_start = 0;
-            unsigned long long qk_end = 0;
-            unsigned long long softmax_start = 0;
-            unsigned long long softmax_end = 0;
-            unsigned long long pv_start = 0;
             unsigned long long pv_end = 0;
-            unsigned long long wait_k_start = 0;
-            unsigned long long wait_v_start = 0;
-            if (do_profile && tid == 0 && slot < kProfileSlots) {
-                wait_k_start = clock64();
-            }
             wait(&Kfull[smem_i], phase);
             if (do_profile && tid == 0 && slot < kProfileSlots) {
                 qk_start = clock64();
-                profile->wait_k_starts[slot] = wait_k_start;
-                profile->load_k_ends[slot] = qk_start;
+                profile->qk_starts[slot] = qk_start;
             }
             warpgroup_arrive();
             #pragma unroll
@@ -683,18 +652,9 @@ void attnWSKernel(
             }
             warpgroup_commit_batch();
             warpgroup_wait();
-            if (do_profile && tid == 0 && slot < kProfileSlots) {
-                qk_end = clock64();
-                profile->qk_starts[slot] = qk_start;
-                profile->qk_ends[slot] = qk_end;
-            }
             arrive(&Kempty[smem_i]);  // 释放 tma K 前阻塞
 
             // softmax
-            // max_prev = max
-            if (do_profile && tid == 0 && slot < kProfileSlots) {
-                softmax_start = clock64();
-            }
             #pragma unroll
             for (size_t i=0; i<BM/(MMA_M*2); i++) {
                 #pragma unroll
@@ -841,22 +801,7 @@ void attnWSKernel(
                     }
                 }
             }
-            // gemm-pv
-            if (do_profile && tid == 0 && slot < kProfileSlots) {
-                softmax_end = clock64();
-                profile->softmax_starts[slot] = softmax_start;
-                profile->softmax_ends[slot] = softmax_end;
-            }
-
-            if (do_profile && tid == 0 && slot < kProfileSlots) {
-                wait_v_start = clock64();
-            }
             wait(&Vfull[smem_i], phase);
-            if (do_profile && tid == 0 && slot < kProfileSlots) {
-                pv_start = clock64();
-                profile->wait_v_starts[slot] = wait_v_start;
-                profile->load_v_ends[slot] = pv_start;
-            }
             warpgroup_arrive();
             #pragma unroll
             for (size_t i=0; i<BM/(MMA_M*2); i++) {
@@ -882,7 +827,6 @@ void attnWSKernel(
             warpgroup_wait();
             if (do_profile && tid == 0 && slot < kProfileSlots) {
                 pv_end = clock64();
-                profile->pv_starts[slot] = pv_start;
                 profile->pv_ends[slot] = pv_end;
             }
             arrive(&Vempty[smem_i]);  // 释放 tma V 前阻塞
@@ -1166,8 +1110,8 @@ void run_one_case_ws(
     const int slots = (h_profile.kv_iters < kProfileSlots) ? h_profile.kv_iters : kProfileSlots;
     if (slots <= 0) {
         printf("\n### attnWSKernel<BM=%d, BN=%d, smem=%d>\n\n", BM, BN, NUM_SMEM);
-        printf("| op | slot | start_abs | end_abs | start_rel | end_rel | cycles |\n");
-        printf("| --- | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+        printf("| slot | pv_end_abs | next_qk_start_abs | pv_end_rel | next_qk_start_rel | gap_cycles |\n");
+        printf("| ---: | ---: | ---: | ---: | ---: | ---: |\n");
         return;
     }
 
@@ -1179,48 +1123,92 @@ void run_one_case_ws(
     };
 
     for (int i = 0; i < slots; ++i) {
-        update_base(h_profile.load_k_starts[i]);
-        update_base(h_profile.wait_k_starts[i]);
-        update_base(h_profile.load_v_starts[i]);
-        update_base(h_profile.wait_v_starts[i]);
         update_base(h_profile.qk_starts[i]);
-        update_base(h_profile.softmax_starts[i]);
-        update_base(h_profile.pv_starts[i]);
+        update_base(h_profile.pv_ends[i]);
     }
 
     printf("\n### attnWSKernel<BM=%d, BN=%d, smem=%d>\n\n", BM, BN, NUM_SMEM);
-    printf("| op | slot | start_abs | end_abs | start_rel | end_rel | cycles |\n");
-    printf("| --- | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+    printf("| slot | pv_end_abs | next_qk_start_abs | pv_end_rel | next_qk_start_rel | gap_cycles |\n");
+    printf("| ---: | ---: | ---: | ---: | ---: | ---: |\n");
 
-    for (int i = 0; i < slots; ++i) {
-        const unsigned long long lk_start = h_profile.load_k_starts[i];
-        const unsigned long long lk_end = h_profile.load_k_ends[i];
-        const unsigned long long wk_start = h_profile.wait_k_starts[i];
-        const unsigned long long lv_start = h_profile.load_v_starts[i];
-        const unsigned long long lv_end = h_profile.load_v_ends[i];
-        const unsigned long long wv_start = h_profile.wait_v_starts[i];
-        const unsigned long long qk_start = h_profile.qk_starts[i];
-        const unsigned long long qk_end = h_profile.qk_ends[i];
-        const unsigned long long sm_start = h_profile.softmax_starts[i];
-        const unsigned long long sm_end = h_profile.softmax_ends[i];
-        const unsigned long long pv_start = h_profile.pv_starts[i];
+    for (int i = 0; i + 1 < slots; ++i) {
         const unsigned long long pv_end = h_profile.pv_ends[i];
+        const unsigned long long next_qk_start = h_profile.qk_starts[i + 1];
 
-        printf("| load_k | %d | %llu | %llu | %llu | %llu | %llu |\n",
-               i, lk_start%1000000, lk_end%1000000, lk_start - base, lk_end - base, lk_end - lk_start);
-        printf("| wait_k | %d | %llu | %llu | %llu | %llu | %llu |\n",
-               i, wk_start%1000000, lk_end%1000000, wk_start - base, lk_end - base, lk_end - wk_start);
-        printf("| load_v | %d | %llu | %llu | %llu | %llu | %llu |\n",
-               i, lv_start%1000000, lv_end%1000000, lv_start - base, lv_end - base, lv_end - lv_start);
-        printf("| wait_v | %d | %llu | %llu | %llu | %llu | %llu |\n",
-               i, wv_start%1000000, lv_end%1000000, wv_start - base, lv_end - base, lv_end - wv_start);
-        printf("| qk | %d | %llu | %llu | %llu | %llu | %llu |\n",
-               i, qk_start%1000000, qk_end%1000000, qk_start - base, qk_end - base, qk_end - qk_start);
-        printf("| softmax | %d | %llu | %llu | %llu | %llu | %llu |\n",
-               i, sm_start%1000000, sm_end%1000000, sm_start - base, sm_end - base, sm_end - sm_start);
-        printf("| pv | %d | %llu | %llu | %llu | %llu | %llu |\n",
-               i, pv_start%1000000, pv_end%1000000, pv_start - base, pv_end - base, pv_end - pv_start);
+        printf("| %d | %llu | %llu | %llu | %llu | %llu |\n",
+               i,
+               pv_end % 1000000,
+               next_qk_start % 1000000,
+               pv_end - base,
+               next_qk_start - base,
+               next_qk_start - pv_end);
     }
+}
+
+template<int B, int H, int S, int D=128, int BM=128, int BN=128, int NUM_THREADS=384, int NUM_SMEM=1>
+void benchmark_attn_ws_kernel(
+    fp16 *dQ,
+    fp16 *dK,
+    fp16 *dV,
+    fp16 *dO,
+    Profile *d_profile
+) {
+    Profile zero_profile{};
+
+    constexpr int kWarmupIters = 20;
+    constexpr int kMeasureIters = 200;
+
+    cudaEvent_t start;
+    cudaEvent_t stop;
+    cudaCheck(cudaEventCreate(&start));
+    cudaCheck(cudaEventCreate(&stop));
+
+    for (int i = 0; i < kWarmupIters; ++i) {
+        cudaCheck(cudaMemcpy(
+            d_profile,
+            &zero_profile,
+            sizeof(Profile),
+            cudaMemcpyHostToDevice));
+        cudaCheck(cudaMemset(dO, 0, static_cast<size_t>(B) * H * S * D * sizeof(fp16)));
+
+        runAttnWSKernel<B, H, S, D, BM, BN, NUM_THREADS, NUM_SMEM>(
+            dQ, dK, dV, dO, d_profile);
+
+        cudaCheck(cudaGetLastError());
+    }
+    cudaCheck(cudaDeviceSynchronize());
+
+    float total_ms = 0.0f;
+    for (int i = 0; i < kMeasureIters; ++i) {
+        cudaCheck(cudaMemcpy(
+            d_profile,
+            &zero_profile,
+            sizeof(Profile),
+            cudaMemcpyHostToDevice));
+        cudaCheck(cudaMemset(dO, 0, static_cast<size_t>(B) * H * S * D * sizeof(fp16)));
+
+        cudaCheck(cudaEventRecord(start));
+        runAttnWSKernel<B, H, S, D, BM, BN, NUM_THREADS, NUM_SMEM>(
+            dQ, dK, dV, dO, d_profile);
+        cudaCheck(cudaEventRecord(stop));
+
+        cudaCheck(cudaGetLastError());
+        cudaCheck(cudaEventSynchronize(stop));
+
+        float elapsed_ms = 0.0f;
+        cudaCheck(cudaEventElapsedTime(&elapsed_ms, start, stop));
+        total_ms += elapsed_ms;
+    }
+
+    cudaCheck(cudaEventDestroy(start));
+    cudaCheck(cudaEventDestroy(stop));
+
+    printf("attnWSKernel<BM=%d, BN=%d, smem=%d> avg kernel time over %d runs: %.3f ms\n",
+           BM,
+           BN,
+           NUM_SMEM,
+           kMeasureIters,
+           total_ms / static_cast<float>(kMeasureIters));
 }
 
 // nvcc -std=c++17 -arch=sm_90a -O3 attn.cu -o attn_test -lcuda
@@ -1281,8 +1269,8 @@ int main() {
     Profile *d_ws_profile = nullptr;
     cudaCheck(cudaMalloc(&d_ws_profile, sizeof(Profile)));
 
-    printf("| BM | BN | LoadQ(avg) | LoadK(avg) | LoadV(avg) | GEMM-QK(avg) | SOFTMAX(avg) | GEMM-PV(avg) |\n");
-    printf("| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
+    // printf("| BM | BN | LoadQ(avg) | LoadK(avg) | LoadV(avg) | GEMM-QK(avg) | SOFTMAX(avg) | GEMM-PV(avg) |\n");
+    // printf("| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |\n");
 
     // run_one_case<B, H, S, D, 128,  32, 256, 2>(dQ, dK, dV, dO, d_profile);
     // run_one_case<B, H, S, D, 128,  64, 256, 2>(dQ, dK, dV, dO, d_profile);
@@ -1299,6 +1287,9 @@ int main() {
 
     run_one_case_ws<B, H, S, D, 128,  128, 384, 1>(dQ, dK, dV, dO, d_ws_profile);
     run_one_case_ws<B, H, S, D, 128,  128, 384, 2>(dQ, dK, dV, dO, d_ws_profile);
+    run_one_case_ws<B, H, S, D, 128,  128, 384, 3>(dQ, dK, dV, dO, d_ws_profile);
+    // benchmark_attn_ws_kernel<B, H, S, D, 128, 128, 384, 1>(dQ, dK, dV, dO, d_ws_profile);
+    // benchmark_attn_ws_kernel<B, H, S, D, 128, 128, 384, 2>(dQ, dK, dV, dO, d_ws_profile);
 
     cudaCheck(cudaGetLastError());
     cudaCheck(cudaDeviceSynchronize());

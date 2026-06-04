@@ -2407,10 +2407,14 @@ void run_kernel(fp16 *dQ, fp16 *dK, fp16 *dV, fp16 *dO) {
 
 // nvcc -std=c++17 -arch=sm_90a -O3 attn_ws.cu -o attn_ws_test -lcuda
 int main() {
+    // constexpr int B = 1;
+    // constexpr int H = 16;
+    // constexpr int S = 4096;
+    // constexpr int D = 128;
     constexpr int B = 1;
     constexpr int H = 16;
     constexpr int S = 4096;
-    constexpr int D = 64;
+    constexpr int D = 128;
 
     const size_t numel = static_cast<size_t>(B) * H * S * D;
     const size_t bytes = numel * sizeof(fp16);
@@ -2460,9 +2464,9 @@ int main() {
 
     // run_kernel<B, H, S, D, 128,  32>(dQ, dK, dV, dO);
     // run_kernel<B, H, S, D, 128,  64>(dQ, dK, dV, dO);
-    // run_kernel<B, H, S, D, 128, 128, 384, 1, 1>(dQ, dK, dV, dO);
-    // run_kernel<B, H, S, D, 128, 128, 384, 2, 1>(dQ, dK, dV, dO);
-    run_kernel<B, H, S, D, 128, 128, 384, 2, 2>(dQ, dK, dV, dO);
+    run_kernel<B, H, S, D, 128, 128, 384, 1, 1>(dQ, dK, dV, dO);
+    run_kernel<B, H, S, D, 128, 128, 384, 2, 1>(dQ, dK, dV, dO);
+    // run_kernel<B, H, S, D, 128, 128, 384, 2, 2>(dQ, dK, dV, dO);
     // run_kernel<B, H, S, D, 128, 128, 384, 3, 2>(dQ, dK, dV, dO);
     // run_kernel<B, H, S, D, 128, 64, 384, 3, 3>(dQ, dK, dV, dO);
     // run_kernel<B, H, S, D, 128, 128, 384, 3, 3>(dQ, dK, dV, dO);
