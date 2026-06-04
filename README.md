@@ -422,3 +422,16 @@ run_kernel<B=1,H=16,S=4096,D=64,BM=128,BN=128,threads=384, smem=3, stage=2>
 ![项目截图](./images/tma.png)
 
 &emsp;&emsp;从图中可以看出tma并没有导致计算往后推，但是这个仅仅只是blockIDx==0时的一个block，因为profile结构体放在global，只能由一个block来写入才能保证正确性。我认为整体kernel性能提升16%，并不能体现在一个block记录的数据画的图上，性能提升需要综合考虑所有的block的来考虑。至于为什么tma_ws.cu也是使用一个block测的为什么它就有很大的tma波动且时间很长，这是因为那个kernel中没有计算，tma指令在一个block中也是连续的一次性发送s/bn次，这么这个波动很容易在一个block中体现出来，且它的grid中block本身也开得多。
+
+
+## FA3测试信息
+
+![项目截图](./images/tflops.png)
+
+![项目截图](./images/fa3_.png)
+
+![项目截图](./images/our_fa3_.png)
+
+![项目截图](./images/fa3.png)
+
+![项目截图](./images/our_fa3.png)
