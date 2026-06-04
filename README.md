@@ -422,18 +422,21 @@ run_kernel<B=1,H=16,S=4096,D=128,BM=128,BN=128,threads=384, smem=2, stage=1>
 
 ## 4.FA3测试信息
 
-### FA3\OUR_FA3\Tielang_FA3 - Throughput
+### Cmpute/Mem Throughput (FA3\Our_FA3\Tielang_FA3)
 
-![项目截图](./images/fa3_.png)
-
+<!-- ![项目截图](./images/fa3_.png)
 ![项目截图](./images/our_fa3_.png)
+![项目截图](./images/tilelang_fa3_.png) -->
+<img src="./images/fa3_.png" width="500"/>
+<img src="./images/our_fa3_.png" width="500"/>
+<img src="./images/tilelang_fa3_.png" width="500"/>
 
-![项目截图](./images/tilelang_fa3_.png)
+### Tensor Core Utilization (FA3\Our_FA3\Tielang_FA3)
 
-### FA3\OUR_FA3\Tielang_FA3 - Tensor Core Utilization 
+<td><img src="./images/fa3.png" width="500"/></td>
+<td><img src="./images/our_fa3.png" width="500"/></td>
+<td><img src="./images/tilelang_fa3.png" width="500"/></td>
 
-![项目截图](./images/fa3.png)
-
+<!-- ![项目截图](./images/fa3.png)
 ![项目截图](./images/our_fa3.png)
-
-![项目截图](./images/tilelang_fa3.png)
+![项目截图](./images/tilelang_fa3.png) -->
