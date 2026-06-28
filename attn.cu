@@ -23,10 +23,12 @@ struct ProfileResult {
 
 struct ProfileSM {
     int kv_iters;
-    unsigned long long load_k_starts[kProfileSlots];
-    unsigned long long load_k_ends[kProfileSlots];
-    unsigned long long load_v_starts[kProfileSlots];
-    unsigned long long load_v_ends[kProfileSlots];
+    // unsigned long long load_k_starts[kProfileSlots];
+    // unsigned long long load_k_ends[kProfileSlots];
+    // unsigned long long load_v_starts[kProfileSlots];
+    // unsigned long long load_v_ends[kProfileSlots];
+    unsigned long long starts[kProfileSlots];
+    unsigned long long ends[kProfileSlots];
 };
 
 struct Profile {
@@ -594,22 +596,23 @@ void attnNoSoftmaxKernel(
         fp16 *KAddr = sK + stage * BN * DIM;
         fp16 *VAddr = sV + stage * BN * DIM; 
         const int slot = static_cast<int>(iw / BN);
-        unsigned long long load_k_start = 0;
-        unsigned long long load_v_start = 0;
+        // unsigned long long load_k_start = 0;
+        // unsigned long long load_v_start = 0;
+        unsigned long long start = 0;
 
         // load K
-        if (do_profile && slot < kProfileSlots) {
-            load_k_start = clock64();
-        }
+        // if (do_profile && slot < kProfileSlots) {
+        //     load_k_start = clock64();
+        // }
         if (tid == 0) {
             expect_bytes(&Kmbar[stage], BN * DIM * sizeof(fp16));
             load_async(KAddr, &tensorMapK, &Kmbar[stage], bs, hn, iw, 0);
         }
         wait(&Kmbar[stage], phase);
-        if (do_profile && slot < kProfileSlots) {
-            profile->load_k_starts[slot] = load_k_start;
-            profile->load_k_ends[slot] = clock64();
-        }
+        // if (do_profile && slot < kProfileSlots) {
+        //     profile->load_k_starts[slot] = load_k_start;
+        //     profile->load_k_ends[slot] = clock64();
+        // }
 
         // fill acc_s
         #pragma unroll
@@ -647,6 +650,9 @@ void attnNoSoftmaxKernel(
         warpgroup_commit_batch();
         warpgroup_wait();
 
+        // if (do_profile && slot < kProfileSlots) {
+        //     start = clock64();
+        // }
         // max_prev = max
         #pragma unroll
         for (size_t i=0; i<BM/(MMA_M*2); i++) {
@@ -698,7 +704,6 @@ void attnNoSoftmaxKernel(
                 scores_max[i][j] = max(scores_max_prev[i][j], scores_max[i][j]);
             }
         }
-        
         // scores_scale = exp2(max_prev * scale  - max * scale)
         #pragma unroll
         for (size_t i=0; i<BM/(MMA_M*2); i++) {
@@ -795,21 +800,24 @@ void attnNoSoftmaxKernel(
                 }
             }
         }
+        if (do_profile && slot < kProfileSlots) {
+            profile->starts[slot] = start;
+            profile->ends[slot] = clock64();
+        }
 
         // load V
-        if (do_profile && slot < kProfileSlots) {
-            load_v_start = clock64();
-        }
+        // if (do_profile && slot < kProfileSlots) {
+        //     load_v_start = clock64();
+        // }
         if (tid == 0) {
             expect_bytes(&Vmbar[stage], BN * DIM * sizeof(fp16));
             load_async(VAddr, &tensorMapV, &Vmbar[stage], bs, hn, iw, 0);
         }
         wait(&Vmbar[stage], phase);
-        if (do_profile && slot < kProfileSlots) {
-            profile->load_v_starts[slot] = load_v_start;
-            profile->load_v_ends[slot] = clock64();
-        }
-
+        // if (do_profile && slot < kProfileSlots) {
+        //     profile->load_v_starts[slot] = load_v_start;
+        //     profile->load_v_ends[slot] = clock64();
+        // }
         // gemm-pv
         warpgroup_arrive();
         #pragma unroll
@@ -907,6 +915,7 @@ void attnWSKernel(
     const int hn = blockIdx.y;
     const int by = blockIdx.x;
     const int tid = threadIdx.x;
+    uint32_t wg_idx = tid >> 7;
     const bool do_profile = (blockIdx.x == 4 && blockIdx.y == 5 && blockIdx.z == 0);
     const int kv_iters = S / BN;
     // mma size
@@ -939,7 +948,7 @@ void attnWSKernel(
     }
 
     // TMA load
-    if (tid >= 256) {  // producer
+    if (wg_idx == 2) {  // producer
         warpgroup_reg_dealloc<24>();
         if (tid == 256) {
             int smem_i = 0, phase = 0;
@@ -968,7 +977,7 @@ void attnWSKernel(
             arrive(&Kempty[st]);
             arrive(&Vempty[st]);
         }
-        wait(Qmbar, 0);
+        
         int smem_i = 0, phase = 0;
         fp32 scale = sqrt((1.0f / DIM)) * 1.44269504f;  // log2(e)
 
@@ -1004,9 +1013,10 @@ void attnWSKernel(
                 scores_max[i][j] = -FLT_MAX;
             }
         }
-        uint32_t wg_idx = tid >> 7;
         uint32_t lane_id = tid & 31;
         uint32_t warp_id_in_wg = (tid >> 5) & 0x3;  // local warp id inside each 128-thread warpgroup
+
+        wait(Qmbar, 0);
         // main for loop
         for (size_t iw=0; iw<S; iw+=BN, ++smem_i) {
             if (smem_i >= NUM_SMEM) { smem_i = 0; phase ^= 1; }
@@ -1362,8 +1372,8 @@ void runAttnNoSoftmaxKernel(fp16 *Q, fp16 *K, fp16 *V, fp16 *O, ProfileSM *profi
     cudaCheck(cudaFuncSetAttribute(
         kernel,
         cudaFuncAttributeMaxDynamicSharedMemorySize, sMemSize));
-    // dim3 grid = {static_cast<unsigned int>(S / BM), static_cast<unsigned int>(H), static_cast<unsigned int>(B)};
-    dim3 grid = {1, 15, 1};
+    dim3 grid = {static_cast<unsigned int>(S / BM), static_cast<unsigned int>(H), static_cast<unsigned int>(B)};
+    // dim3 grid = {1, 14, 1};
     // dim3 grid = {1, 1, 1};
     kernel<<<grid, NUM_THREADS, sMemSize>>>(B, H, S, d_tma_map_Q, d_tma_map_K, d_tma_map_V, d_tma_map_O, profile);
 }
@@ -1493,8 +1503,7 @@ void run_one_case_nosm(
 ) {
     ProfileSM h_profile{};
     ProfileSM zero_profile{};
-    double load_k[kProfileSlots];
-    double load_v[kProfileSlots];
+    double cost[kProfileSlots];
 
     constexpr int kWarmupIters = 10;
     constexpr int kMeasureIters = 100;
@@ -1537,15 +1546,14 @@ void run_one_case_nosm(
         }
 
         for (int slot = 0; slot < slots; ++slot) {
-            load_k[slot] = static_cast<double>(h_profile.load_k_ends[slot] - h_profile.load_k_starts[slot]);
-            load_v[slot] = static_cast<double>(h_profile.load_v_ends[slot] - h_profile.load_v_starts[slot]);
+            cost[slot] = static_cast<double>(h_profile.ends[slot] - h_profile.starts[slot]);
         }
     }
-    printf("| slot | BM | BN | LoadK(avg) | LoadV(avg) |\n");
+    printf("| slot | BM | BN | cost(avg) |\n");
     printf("| ---: | ---: | ---: | ---: | ---: |\n");
 
     for (int slot = 0; slot < kProfileSlots; ++slot) {
-        printf("| %d | %d | %d | %.2f | %.2f |\n", slot, BM, BN, load_k[slot], load_v[slot]);
+        printf("| %d | %d | %d | %.2f |\n", slot, BM, BN, cost[slot]);
     }
     
 }

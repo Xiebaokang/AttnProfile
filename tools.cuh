@@ -232,6 +232,8 @@ __device__ void wgmma256rs(float d[16][8], uint32_t a[4], fp16* sB) {
 
     asm volatile(
         "{\n"
+        ".reg .pred p;\n"
+        "setp.ne.b32 p, %133, 0;\n"
         "wgmma.mma_async.sync.aligned.m64n256k16.f32.f16.f16 "
         "{%0,   %1,   %2,   %3,   %4,   %5,   %6,   %7,   "
         " %8,   %9,   %10,  %11,  %12,  %13,  %14,  %15,  "
@@ -251,7 +253,7 @@ __device__ void wgmma256rs(float d[16][8], uint32_t a[4], fp16* sB) {
         " %120, %121, %122, %123, %124, %125, %126, %127}, "
         "{%128, %129, %130, %131}, "
         "%132, "
-        "%133, %134, %135, %136;\n"
+        "p, %134, %135, %136;\n"
         "}\n"
         :   "+f"(d[0][0]), "+f"(d[0][1]), "+f"(d[0][2]), "+f"(d[0][3]), "+f"(d[0][4]), "+f"(d[0][5]), "+f"(d[0][6]), "+f"(d[0][7]),
             "+f"(d[1][0]), "+f"(d[1][1]), "+f"(d[1][2]), "+f"(d[1][3]), "+f"(d[1][4]), "+f"(d[1][5]), "+f"(d[1][6]), "+f"(d[1][7]),
@@ -271,7 +273,7 @@ __device__ void wgmma256rs(float d[16][8], uint32_t a[4], fp16* sB) {
             "+f"(d[15][0]), "+f"(d[15][1]), "+f"(d[15][2]), "+f"(d[15][3]), "+f"(d[15][4]), "+f"(d[15][5]), "+f"(d[15][6]), "+f"(d[15][7])
         :   "r"(a[0]), "r"(a[1]), "r"(a[2]), "r"(a[3]),
             "l"(desc_b),
-            "n"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
+            "r"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
             "n"(int32_t(ScaleB)), "n"(int32_t(TransB))
         : "memory");
 }
@@ -282,6 +284,8 @@ __device__ void wgmma128rs(float d[8][8], uint32_t a[4], fp16* sB) {
 
     asm volatile(
         "{\n"
+        ".reg .pred p;\n"
+        "setp.ne.b32 p, %69, 0;\n"
         "wgmma.mma_async.sync.aligned.m64n128k16.f32.f16.f16 "
         "{%0,   %1,   %2,   %3,   %4,   %5,   %6,   %7,   "
         " %8,   %9,   %10,  %11,  %12,  %13,  %14,  %15,  "
@@ -293,7 +297,7 @@ __device__ void wgmma128rs(float d[8][8], uint32_t a[4], fp16* sB) {
         " %56,  %57,  %58,  %59,  %60,  %61,  %62,  %63}, "
         "{%64, %65, %66, %67}, "
         "%68, "
-        "%69, %70, %71, %72;\n"
+        "p, %70, %71, %72;\n"
         "}\n"
         : "+f"(d[0][0]), "+f"(d[0][1]), "+f"(d[0][2]), "+f"(d[0][3]), "+f"(d[0][4]), "+f"(d[0][5]), "+f"(d[0][6]), "+f"(d[0][7]),
           "+f"(d[1][0]), "+f"(d[1][1]), "+f"(d[1][2]), "+f"(d[1][3]), "+f"(d[1][4]), "+f"(d[1][5]), "+f"(d[1][6]), "+f"(d[1][7]),
@@ -305,7 +309,7 @@ __device__ void wgmma128rs(float d[8][8], uint32_t a[4], fp16* sB) {
           "+f"(d[7][0]), "+f"(d[7][1]), "+f"(d[7][2]), "+f"(d[7][3]), "+f"(d[7][4]), "+f"(d[7][5]), "+f"(d[7][6]), "+f"(d[7][7])
         : "r"(a[0]), "r"(a[1]), "r"(a[2]), "r"(a[3]),
           "l"(desc_b),
-          "n"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
+          "r"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
           "n"(int32_t(ScaleB)), "n"(int32_t(TransB))
         : "memory");
 }
@@ -316,6 +320,8 @@ __device__ void wgmma64rs(float d[4][8], uint32_t a[4], fp16* sB) {
 
     asm volatile(
         "{\n"
+        ".reg .pred p;\n"
+        "setp.ne.b32 p, %37, 0;\n"
         "wgmma.mma_async.sync.aligned.m64n64k16.f32.f16.f16 "
         "{%0,   %1,   %2,   %3,   %4,   %5,   %6,   %7,   "
         " %8,   %9,   %10,  %11,  %12,  %13,  %14,  %15,  "
@@ -323,7 +329,7 @@ __device__ void wgmma64rs(float d[4][8], uint32_t a[4], fp16* sB) {
         " %24,  %25,  %26,  %27,  %28,  %29,  %30,  %31}, "
         "{%32, %33, %34, %35}, "
         "%36, "
-        "%37, %38, %39, %40;\n"
+        "p, %38, %39, %40;\n"
         "}\n"
         : "+f"(d[0][0]), "+f"(d[0][1]), "+f"(d[0][2]), "+f"(d[0][3]), "+f"(d[0][4]), "+f"(d[0][5]), "+f"(d[0][6]), "+f"(d[0][7]),
           "+f"(d[1][0]), "+f"(d[1][1]), "+f"(d[1][2]), "+f"(d[1][3]), "+f"(d[1][4]), "+f"(d[1][5]), "+f"(d[1][6]), "+f"(d[1][7]),
@@ -331,7 +337,7 @@ __device__ void wgmma64rs(float d[4][8], uint32_t a[4], fp16* sB) {
           "+f"(d[3][0]), "+f"(d[3][1]), "+f"(d[3][2]), "+f"(d[3][3]), "+f"(d[3][4]), "+f"(d[3][5]), "+f"(d[3][6]), "+f"(d[3][7])
         : "r"(a[0]), "r"(a[1]), "r"(a[2]), "r"(a[3]),
           "l"(desc_b),
-          "n"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
+          "r"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
           "n"(int32_t(ScaleB)), "n"(int32_t(TransB))
         : "memory");
 }
@@ -342,18 +348,20 @@ __device__ void wgmma32rs(float d[2][8], uint32_t a[4], fp16* sB) {
 
     asm volatile(
         "{\n"
+        ".reg .pred p;\n"
+        "setp.ne.b32 p, %21, 0;\n"
         "wgmma.mma_async.sync.aligned.m64n32k16.f32.f16.f16 "
         "{%0,   %1,   %2,   %3,   %4,   %5,   %6,   %7,   "
         " %8,   %9,   %10,  %11,  %12,  %13,  %14,  %15}, "
         "{%16, %17, %18, %19}, "
         "%20, "
-        "%21, %22, %23, %24;\n"
+        "p, %22, %23, %24;\n"
         "}\n"
         : "+f"(d[0][0]), "+f"(d[0][1]), "+f"(d[0][2]), "+f"(d[0][3]), "+f"(d[0][4]), "+f"(d[0][5]), "+f"(d[0][6]), "+f"(d[0][7]),
           "+f"(d[1][0]), "+f"(d[1][1]), "+f"(d[1][2]), "+f"(d[1][3]), "+f"(d[1][4]), "+f"(d[1][5]), "+f"(d[1][6]), "+f"(d[1][7])
         : "r"(a[0]), "r"(a[1]), "r"(a[2]), "r"(a[3]),
           "l"(desc_b),
-          "n"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
+          "r"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
           "n"(int32_t(ScaleB)), "n"(int32_t(TransB))
         : "memory");
 }
@@ -364,17 +372,19 @@ __device__ void wgmma16rs(float d[1][8], uint32_t a[4], fp16* sB) {
 
     asm volatile(
         "{\n"
+        ".reg .pred p;\n"
+        "setp.ne.b32 p, %13, 0;\n"
         "wgmma.mma_async.sync.aligned.m64n16k16.f32.f16.f16 "
         "{%0,   %1,   %2,   %3,   %4,   %5,   %6,   %7}, "
         "{%8, %9, %10, %11}, "
         "%12, "
-        "%13, %14, %15, %16;\n"
+        "p, %14, %15, %16;\n"
         "}\n"
         : "+f"(d[0][0]), "+f"(d[0][1]), "+f"(d[0][2]), "+f"(d[0][3]),
           "+f"(d[0][4]), "+f"(d[0][5]), "+f"(d[0][6]), "+f"(d[0][7])
         : "r"(a[0]), "r"(a[1]), "r"(a[2]), "r"(a[3]),
           "l"(desc_b),
-          "n"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
+          "r"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
           "n"(int32_t(ScaleB)), "n"(int32_t(TransB))
         : "memory");
 }
@@ -494,12 +504,12 @@ __device__ static __forceinline__ void expect_bytes(uint64_t* bar, uint32_t byte
 }
 
 template <uint32_t RegCount>
-__device__ void warpgroup_reg_alloc() {
+__device__ __forceinline__ void warpgroup_reg_alloc() {
     asm volatile("setmaxnreg.inc.sync.aligned.u32 %0;\n" : : "n"(RegCount));
 }
 
 template <uint32_t RegCount>
-__device__ void warpgroup_reg_dealloc() {
+__device__ __forceinline__ void warpgroup_reg_dealloc() {
     asm volatile("setmaxnreg.dec.sync.aligned.u32 %0;\n" : : "n"(RegCount));
 }
 
@@ -513,6 +523,74 @@ __device__ __forceinline__ void stmatrix_x4(T *smem_addr, const uint32_t data_pt
         : "r"(smem_addr_), "r"(data_ptr[0]), "r"(data_ptr[1]), "r"(data_ptr[2]), "r"(data_ptr[3])
         : "memory"
     );
+}
+
+template <typename T>
+__device__ __forceinline__ void ldmatrix_x4(T *smem_addr, uint32_t data_ptr[4]) {
+    uint32_t smem_addr_ = static_cast<uint32_t>(__cvta_generic_to_shared(smem_addr));
+
+    asm volatile(
+        "ldmatrix.sync.aligned.m8n8.x4.shared::cta.b16 "
+        "{%0, %1, %2, %3}, [%4];\n"
+        : "=r"(data_ptr[0]),
+          "=r"(data_ptr[1]),
+          "=r"(data_ptr[2]),
+          "=r"(data_ptr[3])
+        : "r"(smem_addr_)
+        : "memory"
+    );
+}
+
+
+__device__ __forceinline__ void ldmatrix_x4_reg(
+    fp16 *smem_addr,
+    uint32_t &r0,
+    uint32_t &r1,
+    uint32_t &r2,
+    uint32_t &r3
+) {
+    uint32_t smem_addr_ = static_cast<uint32_t>(__cvta_generic_to_shared(smem_addr));
+    asm volatile(
+        "ldmatrix.sync.aligned.m8n8.x4.shared.b16 "
+        "{%0, %1, %2, %3}, [%4];\n"
+        : "=r"(r0), "=r"(r1), "=r"(r2), "=r"(r3)
+        : "r"(smem_addr_)
+    );
+}
+
+__device__ __forceinline__ void stmatrix_x4_reg(
+    fp16 *smem_addr,
+    uint32_t r0,
+    uint32_t r1,
+    uint32_t r2,
+    uint32_t r3
+) {
+    uint32_t smem_addr_ = static_cast<uint32_t>(__cvta_generic_to_shared(smem_addr));
+    asm volatile(
+        "stmatrix.sync.aligned.m8n8.x4.shared::cta.b16 "
+        "[%0], {%1, %2, %3, %4};\n"
+        :
+        : "r"(smem_addr_), "r"(r0), "r"(r1), "r"(r2), "r"(r3)
+        : "memory"
+    );
+}
+
+__device__ __forceinline__ uint32_t half2_to_u32(half2 h) {
+    union {
+        half2 h;
+        uint32_t u;
+    } cvt;
+    cvt.h = h;
+    return cvt.u;
+}
+
+__device__ __forceinline__ half2 u32_to_half2(uint32_t u) {
+    union {
+        uint32_t u;
+        half2 h;
+    } cvt;
+    cvt.u = u;
+    return cvt.h;
 }
 
 __device__ static __forceinline__ void bar_sync(uint32_t num_threads, uint32_t barrier_id=0) {
@@ -529,6 +607,15 @@ int tma_smem_offset_2d(int row, int col) {
     return (col / 64) * BlockMajorSize * 64
          + row * 64
          + (col % 64);
+}
+
+template<int BlockMajorSize>
+__device__ __forceinline__
+int tma_smem_swizzle_128b_offset_2d(int row, int col) {
+    // int col_swizzled = (col % 64) ^ ((row & 7) << 3);
+    int base_addr = (col / 64) * BlockMajorSize * 64;
+    int addr = base_addr + row * 64 + (col % 64);
+    return ((addr >> 3) & 0x38) ^ addr;
 }
 
 
