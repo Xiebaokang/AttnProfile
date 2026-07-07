@@ -41,11 +41,11 @@ __device__ uint64_t make_smem_desc(fp16* ptr) {
     return desc;
 }
 
-__device__ void warpgroup_arrive() {
+__device__ __forceinline__ void warpgroup_arrive() {
     asm volatile("wgmma.fence.sync.aligned;\n" ::: "memory");
 }
 
-__device__ void warpgroup_commit_batch() {
+__device__ __forceinline__ void warpgroup_commit_batch() {
     asm volatile("wgmma.commit_group.sync.aligned;\n" ::: "memory");
 }
 
@@ -63,6 +63,43 @@ __device__ __forceinline__ void warpgroup_wait() {
 
 __forceinline__ __device__ void warpgroup_fence_operand(float& reg) {
     asm volatile("" : "+f"(reg) :: "memory");
+}
+
+#define WGMMA_D_ROW_LO(r) "+f"(d[r][0]), "+f"(d[r][1]), "+f"(d[r][2]), "+f"(d[r][3])
+#define WGMMA_D_ROW_HI(r) "+f"(d[r][4]), "+f"(d[r][5]), "+f"(d[r][6]), "+f"(d[r][7])
+#define WGMMA_D_ROW(r) WGMMA_D_ROW_LO(r), WGMMA_D_ROW_HI(r)
+#define WGMMA_D_64 WGMMA_D_ROW(0), WGMMA_D_ROW(1), WGMMA_D_ROW(2), WGMMA_D_ROW(3), WGMMA_D_ROW(4), WGMMA_D_ROW(5), WGMMA_D_ROW(6), WGMMA_D_ROW(7)
+#define WGMMA_D_72 WGMMA_D_64, WGMMA_D_ROW(8)
+#define WGMMA_D_80 WGMMA_D_72, WGMMA_D_ROW(9)
+#define WGMMA_D_88 WGMMA_D_80, WGMMA_D_ROW(10)
+#define WGMMA_D_96 WGMMA_D_88, WGMMA_D_ROW(11)
+#define WGMMA_D_104 WGMMA_D_96, WGMMA_D_ROW(12)
+#define WGMMA_D_112 WGMMA_D_104, WGMMA_D_ROW(13)
+#define WGMMA_D_120 WGMMA_D_112, WGMMA_D_ROW(14)
+
+#define WGMMA_P_64 "%0, %1, %2, %3, %4, %5, %6, %7, %8, %9, %10, %11, %12, %13, %14, %15, %16, %17, %18, %19, %20, %21, %22, %23, %24, %25, %26, %27, %28, %29, %30, %31, %32, %33, %34, %35, %36, %37, %38, %39, %40, %41, %42, %43, %44, %45, %46, %47, %48, %49, %50, %51, %52, %53, %54, %55, %56, %57, %58, %59, %60, %61, %62, %63"
+#define WGMMA_P_72 WGMMA_P_64 ", %64, %65, %66, %67, %68, %69, %70, %71"
+#define WGMMA_P_80 WGMMA_P_72 ", %72, %73, %74, %75, %76, %77, %78, %79"
+#define WGMMA_P_88 WGMMA_P_80 ", %80, %81, %82, %83, %84, %85, %86, %87"
+#define WGMMA_P_96 WGMMA_P_88 ", %88, %89, %90, %91, %92, %93, %94, %95"
+#define WGMMA_P_104 WGMMA_P_96 ", %96, %97, %98, %99, %100, %101, %102, %103"
+#define WGMMA_P_112 WGMMA_P_104 ", %104, %105, %106, %107, %108, %109, %110, %111"
+#define WGMMA_P_120 WGMMA_P_112 ", %112, %113, %114, %115, %116, %117, %118, %119"
+
+#define DEFINE_WGMMA_SS(N, ROWS, ACC, I0, I1, I2, I3, I4, I5, I6) \
+template<int ScaleD, int ScaleA, int ScaleB, int TransA, int TransB, int LBO, int SBO, bool Swizzle> \
+__device__ void wgmma##N##ss(float d[ROWS][8], fp16* sA, fp16* sB) { \
+    uint64_t desc_a = make_smem_desc<LBO, SBO, Swizzle>(&sA[0]); \
+    uint64_t desc_b = make_smem_desc<LBO, SBO, Swizzle>(&sB[0]); \
+    asm volatile( \
+        "{\n" \
+        "wgmma.mma_async.sync.aligned.m64n" #N "k16.f32.f16.f16 " \
+        "{" WGMMA_P_##ACC "}, " \
+        "%" #I0 ", %" #I1 ", %" #I2 ", %" #I3 ", %" #I4 ", %" #I5 ", %" #I6 ";\n" \
+        "}\n" \
+        : WGMMA_D_##ACC \
+        : "l"(desc_a), "l"(desc_b), "n"(int32_t(ScaleD)), "n"(int32_t(ScaleA)), \
+          "n"(int32_t(ScaleB)), "n"(int32_t(TransA)), "n"(int32_t(TransB))); \
 }
 
 // ss mode
@@ -143,6 +180,128 @@ __device__ void wgmma128ss(float d[8][8], fp16* sA, fp16* sB) {
             "+f"(d[6][0]), "+f"(d[6][1]), "+f"(d[6][2]), "+f"(d[6][3]), "+f"(d[6][4]), "+f"(d[6][5]),
             "+f"(d[6][6]), "+f"(d[6][7]), "+f"(d[7][0]), "+f"(d[7][1]), "+f"(d[7][2]), "+f"(d[7][3]),
             "+f"(d[7][4]), "+f"(d[7][5]), "+f"(d[7][6]), "+f"(d[7][7])
+	        : "l"(desc_a), "l"(desc_b), "n"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
+	            "n"(int32_t(ScaleB)), "n"(int32_t(TransA)), "n"(int32_t(TransB)));
+}
+
+DEFINE_WGMMA_SS(144, 9, 72, 72, 73, 74, 75, 76, 77, 78)
+DEFINE_WGMMA_SS(160, 10, 80, 80, 81, 82, 83, 84, 85, 86)
+DEFINE_WGMMA_SS(176, 11, 88, 88, 89, 90, 91, 92, 93, 94)
+DEFINE_WGMMA_SS(192, 12, 96, 96, 97, 98, 99, 100, 101, 102)
+DEFINE_WGMMA_SS(208, 13, 104, 104, 105, 106, 107, 108, 109, 110)
+DEFINE_WGMMA_SS(224, 14, 112, 112, 113, 114, 115, 116, 117, 118)
+DEFINE_WGMMA_SS(240, 15, 120, 120, 121, 122, 123, 124, 125, 126)
+
+#undef DEFINE_WGMMA_SS
+#undef WGMMA_P_120
+#undef WGMMA_P_112
+#undef WGMMA_P_104
+#undef WGMMA_P_96
+#undef WGMMA_P_88
+#undef WGMMA_P_80
+#undef WGMMA_P_72
+#undef WGMMA_P_64
+#undef WGMMA_D_120
+#undef WGMMA_D_112
+#undef WGMMA_D_104
+#undef WGMMA_D_96
+#undef WGMMA_D_88
+#undef WGMMA_D_80
+#undef WGMMA_D_72
+#undef WGMMA_D_64
+#undef WGMMA_D_ROW
+#undef WGMMA_D_ROW_HI
+#undef WGMMA_D_ROW_LO
+
+template<int ScaleD, int ScaleA, int ScaleB, int TransA, int TransB, int LBO, int SBO, bool Swizzle>
+__device__ void wgmma112ss(float d[7][8], fp16* sA, fp16* sB) {
+    uint64_t desc_a = make_smem_desc<LBO, SBO, Swizzle>(&sA[0]);
+    uint64_t desc_b = make_smem_desc<LBO, SBO, Swizzle>(&sB[0]);
+    asm volatile(
+        "{\n"
+        "wgmma.mma_async.sync.aligned.m64n112k16.f32.f16.f16 "
+        "{%0,   %1,   %2,   %3,   %4,   %5,   %6,   %7,   "
+        " %8,   %9,   %10,  %11,  %12,  %13,  %14,  %15,  "
+        " %16,  %17,  %18,  %19,  %20,  %21,  %22,  %23,  "
+        " %24,  %25,  %26,  %27,  %28,  %29,  %30,  %31,  "
+        " %32,  %33,  %34,  %35,  %36,  %37,  %38,  %39,  "
+        " %40,  %41,  %42,  %43,  %44,  %45,  %46,  %47,  "
+        " %48,  %49,  %50,  %51,  %52,  %53,  %54,  %55},"
+        " %56,"
+        " %57,"
+        " %58,    %59,  %60,  %61,  %62;\n"
+        "}\n"
+        : "+f"(d[0][0]), "+f"(d[0][1]), "+f"(d[0][2]), "+f"(d[0][3]), "+f"(d[0][4]), "+f"(d[0][5]),
+            "+f"(d[0][6]), "+f"(d[0][7]), "+f"(d[1][0]), "+f"(d[1][1]), "+f"(d[1][2]), "+f"(d[1][3]),
+            "+f"(d[1][4]), "+f"(d[1][5]), "+f"(d[1][6]), "+f"(d[1][7]), "+f"(d[2][0]), "+f"(d[2][1]),
+            "+f"(d[2][2]), "+f"(d[2][3]), "+f"(d[2][4]), "+f"(d[2][5]), "+f"(d[2][6]), "+f"(d[2][7]),
+            "+f"(d[3][0]), "+f"(d[3][1]), "+f"(d[3][2]), "+f"(d[3][3]), "+f"(d[3][4]), "+f"(d[3][5]),
+            "+f"(d[3][6]), "+f"(d[3][7]), "+f"(d[4][0]), "+f"(d[4][1]), "+f"(d[4][2]), "+f"(d[4][3]),
+            "+f"(d[4][4]), "+f"(d[4][5]), "+f"(d[4][6]), "+f"(d[4][7]), "+f"(d[5][0]), "+f"(d[5][1]),
+            "+f"(d[5][2]), "+f"(d[5][3]), "+f"(d[5][4]), "+f"(d[5][5]), "+f"(d[5][6]), "+f"(d[5][7]),
+            "+f"(d[6][0]), "+f"(d[6][1]), "+f"(d[6][2]), "+f"(d[6][3]), "+f"(d[6][4]), "+f"(d[6][5]),
+            "+f"(d[6][6]), "+f"(d[6][7])
+        : "l"(desc_a), "l"(desc_b), "n"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
+            "n"(int32_t(ScaleB)), "n"(int32_t(TransA)), "n"(int32_t(TransB)));
+}
+
+template<int ScaleD, int ScaleA, int ScaleB, int TransA, int TransB, int LBO, int SBO, bool Swizzle>
+__device__ void wgmma96ss(float d[6][8], fp16* sA, fp16* sB) {
+    uint64_t desc_a = make_smem_desc<LBO, SBO, Swizzle>(&sA[0]);
+    uint64_t desc_b = make_smem_desc<LBO, SBO, Swizzle>(&sB[0]);
+    asm volatile(
+        "{\n"
+        "wgmma.mma_async.sync.aligned.m64n96k16.f32.f16.f16 "
+        "{%0,   %1,   %2,   %3,   %4,   %5,   %6,   %7,   "
+        " %8,   %9,   %10,  %11,  %12,  %13,  %14,  %15,  "
+        " %16,  %17,  %18,  %19,  %20,  %21,  %22,  %23,  "
+        " %24,  %25,  %26,  %27,  %28,  %29,  %30,  %31,  "
+        " %32,  %33,  %34,  %35,  %36,  %37,  %38,  %39,  "
+        " %40,  %41,  %42,  %43,  %44,  %45,  %46,  %47},"
+        " %48,"
+        " %49,"
+        " %50,    %51,  %52,  %53,  %54;\n"
+        "}\n"
+        : "+f"(d[0][0]), "+f"(d[0][1]), "+f"(d[0][2]), "+f"(d[0][3]), "+f"(d[0][4]), "+f"(d[0][5]),
+            "+f"(d[0][6]), "+f"(d[0][7]), "+f"(d[1][0]), "+f"(d[1][1]), "+f"(d[1][2]), "+f"(d[1][3]),
+            "+f"(d[1][4]), "+f"(d[1][5]), "+f"(d[1][6]), "+f"(d[1][7]), "+f"(d[2][0]), "+f"(d[2][1]),
+            "+f"(d[2][2]), "+f"(d[2][3]), "+f"(d[2][4]), "+f"(d[2][5]), "+f"(d[2][6]), "+f"(d[2][7]),
+            "+f"(d[3][0]), "+f"(d[3][1]), "+f"(d[3][2]), "+f"(d[3][3]), "+f"(d[3][4]), "+f"(d[3][5]),
+            "+f"(d[3][6]), "+f"(d[3][7]), "+f"(d[4][0]), "+f"(d[4][1]), "+f"(d[4][2]), "+f"(d[4][3]),
+            "+f"(d[4][4]), "+f"(d[4][5]), "+f"(d[4][6]), "+f"(d[4][7]), "+f"(d[5][0]), "+f"(d[5][1]),
+            "+f"(d[5][2]), "+f"(d[5][3]), "+f"(d[5][4]), "+f"(d[5][5]), "+f"(d[5][6]), "+f"(d[5][7])
+        : "l"(desc_a), "l"(desc_b), "n"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
+            "n"(int32_t(ScaleB)), "n"(int32_t(TransA)), "n"(int32_t(TransB)));
+}
+
+template<int ScaleD, int ScaleA, int ScaleB, int TransA, int TransB>
+__device__ void wgmma128ss_desc(float d[8][8], uint64_t desc_a, uint64_t desc_b) {
+    asm volatile(
+        "{\n"
+        "wgmma.mma_async.sync.aligned.m64n128k16.f32.f16.f16 "
+        "{%0,   %1,   %2,   %3,   %4,   %5,   %6,   %7,   "
+        " %8,   %9,   %10,  %11,  %12,  %13,  %14,  %15,  "
+        " %16,  %17,  %18,  %19,  %20,  %21,  %22,  %23,  "
+        " %24,  %25,  %26,  %27,  %28,  %29,  %30,  %31,  "
+        " %32,  %33,  %34,  %35,  %36,  %37,  %38,  %39,  "
+        " %40,  %41,  %42,  %43,  %44,  %45,  %46,  %47,  "
+        " %48,  %49,  %50,  %51,  %52,  %53,  %54,  %55,  "
+        " %56,  %57,  %58,  %59,  %60,  %61,  %62,  %63},"
+        " %64,"
+        " %65,"
+        " %66,    %67,  %68,  %69,  %70;\n"
+        "}\n"
+        : "+f"(d[0][0]), "+f"(d[0][1]), "+f"(d[0][2]), "+f"(d[0][3]), "+f"(d[0][4]), "+f"(d[0][5]),
+            "+f"(d[0][6]), "+f"(d[0][7]), "+f"(d[1][0]), "+f"(d[1][1]), "+f"(d[1][2]), "+f"(d[1][3]),
+            "+f"(d[1][4]), "+f"(d[1][5]), "+f"(d[1][6]), "+f"(d[1][7]), "+f"(d[2][0]), "+f"(d[2][1]),
+            "+f"(d[2][2]), "+f"(d[2][3]), "+f"(d[2][4]), "+f"(d[2][5]), "+f"(d[2][6]), "+f"(d[2][7]),
+            "+f"(d[3][0]), "+f"(d[3][1]), "+f"(d[3][2]), "+f"(d[3][3]), "+f"(d[3][4]), "+f"(d[3][5]),
+            "+f"(d[3][6]), "+f"(d[3][7]), "+f"(d[4][0]), "+f"(d[4][1]), "+f"(d[4][2]), "+f"(d[4][3]),
+            "+f"(d[4][4]), "+f"(d[4][5]), "+f"(d[4][6]), "+f"(d[4][7]), "+f"(d[5][0]), "+f"(d[5][1]),
+            "+f"(d[5][2]), "+f"(d[5][3]), "+f"(d[5][4]), "+f"(d[5][5]), "+f"(d[5][6]), "+f"(d[5][7]),
+            "+f"(d[6][0]), "+f"(d[6][1]), "+f"(d[6][2]), "+f"(d[6][3]), "+f"(d[6][4]), "+f"(d[6][5]),
+            "+f"(d[6][6]), "+f"(d[6][7]), "+f"(d[7][0]), "+f"(d[7][1]), "+f"(d[7][2]), "+f"(d[7][3]),
+            "+f"(d[7][4]), "+f"(d[7][5]), "+f"(d[7][6]), "+f"(d[7][7])
         : "l"(desc_a), "l"(desc_b), "n"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
             "n"(int32_t(ScaleB)), "n"(int32_t(TransA)), "n"(int32_t(TransB)));
 }
@@ -170,6 +329,79 @@ __device__ void wgmma64ss(float d[4][8], fp16* sA, fp16* sB) {
             "+f"(d[3][6]), "+f"(d[3][7])
         : "l"(desc_a), "l"(desc_b), "n"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
             "n"(int32_t(ScaleB)), "n"(int32_t(TransA)), "n"(int32_t(TransB)));
+}
+
+template<int ScaleD, int ScaleA, int ScaleB, int TransA, int TransB,
+         int LBOA, int SBOA, bool SwizzleA, int LBOB, int SBOB, bool SwizzleB>
+__device__ __forceinline__ void wgmma128ss_ab(float d[8][8], fp16* sA, fp16* sB) {
+    uint64_t desc_a = make_smem_desc<LBOA, SBOA, SwizzleA>(&sA[0]);
+    uint64_t desc_b = make_smem_desc<LBOB, SBOB, SwizzleB>(&sB[0]);
+    asm volatile(
+        "{\n"
+        "wgmma.mma_async.sync.aligned.m64n128k16.f32.f16.f16 "
+        "{%0,   %1,   %2,   %3,   %4,   %5,   %6,   %7,   "
+        " %8,   %9,   %10,  %11,  %12,  %13,  %14,  %15,  "
+        " %16,  %17,  %18,  %19,  %20,  %21,  %22,  %23,  "
+        " %24,  %25,  %26,  %27,  %28,  %29,  %30,  %31,  "
+        " %32,  %33,  %34,  %35,  %36,  %37,  %38,  %39,  "
+        " %40,  %41,  %42,  %43,  %44,  %45,  %46,  %47,  "
+        " %48,  %49,  %50,  %51,  %52,  %53,  %54,  %55,  "
+        " %56,  %57,  %58,  %59,  %60,  %61,  %62,  %63},"
+        " %64,"
+        " %65,"
+        " %66,    %67,  %68,  %69,  %70;\n"
+        "}\n"
+        : "+f"(d[0][0]), "+f"(d[0][1]), "+f"(d[0][2]), "+f"(d[0][3]), "+f"(d[0][4]), "+f"(d[0][5]),
+            "+f"(d[0][6]), "+f"(d[0][7]), "+f"(d[1][0]), "+f"(d[1][1]), "+f"(d[1][2]), "+f"(d[1][3]),
+            "+f"(d[1][4]), "+f"(d[1][5]), "+f"(d[1][6]), "+f"(d[1][7]), "+f"(d[2][0]), "+f"(d[2][1]),
+            "+f"(d[2][2]), "+f"(d[2][3]), "+f"(d[2][4]), "+f"(d[2][5]), "+f"(d[2][6]), "+f"(d[2][7]),
+            "+f"(d[3][0]), "+f"(d[3][1]), "+f"(d[3][2]), "+f"(d[3][3]), "+f"(d[3][4]), "+f"(d[3][5]),
+            "+f"(d[3][6]), "+f"(d[3][7]), "+f"(d[4][0]), "+f"(d[4][1]), "+f"(d[4][2]), "+f"(d[4][3]),
+            "+f"(d[4][4]), "+f"(d[4][5]), "+f"(d[4][6]), "+f"(d[4][7]), "+f"(d[5][0]), "+f"(d[5][1]),
+            "+f"(d[5][2]), "+f"(d[5][3]), "+f"(d[5][4]), "+f"(d[5][5]), "+f"(d[5][6]), "+f"(d[5][7]),
+            "+f"(d[6][0]), "+f"(d[6][1]), "+f"(d[6][2]), "+f"(d[6][3]), "+f"(d[6][4]), "+f"(d[6][5]),
+            "+f"(d[6][6]), "+f"(d[6][7]), "+f"(d[7][0]), "+f"(d[7][1]), "+f"(d[7][2]), "+f"(d[7][3]),
+            "+f"(d[7][4]), "+f"(d[7][5]), "+f"(d[7][6]), "+f"(d[7][7])
+        : "l"(desc_a), "l"(desc_b), "n"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
+            "n"(int32_t(ScaleB)), "n"(int32_t(TransA)), "n"(int32_t(TransB))
+        : "memory");
+}
+
+template<int ScaleD, int ScaleA, int ScaleB, int TransA, int TransB,
+         int LBOA, int SBOA, bool SwizzleA, int LBOB, int SBOB, bool SwizzleB>
+__device__ __forceinline__ void wgmma64ss_ab(float d[4][8], fp16* sA, fp16* sB) {
+    uint64_t desc_a = make_smem_desc<LBOA, SBOA, SwizzleA>(&sA[0]);
+    uint64_t desc_b = make_smem_desc<LBOB, SBOB, SwizzleB>(&sB[0]);
+    asm volatile(
+        "{\n"
+        "wgmma.mma_async.sync.aligned.m64n64k16.f32.f16.f16 "
+        "{%0,   %1,   %2,   %3,   %4,   %5,   %6,   %7,   "
+        " %8,   %9,   %10,  %11,  %12,  %13,  %14,  %15,  "
+        " %16,  %17,  %18,  %19,  %20,  %21,  %22,  %23,  "
+        " %24,  %25,  %26,  %27,  %28,  %29,  %30,  %31},"
+        " %32,"
+        " %33,"
+        " %34, %35, %36, %37, %38;\n"
+        "}\n"
+        : "+f"(d[0][0]), "+f"(d[0][1]), "+f"(d[0][2]), "+f"(d[0][3]), "+f"(d[0][4]), "+f"(d[0][5]),
+            "+f"(d[0][6]), "+f"(d[0][7]), "+f"(d[1][0]), "+f"(d[1][1]), "+f"(d[1][2]), "+f"(d[1][3]),
+            "+f"(d[1][4]), "+f"(d[1][5]), "+f"(d[1][6]), "+f"(d[1][7]), "+f"(d[2][0]), "+f"(d[2][1]),
+            "+f"(d[2][2]), "+f"(d[2][3]), "+f"(d[2][4]), "+f"(d[2][5]), "+f"(d[2][6]), "+f"(d[2][7]),
+            "+f"(d[3][0]), "+f"(d[3][1]), "+f"(d[3][2]), "+f"(d[3][3]), "+f"(d[3][4]), "+f"(d[3][5]),
+            "+f"(d[3][6]), "+f"(d[3][7])
+        : "l"(desc_a), "l"(desc_b), "n"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
+            "n"(int32_t(ScaleB)), "n"(int32_t(TransA)), "n"(int32_t(TransB))
+        : "memory");
+}
+
+template<int WGMMA_N, int ScaleD=1, int ScaleA=1, int ScaleB=1, int TransA=0, int TransB=0,
+         int LBOA=16, int SBOA=2048, bool SwizzleA=true, int LBOB=16, int SBOB=2048, bool SwizzleB=true>
+__device__ __forceinline__ void wgmma_ss_ab(float d[WGMMA_N/16][8], fp16* sA, fp16* sB) {
+    static_assert(WGMMA_N == 64 || WGMMA_N == 128);
+    if constexpr (WGMMA_N == 128)
+        wgmma128ss_ab<ScaleD, ScaleA, ScaleB, TransA, TransB, LBOA, SBOA, SwizzleA, LBOB, SBOB, SwizzleB>(d, sA, sB);
+    if constexpr (WGMMA_N == 64)
+        wgmma64ss_ab<ScaleD, ScaleA, ScaleB, TransA, TransB, LBOA, SBOA, SwizzleA, LBOB, SBOB, SwizzleB>(d, sA, sB);
 }
 
 template<int ScaleD, int ScaleA, int ScaleB, int TransA, int TransB, int LBO, int SBO, bool Swizzle>
@@ -211,18 +443,46 @@ __device__ void wgmma16ss(float d[1][8], fp16* sA, fp16* sB) {
 }
 
 template<int WGMMA_N, int ScaleD=1, int ScaleA=1, int ScaleB=1, int TransA=0, int TransB=0, int LBO=16, int SBO=2048, bool Swizzle=true>
-__device__ inline void wgmma_ss(float d[WGMMA_N/16][8], fp16* sA, fp16* sB) {
-    static_assert(WGMMA_N == 16 || WGMMA_N == 32 || WGMMA_N == 64 || WGMMA_N == 128 || WGMMA_N == 256);
+__device__ inline void wgmma_ss(float (&d)[(WGMMA_N + 15) / 16][8], fp16* sA, fp16* sB) {
+    static_assert(WGMMA_N == 16 || WGMMA_N == 32 || WGMMA_N == 64 ||
+                  WGMMA_N == 96 || WGMMA_N == 112 || WGMMA_N == 128 ||
+                  WGMMA_N == 144 || WGMMA_N == 160 || WGMMA_N == 176 ||
+                  WGMMA_N == 192 || WGMMA_N == 208 || WGMMA_N == 224 ||
+                  WGMMA_N == 240 || WGMMA_N == 256);
     if constexpr (WGMMA_N == 256)
         wgmma256ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
+    if constexpr (WGMMA_N == 240)
+        wgmma240ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
+    if constexpr (WGMMA_N == 224)
+        wgmma224ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
+    if constexpr (WGMMA_N == 208)
+        wgmma208ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
+    if constexpr (WGMMA_N == 192)
+        wgmma192ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
+    if constexpr (WGMMA_N == 176)
+        wgmma176ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
+    if constexpr (WGMMA_N == 160)
+        wgmma160ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
+    if constexpr (WGMMA_N == 144)
+        wgmma144ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
     if constexpr (WGMMA_N == 128)
         wgmma128ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
+    if constexpr (WGMMA_N == 112)
+        wgmma112ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
+    if constexpr (WGMMA_N == 96)
+        wgmma96ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
     if constexpr (WGMMA_N == 64)
         wgmma64ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
     if constexpr (WGMMA_N == 32)
         wgmma32ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
     if constexpr (WGMMA_N == 16)
         wgmma16ss<ScaleD, ScaleA, ScaleB, TransA, TransB, LBO, SBO, Swizzle>(d, sA, sB);
+}
+
+template<int WGMMA_N, int ScaleD=1, int ScaleA=1, int ScaleB=1, int TransA=0, int TransB=0>
+__device__ inline void wgmma_ss_desc(float d[WGMMA_N / 16][8], uint64_t desc_a, uint64_t desc_b) {
+    static_assert(WGMMA_N == 128, "wgmma_ss_desc currently supports m64n128k16.");
+    wgmma128ss_desc<ScaleD, ScaleA, ScaleB, TransA, TransB>(d, desc_a, desc_b);
 }
 
 // rs mode
@@ -282,6 +542,40 @@ template<int ScaleD, int ScaleA, int ScaleB, int TransB, int LBO, int SBO, bool 
 __device__ void wgmma128rs(float d[8][8], uint32_t a[4], fp16* sB) {
     uint64_t desc_b = make_smem_desc<LBO, SBO, Swizzle>(&sB[0]);
 
+    asm volatile(
+        "{\n"
+        ".reg .pred p;\n"
+        "setp.ne.b32 p, %69, 0;\n"
+        "wgmma.mma_async.sync.aligned.m64n128k16.f32.f16.f16 "
+        "{%0,   %1,   %2,   %3,   %4,   %5,   %6,   %7,   "
+        " %8,   %9,   %10,  %11,  %12,  %13,  %14,  %15,  "
+        " %16,  %17,  %18,  %19,  %20,  %21,  %22,  %23,  "
+        " %24,  %25,  %26,  %27,  %28,  %29,  %30,  %31,  "
+        " %32,  %33,  %34,  %35,  %36,  %37,  %38,  %39,  "
+        " %40,  %41,  %42,  %43,  %44,  %45,  %46,  %47,  "
+        " %48,  %49,  %50,  %51,  %52,  %53,  %54,  %55,  "
+        " %56,  %57,  %58,  %59,  %60,  %61,  %62,  %63}, "
+        "{%64, %65, %66, %67}, "
+        "%68, "
+        "p, %70, %71, %72;\n"
+        "}\n"
+        : "+f"(d[0][0]), "+f"(d[0][1]), "+f"(d[0][2]), "+f"(d[0][3]), "+f"(d[0][4]), "+f"(d[0][5]), "+f"(d[0][6]), "+f"(d[0][7]),
+          "+f"(d[1][0]), "+f"(d[1][1]), "+f"(d[1][2]), "+f"(d[1][3]), "+f"(d[1][4]), "+f"(d[1][5]), "+f"(d[1][6]), "+f"(d[1][7]),
+          "+f"(d[2][0]), "+f"(d[2][1]), "+f"(d[2][2]), "+f"(d[2][3]), "+f"(d[2][4]), "+f"(d[2][5]), "+f"(d[2][6]), "+f"(d[2][7]),
+          "+f"(d[3][0]), "+f"(d[3][1]), "+f"(d[3][2]), "+f"(d[3][3]), "+f"(d[3][4]), "+f"(d[3][5]), "+f"(d[3][6]), "+f"(d[3][7]),
+          "+f"(d[4][0]), "+f"(d[4][1]), "+f"(d[4][2]), "+f"(d[4][3]), "+f"(d[4][4]), "+f"(d[4][5]), "+f"(d[4][6]), "+f"(d[4][7]),
+          "+f"(d[5][0]), "+f"(d[5][1]), "+f"(d[5][2]), "+f"(d[5][3]), "+f"(d[5][4]), "+f"(d[5][5]), "+f"(d[5][6]), "+f"(d[5][7]),
+          "+f"(d[6][0]), "+f"(d[6][1]), "+f"(d[6][2]), "+f"(d[6][3]), "+f"(d[6][4]), "+f"(d[6][5]), "+f"(d[6][6]), "+f"(d[6][7]),
+          "+f"(d[7][0]), "+f"(d[7][1]), "+f"(d[7][2]), "+f"(d[7][3]), "+f"(d[7][4]), "+f"(d[7][5]), "+f"(d[7][6]), "+f"(d[7][7])
+        : "r"(a[0]), "r"(a[1]), "r"(a[2]), "r"(a[3]),
+          "l"(desc_b),
+          "r"(int32_t(ScaleD)), "n"(int32_t(ScaleA)),
+          "n"(int32_t(ScaleB)), "n"(int32_t(TransB))
+	        : "memory");
+}
+
+template<int ScaleD, int ScaleA, int ScaleB, int TransB>
+__device__ void wgmma128rs_desc(float d[8][8], uint32_t a[4], uint64_t desc_b) {
     asm volatile(
         "{\n"
         ".reg .pred p;\n"
@@ -403,6 +697,12 @@ __device__ inline void wgmma_rs(float d[WGMMA_N / 16][8], uint32_t a[4], fp16* s
     } else if constexpr (WGMMA_N == 16) {
         wgmma16rs<ScaleD, ScaleA, ScaleB, TransB, LBO, SBO, Swizzle>(d, a, sB);
     }
+}
+
+template<int WGMMA_N, int ScaleD=1, int ScaleA=1, int ScaleB=1, int TransA=0, int TransB=0>
+__device__ inline void wgmma_rs_desc(float d[WGMMA_N / 16][8], uint32_t a[4], uint64_t desc_b) {
+    static_assert(WGMMA_N == 128, "wgmma_rs_desc currently supports m64n128k16.");
+    wgmma128rs_desc<ScaleD, ScaleA, ScaleB, TransB>(d, a, desc_b);
 }
 
 __device__ static inline void load_async(
