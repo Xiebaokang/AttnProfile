@@ -1,0 +1,3238 @@
+{
+  "rank": 15,
+  "total_configs": 170,
+  "failed_count": 170,
+  "top_results": [],
+  "failed_results": [
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 57472,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 61568,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 65664,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 69760,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 69760,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 69760,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 69760,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 69760,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 69760,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 69760,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 69760,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 69760,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 69760,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 69760,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 69760,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 73856,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 73856,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 73856,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 73856,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 73856,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 73856,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 73856,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 73856,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 73856,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 240,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 77952,
+        "RegSize": 231424
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 240,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 77952,
+        "RegSize": 231424
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 240,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 77952,
+        "RegSize": 231424
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 256,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 82048,
+        "RegSize": 243712
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 160,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 98432,
+        "RegSize": 169984
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 106624,
+        "RegSize": 182272
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 192,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 114816,
+        "RegSize": 194560
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 123008,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 123008,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 123008,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 123008,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 123008,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 123008,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 123008,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 123008,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 123008,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 123008,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 123008,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 208,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 123008,
+        "RegSize": 206848
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 131200,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 131200,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 131200,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 131200,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 131200,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 131200,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 131200,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 131200,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 131200,
+        "RegSize": 219136
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 240,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 139392,
+        "RegSize": 231424
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 240,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 139392,
+        "RegSize": 231424
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 240,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 139392,
+        "RegSize": 231424
+      },
+      "error": "--s must be divisible by --bn because the kernels iterate K/V tiles by BN"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 64,
+        "BM": 128,
+        "BN": 256,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 0,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384,
+        "SmemSize": 147584,
+        "RegSize": 243712
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    }
+  ]
+}

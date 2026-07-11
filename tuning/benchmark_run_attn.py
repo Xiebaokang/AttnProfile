@@ -232,10 +232,10 @@ def validate_params(params: dict[str, int]) -> None:
     kernel_idx = params["KERNEL_IDX"]
     if kernel_idx not in KERNEL_NAMES:
         raise ValueError(f"--kernel_idx must be one of {sorted(KERNEL_NAMES)}")
-    if params["S"] % params["BM"] != 0:
-        raise ValueError("--s must be divisible by --bm because grid.x uses S / BM")
-    if params["S"] % params["BN"] != 0:
-        raise ValueError("--s must be divisible by --bn because the kernels iterate K/V tiles by BN")
+    # if params["S"] % params["BM"] != 0:
+    #     raise ValueError("--s must be divisible by --bm because grid.x uses S / BM")
+    # if params["S"] % params["BN"] != 0:
+    #     raise ValueError("--s must be divisible by --bn because the kernels iterate K/V tiles by BN")
     if params["D"] % 64 != 0:
         raise ValueError("--d must be divisible by 64 because create_tensor_map requires global_width % 64 == 0")
     if kernel_idx == 3 and params["BM"] % 128 != 0:

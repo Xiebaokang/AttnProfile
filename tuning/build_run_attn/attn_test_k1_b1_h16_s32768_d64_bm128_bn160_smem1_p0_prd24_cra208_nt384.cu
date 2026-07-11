@@ -1695,16 +1695,16 @@ void runAttn(fp16 *Q, fp16 *K, fp16 *V, fp16 *O) {
 // ncu --set full --launch-skip 100 --launch-count 1 ./bin/attn_test
 int main() {
     constexpr int BM = 128;
-    constexpr int BN = 192;
+    constexpr int BN = 160;
     constexpr int B = 1;
     constexpr int H = 16;
     constexpr int S = 32768;
-    constexpr int D = 128;
+    constexpr int D = 64;
 
-    constexpr int NUM_SMEM = 2;
+    constexpr int NUM_SMEM = 1;
     constexpr uint32_t PRODUCER_REG_DEALLOC = 24;
-    constexpr uint32_t CONSUMER_REG_ALLOC = 240;
-    constexpr int P_SMEM_K_TILES = 4;
+    constexpr uint32_t CONSUMER_REG_ALLOC = 208;
+    constexpr int P_SMEM_K_TILES = 0;
     constexpr int NUM_THREADS = 384;
 
     // Tune the last two template args as:
