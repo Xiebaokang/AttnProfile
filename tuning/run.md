@@ -28,6 +28,18 @@ if __name__ == "__main__":
 ```bash
 tmux new -s attn
 python benchmark_run_attn.py > ./logs/log 2>&1
+
+# list tmux session
+tmux ls
+
+# back tmux session
+tmux attach -t attn
+
+# back origin Terminal
+Ctrl + B  -> D
+
+# exit session
+Ctrl + D
 ```
 
 
