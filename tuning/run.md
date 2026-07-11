@@ -26,7 +26,11 @@ if __name__ == "__main__":
 ## 2. 执行脚本
 
 ```bash
+# create tmux session
 tmux new -s attn
+
+# shift 2-dev GPU
+export CUDA_VISIBLE_DEVICES=1
 python benchmark_run_attn.py > ./logs/log 2>&1
 
 # list tmux session

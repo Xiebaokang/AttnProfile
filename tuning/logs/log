@@ -13,11 +13,11 @@ ptxas info    : Compiling entry function '_Z26attnWS2StageBaselineKernelILi128EL
 ptxas info    : Function properties for _Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj24ELj184EEviii14CUtensorMap_stS0_S0_S0_
     0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
 ptxas info    : Used 168 registers, used 3 barriers
-ptxas info    : Compile time = 159.470 ms
+ptxas info    : Compile time = 159.955 ms
 + /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra184_nt384
 benchmark_attn output:
-1, 16, 32768, 64, 128, 160, 13.238767, 332.210
-[best] tflops=332.210, avg_ms=13.238767, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra184_nt384
+1, 16, 32768, 64, 128, 160, 13.239478, 332.192
+[best] tflops=332.192, avg_ms=13.239478, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra184_nt384
 
 === autotune config 2/170 ===
 runAttn template parameters:
@@ -32,11 +32,11 @@ ptxas info    : Compiling entry function '_Z26attnWS2StageBaselineKernelILi128EL
 ptxas info    : Function properties for _Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj24ELj192EEviii14CUtensorMap_stS0_S0_S0_
     0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
 ptxas info    : Used 168 registers, used 3 barriers
-ptxas info    : Compile time = 161.222 ms
+ptxas info    : Compile time = 161.720 ms
 + /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra192_nt384
 benchmark_attn output:
-1, 16, 32768, 64, 128, 160, 13.991037, 314.347
-[best] tflops=332.210, avg_ms=13.238767, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra184_nt384
+1, 16, 32768, 64, 128, 160, 13.989980, 314.371
+[best] tflops=332.192, avg_ms=13.239478, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra184_nt384
 
 === autotune config 3/170 ===
 runAttn template parameters:
@@ -51,11 +51,11 @@ ptxas info    : Compiling entry function '_Z26attnWS2StageBaselineKernelILi128EL
 ptxas info    : Function properties for _Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj24ELj200EEviii14CUtensorMap_stS0_S0_S0_
     0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
 ptxas info    : Used 168 registers, used 3 barriers
-ptxas info    : Compile time = 161.973 ms
+ptxas info    : Compile time = 161.655 ms
 + /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra200_nt384
 benchmark_attn output:
-1, 16, 32768, 64, 128, 160, 13.687063, 321.329
-[best] tflops=332.210, avg_ms=13.238767, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra184_nt384
+1, 16, 32768, 64, 128, 160, 13.687691, 321.314
+[best] tflops=332.192, avg_ms=13.239478, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra184_nt384
 
 === autotune config 4/170 ===
 runAttn template parameters:
@@ -70,11 +70,11 @@ ptxas info    : Compiling entry function '_Z26attnWS2StageBaselineKernelILi128EL
 ptxas info    : Function properties for _Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj24ELj208EEviii14CUtensorMap_stS0_S0_S0_
     0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
 ptxas info    : Used 168 registers, used 3 barriers
-ptxas info    : Compile time = 162.586 ms
+ptxas info    : Compile time = 161.956 ms
 + /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra208_nt384
 benchmark_attn output:
-1, 16, 32768, 64, 128, 160, 13.489738, 326.029
-[best] tflops=332.210, avg_ms=13.238767, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra184_nt384
+1, 16, 32768, 64, 128, 160, 13.489651, 326.031
+[best] tflops=332.192, avg_ms=13.239478, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra184_nt384
 
 === autotune config 5/170 ===
 runAttn template parameters:
@@ -84,196 +84,6 @@ selected kernel: 1 (runAttnWS2StageBaselineKernel)
 source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra216_nt384.cu
 binary: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra216_nt384
 + nvcc -std=c++17 -arch=sm_90a -O3 /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra216_nt384.cu -o /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra216_nt384 -lcuda -Xptxas=-v
-ptxas info    : 0 bytes gmem
-ptxas info    : Compiling entry function '_Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj24ELj216EEviii14CUtensorMap_stS0_S0_S0_' for 'sm_90a'
-ptxas info    : Function properties for _Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj24ELj216EEviii14CUtensorMap_stS0_S0_S0_
-    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
-ptxas info    : Used 168 registers, used 3 barriers
-ptxas info    : Compile time = 162.674 ms
-+ /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra216_nt384
-benchmark_attn output:
-1, 16, 32768, 64, 128, 160, 13.770409, 319.384
-[best] tflops=332.210, avg_ms=13.238767, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra184_nt384
-
-=== autotune config 6/170 ===
-runAttn template parameters:
-  B=1, H=16, S=32768, D=64, BM=128, BN=160, NUM_SMEM=1, PRODUCER_REG_DEALLOC=24, CONSUMER_REG_ALLOC=224, P_SMEM_K_TILES=0, KERNEL_IDX=1, NUM_THREADS=384, SmemSize=57472, RegSize=169984
-selected kernel: 1 (runAttnWS2StageBaselineKernel)
-[gen] wrote source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra224_nt384.cu
-source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra224_nt384.cu
-binary: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra224_nt384
-+ nvcc -std=c++17 -arch=sm_90a -O3 /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra224_nt384.cu -o /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra224_nt384 -lcuda -Xptxas=-v
-ptxas info    : 0 bytes gmem
-ptxas info    : Compiling entry function '_Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj24ELj224EEviii14CUtensorMap_stS0_S0_S0_' for 'sm_90a'
-ptxas info    : Function properties for _Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj24ELj224EEviii14CUtensorMap_stS0_S0_S0_
-    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
-ptxas info    : Used 168 registers, used 3 barriers
-ptxas info    : Compile time = 163.903 ms
-+ /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra224_nt384
-benchmark_attn output:
-1, 16, 32768, 64, 128, 160, 13.562294, 324.285
-[best] tflops=332.210, avg_ms=13.238767, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra184_nt384
-
-=== autotune config 7/170 ===
-runAttn template parameters:
-  B=1, H=16, S=32768, D=64, BM=128, BN=160, NUM_SMEM=1, PRODUCER_REG_DEALLOC=24, CONSUMER_REG_ALLOC=232, P_SMEM_K_TILES=0, KERNEL_IDX=1, NUM_THREADS=384, SmemSize=57472, RegSize=169984
-selected kernel: 1 (runAttnWS2StageBaselineKernel)
-[gen] wrote source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra232_nt384.cu
-source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra232_nt384.cu
-binary: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra232_nt384
-+ nvcc -std=c++17 -arch=sm_90a -O3 /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra232_nt384.cu -o /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra232_nt384 -lcuda -Xptxas=-v
-ptxas info    : 0 bytes gmem
-ptxas info    : Compiling entry function '_Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj24ELj232EEviii14CUtensorMap_stS0_S0_S0_' for 'sm_90a'
-ptxas info    : Function properties for _Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj24ELj232EEviii14CUtensorMap_stS0_S0_S0_
-    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
-ptxas info    : Used 168 registers, used 3 barriers
-ptxas info    : Compile time = 165.112 ms
-+ /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra232_nt384
-benchmark_attn output:
-1, 16, 32768, 64, 128, 160, 13.562792, 324.273
-[best] tflops=332.210, avg_ms=13.238767, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra184_nt384
-
-=== autotune config 8/170 ===
-runAttn template parameters:
-  B=1, H=16, S=32768, D=64, BM=128, BN=160, NUM_SMEM=1, PRODUCER_REG_DEALLOC=24, CONSUMER_REG_ALLOC=240, P_SMEM_K_TILES=0, KERNEL_IDX=1, NUM_THREADS=384, SmemSize=57472, RegSize=169984
-selected kernel: 1 (runAttnWS2StageBaselineKernel)
-[gen] wrote source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra240_nt384.cu
-source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra240_nt384.cu
-binary: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra240_nt384
-+ nvcc -std=c++17 -arch=sm_90a -O3 /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra240_nt384.cu -o /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra240_nt384 -lcuda -Xptxas=-v
-ptxas info    : 0 bytes gmem
-ptxas info    : Compiling entry function '_Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj24ELj240EEviii14CUtensorMap_stS0_S0_S0_' for 'sm_90a'
-ptxas info    : Function properties for _Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj24ELj240EEviii14CUtensorMap_stS0_S0_S0_
-    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
-ptxas info    : Used 168 registers, used 3 barriers
-ptxas info    : Compile time = 164.941 ms
-+ /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra240_nt384
-benchmark_attn output:
-1, 16, 32768, 64, 128, 160, 14.073723, 312.501
-[best] tflops=332.210, avg_ms=13.238767, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra184_nt384
-
-=== autotune config 9/170 ===
-runAttn template parameters:
-  B=1, H=16, S=32768, D=64, BM=128, BN=160, NUM_SMEM=1, PRODUCER_REG_DEALLOC=32, CONSUMER_REG_ALLOC=184, P_SMEM_K_TILES=0, KERNEL_IDX=1, NUM_THREADS=384, SmemSize=57472, RegSize=169984
-selected kernel: 1 (runAttnWS2StageBaselineKernel)
-[gen] wrote source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra184_nt384.cu
-source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra184_nt384.cu
-binary: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra184_nt384
-+ nvcc -std=c++17 -arch=sm_90a -O3 /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra184_nt384.cu -o /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra184_nt384 -lcuda -Xptxas=-v
-ptxas info    : 0 bytes gmem
-ptxas info    : Compiling entry function '_Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj32ELj184EEviii14CUtensorMap_stS0_S0_S0_' for 'sm_90a'
-ptxas info    : Function properties for _Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj32ELj184EEviii14CUtensorMap_stS0_S0_S0_
-    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
-ptxas info    : Used 168 registers, used 3 barriers
-ptxas info    : Compile time = 159.650 ms
-+ /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra184_nt384
-benchmark_attn output:
-1, 16, 32768, 64, 128, 160, 13.240312, 332.171
-[best] tflops=332.210, avg_ms=13.238767, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd24_cra184_nt384
-
-=== autotune config 10/170 ===
-runAttn template parameters:
-  B=1, H=16, S=32768, D=64, BM=128, BN=160, NUM_SMEM=1, PRODUCER_REG_DEALLOC=32, CONSUMER_REG_ALLOC=192, P_SMEM_K_TILES=0, KERNEL_IDX=1, NUM_THREADS=384, SmemSize=57472, RegSize=169984
-selected kernel: 1 (runAttnWS2StageBaselineKernel)
-[gen] wrote source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra192_nt384.cu
-source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra192_nt384.cu
-binary: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra192_nt384
-+ nvcc -std=c++17 -arch=sm_90a -O3 /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra192_nt384.cu -o /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra192_nt384 -lcuda -Xptxas=-v
-ptxas info    : 0 bytes gmem
-ptxas info    : Compiling entry function '_Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj32ELj192EEviii14CUtensorMap_stS0_S0_S0_' for 'sm_90a'
-ptxas info    : Function properties for _Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj32ELj192EEviii14CUtensorMap_stS0_S0_S0_
-    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
-ptxas info    : Used 168 registers, used 3 barriers
-ptxas info    : Compile time = 160.449 ms
-+ /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra192_nt384
-benchmark_attn output:
-1, 16, 32768, 64, 128, 160, 13.237507, 332.241
-[best] tflops=332.241, avg_ms=13.237507, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra192_nt384
-
-=== autotune config 11/170 ===
-runAttn template parameters:
-  B=1, H=16, S=32768, D=64, BM=128, BN=160, NUM_SMEM=1, PRODUCER_REG_DEALLOC=32, CONSUMER_REG_ALLOC=200, P_SMEM_K_TILES=0, KERNEL_IDX=1, NUM_THREADS=384, SmemSize=57472, RegSize=169984
-selected kernel: 1 (runAttnWS2StageBaselineKernel)
-[gen] wrote source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra200_nt384.cu
-source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra200_nt384.cu
-binary: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra200_nt384
-+ nvcc -std=c++17 -arch=sm_90a -O3 /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra200_nt384.cu -o /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra200_nt384 -lcuda -Xptxas=-v
-ptxas info    : 0 bytes gmem
-ptxas info    : Compiling entry function '_Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj32ELj200EEviii14CUtensorMap_stS0_S0_S0_' for 'sm_90a'
-ptxas info    : Function properties for _Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj32ELj200EEviii14CUtensorMap_stS0_S0_S0_
-    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
-ptxas info    : Used 168 registers, used 3 barriers
-ptxas info    : Compile time = 160.863 ms
-+ /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra200_nt384
-benchmark_attn output:
-1, 16, 32768, 64, 128, 160, 13.687351, 321.322
-[best] tflops=332.241, avg_ms=13.237507, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra192_nt384
-
-=== autotune config 12/170 ===
-runAttn template parameters:
-  B=1, H=16, S=32768, D=64, BM=128, BN=160, NUM_SMEM=1, PRODUCER_REG_DEALLOC=32, CONSUMER_REG_ALLOC=208, P_SMEM_K_TILES=0, KERNEL_IDX=1, NUM_THREADS=384, SmemSize=57472, RegSize=169984
-selected kernel: 1 (runAttnWS2StageBaselineKernel)
-[gen] wrote source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra208_nt384.cu
-source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra208_nt384.cu
-binary: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra208_nt384
-+ nvcc -std=c++17 -arch=sm_90a -O3 /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra208_nt384.cu -o /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra208_nt384 -lcuda -Xptxas=-v
-ptxas info    : 0 bytes gmem
-ptxas info    : Compiling entry function '_Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj32ELj208EEviii14CUtensorMap_stS0_S0_S0_' for 'sm_90a'
-ptxas info    : Function properties for _Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj32ELj208EEviii14CUtensorMap_stS0_S0_S0_
-    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
-ptxas info    : Used 168 registers, used 3 barriers
-ptxas info    : Compile time = 161.296 ms
-+ /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra208_nt384
-benchmark_attn output:
-1, 16, 32768, 64, 128, 160, 13.772469, 319.336
-[best] tflops=332.241, avg_ms=13.237507, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra192_nt384
-
-=== autotune config 13/170 ===
-runAttn template parameters:
-  B=1, H=16, S=32768, D=64, BM=128, BN=160, NUM_SMEM=1, PRODUCER_REG_DEALLOC=32, CONSUMER_REG_ALLOC=216, P_SMEM_K_TILES=0, KERNEL_IDX=1, NUM_THREADS=384, SmemSize=57472, RegSize=169984
-selected kernel: 1 (runAttnWS2StageBaselineKernel)
-[gen] wrote source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra216_nt384.cu
-source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra216_nt384.cu
-binary: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra216_nt384
-+ nvcc -std=c++17 -arch=sm_90a -O3 /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra216_nt384.cu -o /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra216_nt384 -lcuda -Xptxas=-v
-ptxas info    : 0 bytes gmem
-ptxas info    : Compiling entry function '_Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj32ELj216EEviii14CUtensorMap_stS0_S0_S0_' for 'sm_90a'
-ptxas info    : Function properties for _Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj32ELj216EEviii14CUtensorMap_stS0_S0_S0_
-    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
-ptxas info    : Used 168 registers, used 3 barriers
-ptxas info    : Compile time = 162.761 ms
-+ /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra216_nt384
-benchmark_attn output:
-1, 16, 32768, 64, 128, 160, 13.769090, 319.414
-[best] tflops=332.241, avg_ms=13.237507, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra192_nt384
-
-=== autotune config 14/170 ===
-runAttn template parameters:
-  B=1, H=16, S=32768, D=64, BM=128, BN=160, NUM_SMEM=1, PRODUCER_REG_DEALLOC=32, CONSUMER_REG_ALLOC=224, P_SMEM_K_TILES=0, KERNEL_IDX=1, NUM_THREADS=384, SmemSize=57472, RegSize=169984
-selected kernel: 1 (runAttnWS2StageBaselineKernel)
-[gen] wrote source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra224_nt384.cu
-source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra224_nt384.cu
-binary: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra224_nt384
-+ nvcc -std=c++17 -arch=sm_90a -O3 /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra224_nt384.cu -o /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra224_nt384 -lcuda -Xptxas=-v
-ptxas info    : 0 bytes gmem
-ptxas info    : Compiling entry function '_Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj32ELj224EEviii14CUtensorMap_stS0_S0_S0_' for 'sm_90a'
-ptxas info    : Function properties for _Z26attnWS2StageBaselineKernelILi128ELi160ELi64ELi384ELi1ELj32ELj224EEviii14CUtensorMap_stS0_S0_S0_
-    0 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
-ptxas info    : Used 168 registers, used 3 barriers
-ptxas info    : Compile time = 163.203 ms
-+ /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra224_nt384
-benchmark_attn output:
-1, 16, 32768, 64, 128, 160, 13.561735, 324.298
-[best] tflops=332.241, avg_ms=13.237507, config=k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra192_nt384
-
-=== autotune config 15/170 ===
-runAttn template parameters:
-  B=1, H=16, S=32768, D=64, BM=128, BN=160, NUM_SMEM=1, PRODUCER_REG_DEALLOC=32, CONSUMER_REG_ALLOC=232, P_SMEM_K_TILES=0, KERNEL_IDX=1, NUM_THREADS=384, SmemSize=57472, RegSize=169984
-selected kernel: 1 (runAttnWS2StageBaselineKernel)
-[gen] wrote source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra232_nt384.cu
-source: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra232_nt384.cu
-binary: /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra232_nt384
-+ nvcc -std=c++17 -arch=sm_90a -O3 /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra232_nt384.cu -o /home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s32768_d64_bm128_bn160_smem1_p0_prd32_cra232_nt384 -lcuda -Xptxas=-v
 Traceback (most recent call last):
   File "/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/benchmark_run_attn.py", line 502, in <module>
     benchmark_get_configs(
