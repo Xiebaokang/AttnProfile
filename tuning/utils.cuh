@@ -70,7 +70,7 @@ __host__ static inline CUtensorMap create_tensor_map(fp16* gmem_ptr, int batch1,
 
 using AttnRunner = void (*)(fp16*, fp16*, fp16*, fp16*);
 
-template<int B, int H, int S, int D, int BN_TILE=128>
+template<int B, int H, int S, int D, int BM, int BN_TILE=128>
 void verify_attn(AttnRunner kernel) {
 
     int dev = 0;
@@ -82,10 +82,14 @@ void verify_attn(AttnRunner kernel) {
         return;
     }
 
-    const size_t numel = static_cast<size_t>(B) * H * S * D;
-    const size_t bytes = numel * sizeof(fp16);
-    std::vector<fp16> hQ(numel), hK(numel), hV(numel), hO(numel), hORef(numel, 0.0f);
-    std::vector<fp32> hSRef(static_cast<size_t>(B) * H * S * S,  0.0f);
+    constexpr int SQO = ((S + BM - 1) / BM) * BM;
+    constexpr int SKV = ((S + BN_TILE - 1) / BN_TILE) * BN_TILE;
+    const size_t qo_numel = static_cast<size_t>(B) * H * SQO * D;
+    const size_t kv_numel = static_cast<size_t>(B) * H * SKV * D;
+    const size_t qo_bytes = qo_numel * sizeof(fp16);
+    const size_t kv_bytes = kv_numel * sizeof(fp16);
+    std::vector<fp16> hQ(qo_numel, 0.0f), hK(kv_numel, 0.0f), hV(kv_numel, 0.0f);
+    std::vector<fp16> hO(qo_numel), hORef(qo_numel, 0.0f);
 
     // std::random_device rd;
     const uint32_t seed = 42;
@@ -94,21 +98,20 @@ void verify_attn(AttnRunner kernel) {
     std::uniform_real_distribution<float> v_dist(-1.0f, 1.0f);
     printf("verify_attn seed=%u\n", seed);
 
-    auto idx4 = [=](int b, int h, int s, int d) {
-        return (((static_cast<size_t>(b) * H + h) * S + s) * D + d);
+    auto idxQO = [=](int b, int h, int s, int d) {
+        return (((static_cast<size_t>(b) * H + h) * SQO + s) * D + d);
     };
-    auto idxS = [=](int b, int h, int s1, int s2) {
-        return (((static_cast<size_t>(b) * H + h) * S + s1) * S + s2);
+    auto idxKV = [=](int b, int h, int s, int d) {
+        return (((static_cast<size_t>(b) * H + h) * SKV + s) * D + d);
     };
 
     for (int b = 0; b < B; ++b) {
         for (int h = 0; h < H; ++h) {
             for (int s = 0; s < S; ++s) {
                 for (int d = 0; d < D; ++d) {
-                    const size_t idx = idx4(b, h, s, d);
-                    hQ[idx] = __float2half_rn(qk_dist(gen));
-                    hK[idx] = __float2half_rn(qk_dist(gen));
-                    hV[idx] = __float2half_rn(v_dist(gen));
+                    hQ[idxQO(b, h, s, d)] = __float2half_rn(qk_dist(gen));
+                    hK[idxKV(b, h, s, d)] = __float2half_rn(qk_dist(gen));
+                    hV[idxKV(b, h, s, d)] = __float2half_rn(v_dist(gen));
                 }
             }
         }
@@ -118,20 +121,20 @@ void verify_attn(AttnRunner kernel) {
     fp16 *dK = nullptr;
     fp16 *dV = nullptr;
     fp16 *dO = nullptr;
-    cudaCheck(cudaMalloc(&dQ, bytes));
-    cudaCheck(cudaMalloc(&dK, bytes));
-    cudaCheck(cudaMalloc(&dV, bytes));
-    cudaCheck(cudaMalloc(&dO, bytes));
-    cudaCheck(cudaMemcpy(dQ, hQ.data(), bytes, cudaMemcpyHostToDevice));
-    cudaCheck(cudaMemcpy(dK, hK.data(), bytes, cudaMemcpyHostToDevice));
-    cudaCheck(cudaMemcpy(dV, hV.data(), bytes, cudaMemcpyHostToDevice));
-    cudaCheck(cudaMemset(dO, 0, bytes));
+    cudaCheck(cudaMalloc(&dQ, qo_bytes));
+    cudaCheck(cudaMalloc(&dK, kv_bytes));
+    cudaCheck(cudaMalloc(&dV, kv_bytes));
+    cudaCheck(cudaMalloc(&dO, qo_bytes));
+    cudaCheck(cudaMemcpy(dQ, hQ.data(), qo_bytes, cudaMemcpyHostToDevice));
+    cudaCheck(cudaMemcpy(dK, hK.data(), kv_bytes, cudaMemcpyHostToDevice));
+    cudaCheck(cudaMemcpy(dV, hV.data(), kv_bytes, cudaMemcpyHostToDevice));
+    cudaCheck(cudaMemset(dO, 0, qo_bytes));
 
     kernel(dQ, dK, dV, dO);
 
     cudaCheck(cudaGetLastError());
     cudaCheck(cudaDeviceSynchronize());
-    cudaCheck(cudaMemcpy(hO.data(), dO, bytes, cudaMemcpyDeviceToHost));
+    cudaCheck(cudaMemcpy(hO.data(), dO, qo_bytes, cudaMemcpyDeviceToHost));
 
     const float attn_scale = sqrtf(1.0f / D) * 1.44269504f;
     std::vector<fp32> scores(S, 0.0f);
@@ -148,14 +151,14 @@ void verify_attn(AttnRunner kernel) {
                 float row_sum = 0.0f;
 
                 for (int iw = 0; iw < S; iw += BN_TILE) {
-                    const int tile_end = (iw + BN_TILE < S) ? (iw + BN_TILE) : S;
+                    const int tile_end = std::min(iw + BN_TILE, S);
                     float tile_max = -FLT_MAX;
 
                     for (int s2 = iw; s2 < tile_end; ++s2) {
                         float score = 0.0f;
                         for (int d = 0; d < D; ++d) {
-                            score += __half2float(hQ[idx4(b, h, s1, d)])
-                                   * __half2float(hK[idx4(b, h, s2, d)]);
+                            score += __half2float(hQ[idxQO(b, h, s1, d)])
+                                   * __half2float(hK[idxKV(b, h, s2, d)]);
                         }
                         scores[s2] = score;
                         tile_max = fmaxf(tile_max, score);
@@ -178,7 +181,7 @@ void verify_attn(AttnRunner kernel) {
                         // The kernel casts the online softmax scores to fp16 before PV.
                         const float prob_for_pv = __half2float(__float2half_rn(prob));
                         for (int d = 0; d < D; ++d) {
-                            row_acc[d] += prob_for_pv * __half2float(hV[idx4(b, h, s2, d)]);
+                            row_acc[d] += prob_for_pv * __half2float(hV[idxKV(b, h, s2, d)]);
                         }
                     }
 
@@ -188,7 +191,7 @@ void verify_attn(AttnRunner kernel) {
 
                 const float inv_sum = 1.0f / row_sum;
                 for (int d = 0; d < D; ++d) {
-                    hORef[idx4(b, h, s1, d)] = __float2half_rn(row_acc[d] * inv_sum);
+                    hORef[idxQO(b, h, s1, d)] = __float2half_rn(row_acc[d] * inv_sum);
                 }
             }
         }
@@ -204,8 +207,8 @@ void verify_attn(AttnRunner kernel) {
         for (int h = 0; h < H; ++h) {
             for (int s = 0; s < S; ++s) {
                 for (int d = 0; d < D; ++d) {
-                    const float got = __half2float(hO[idx4(b, h, s, d)]);
-                    const float ref = __half2float(hORef[idx4(b, h, s, d)]);
+                    const float got = __half2float(hO[idxQO(b, h, s, d)]);
+                    const float ref = __half2float(hORef[idxQO(b, h, s, d)]);
                     const float diff = fabsf(got - ref);
                     if (diff > max_o_diff) {
                         max_o_diff = diff;
@@ -229,8 +232,8 @@ void verify_attn(AttnRunner kernel) {
 
     printf("[D] hO attention max_abs_diff=%.6f at b=%d h=%d s=%d d=%d got=%.6f ref=%.6f mismatches(abs>%.4f)=%d/%zu left=%d right=%d\n",
            max_o_diff, max_o_b, max_o_h, max_o_s, max_o_d,
-           __half2float(hO[idx4(max_o_b, max_o_h, max_o_s, max_o_d)]),
-           __half2float(hORef[idx4(max_o_b, max_o_h, max_o_s, max_o_d)]),
+           __half2float(hO[idxQO(max_o_b, max_o_h, max_o_s, max_o_d)]),
+           __half2float(hORef[idxQO(max_o_b, max_o_h, max_o_s, max_o_d)]),
            o_abs_tol, o_mismatch_count, static_cast<size_t>(B) * H * S * D,
            left_mismatch_count, right_mismatch_count);
 
@@ -242,25 +245,27 @@ void verify_attn(AttnRunner kernel) {
 
 template<int B, int H, int S, int D, int BM, int BN>
 void benchmark_attn(AttnRunner kernel) {
-    const size_t numel = static_cast<size_t>(B) * H * S * D;
-    const size_t bytes = numel * sizeof(fp16);
+    constexpr int SQO = ((S + BM - 1) / BM) * BM;
+    constexpr int SKV = ((S + BN - 1) / BN) * BN;
+    const size_t qo_bytes = static_cast<size_t>(B) * H * SQO * D * sizeof(fp16);
+    const size_t kv_bytes = static_cast<size_t>(B) * H * SKV * D * sizeof(fp16);
 
     fp16 *dQ = nullptr;
     fp16 *dK = nullptr;
     fp16 *dV = nullptr;
     fp16 *dO = nullptr;
 
-    cudaCheck(cudaMalloc(&dQ, bytes));
-    cudaCheck(cudaMalloc(&dK, bytes));
-    cudaCheck(cudaMalloc(&dV, bytes));
-    cudaCheck(cudaMalloc(&dO, bytes));
+    cudaCheck(cudaMalloc(&dQ, qo_bytes));
+    cudaCheck(cudaMalloc(&dK, kv_bytes));
+    cudaCheck(cudaMalloc(&dV, kv_bytes));
+    cudaCheck(cudaMalloc(&dO, qo_bytes));
 
-    cudaCheck(cudaMemset(dQ, 0, bytes));
-    cudaCheck(cudaMemset(dK, 0, bytes));
-    cudaCheck(cudaMemset(dV, 0, bytes));
-    cudaCheck(cudaMemset(dO, 0, bytes));
+    cudaCheck(cudaMemset(dQ, 0, qo_bytes));
+    cudaCheck(cudaMemset(dK, 0, kv_bytes));
+    cudaCheck(cudaMemset(dV, 0, kv_bytes));
+    cudaCheck(cudaMemset(dO, 0, qo_bytes));
 
-    for (int i = 0; i < 100; ++i) {
+    for (int i = 0; i < 60; ++i) {
         kernel(dQ, dK, dV, dO);
         cudaCheck(cudaGetLastError());
     }
@@ -271,7 +276,7 @@ void benchmark_attn(AttnRunner kernel) {
     cudaCheck(cudaEventCreate(&stop));
 
     cudaCheck(cudaEventRecord(start));
-    for (int i = 0; i < 500; ++i) {
+    for (int i = 0; i < 250; ++i) {
         kernel(dQ, dK, dV, dO);
         cudaCheck(cudaGetLastError());
     }
@@ -284,7 +289,7 @@ void benchmark_attn(AttnRunner kernel) {
     cudaCheck(cudaEventDestroy(start));
     cudaCheck(cudaEventDestroy(stop));
 
-    const double avg_ms = static_cast<double>(elapsed_ms) / 500;
+    const double avg_ms = static_cast<double>(elapsed_ms) / 250;
     const double flops = 4.0 * static_cast<double>(B) * H * S * S * D;
     const double tflops = flops / (avg_ms * 1.0e-3) / 1.0e12;
 
@@ -298,23 +303,25 @@ void benchmark_attn(AttnRunner kernel) {
 
 template<int B, int H, int S, int D, int BM, int BN>
 void benchmark_attn_ncu(AttnRunner kernel) {
-    const size_t numel = static_cast<size_t>(B) * H * S * D;
-    const size_t bytes = numel * sizeof(fp16);
+    constexpr int SQO = ((S + BM - 1) / BM) * BM;
+    constexpr int SKV = ((S + BN - 1) / BN) * BN;
+    const size_t qo_bytes = static_cast<size_t>(B) * H * SQO * D * sizeof(fp16);
+    const size_t kv_bytes = static_cast<size_t>(B) * H * SKV * D * sizeof(fp16);
 
     fp16 *dQ = nullptr;
     fp16 *dK = nullptr;
     fp16 *dV = nullptr;
     fp16 *dO = nullptr;
 
-    cudaCheck(cudaMalloc(&dQ, bytes));
-    cudaCheck(cudaMalloc(&dK, bytes));
-    cudaCheck(cudaMalloc(&dV, bytes));
-    cudaCheck(cudaMalloc(&dO, bytes));
+    cudaCheck(cudaMalloc(&dQ, qo_bytes));
+    cudaCheck(cudaMalloc(&dK, kv_bytes));
+    cudaCheck(cudaMalloc(&dV, kv_bytes));
+    cudaCheck(cudaMalloc(&dO, qo_bytes));
 
-    cudaCheck(cudaMemset(dQ, 0, bytes));
-    cudaCheck(cudaMemset(dK, 0, bytes));
-    cudaCheck(cudaMemset(dV, 0, bytes));
-    cudaCheck(cudaMemset(dO, 0, bytes));
+    cudaCheck(cudaMemset(dQ, 0, qo_bytes));
+    cudaCheck(cudaMemset(dK, 0, kv_bytes));
+    cudaCheck(cudaMemset(dV, 0, kv_bytes));
+    cudaCheck(cudaMemset(dO, 0, qo_bytes));
 
     for (int i = 0; i < 100; ++i) {
         kernel(dQ, dK, dV, dO);

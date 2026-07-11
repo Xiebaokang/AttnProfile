@@ -1,0 +1,3678 @@
+{
+  "rank": 15,
+  "total_configs": 1686,
+  "failed_count": 192,
+  "top_results": [
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "avg_ms": 24.826023,
+        "tflops": 400.677
+      },
+      "output": "1, 16, 49280, 64, 128, 224, 24.826023, 400.677"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "avg_ms": 25.024902,
+        "tflops": 397.493
+      },
+      "output": "1, 16, 49280, 64, 128, 224, 25.024902, 397.493"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "avg_ms": 25.081135,
+        "tflops": 396.601
+      },
+      "output": "1, 16, 49280, 64, 128, 224, 25.081135, 396.601"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "avg_ms": 25.162471,
+        "tflops": 395.319
+      },
+      "output": "1, 16, 49280, 64, 128, 224, 25.162471, 395.319"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "avg_ms": 25.253463,
+        "tflops": 393.895
+      },
+      "output": "1, 16, 49280, 64, 128, 224, 25.253463, 393.895"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 25.42623,
+        "tflops": 391.218
+      },
+      "output": "1, 16, 49280, 64, 128, 176, 25.426230, 391.218"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 25.430139,
+        "tflops": 391.158
+      },
+      "output": "1, 16, 49280, 64, 128, 176, 25.430139, 391.158"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 25.430232,
+        "tflops": 391.157
+      },
+      "output": "1, 16, 49280, 64, 128, 176, 25.430232, 391.157"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 25.439375,
+        "tflops": 391.016
+      },
+      "output": "1, 16, 49280, 64, 128, 176, 25.439375, 391.016"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "avg_ms": 25.484609,
+        "tflops": 390.322
+      },
+      "output": "1, 16, 49280, 64, 128, 224, 25.484609, 390.322"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 25.495129,
+        "tflops": 390.161
+      },
+      "output": "1, 16, 49280, 64, 128, 176, 25.495129, 390.161"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 25.49533,
+        "tflops": 390.158
+      },
+      "output": "1, 16, 49280, 64, 128, 176, 25.495330, 390.158"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "avg_ms": 25.511119,
+        "tflops": 389.917
+      },
+      "output": "1, 16, 49280, 64, 128, 224, 25.511119, 389.917"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 25.517707,
+        "tflops": 389.816
+      },
+      "output": "1, 16, 49280, 64, 128, 176, 25.517707, 389.816"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 25.555535,
+        "tflops": 389.239
+      },
+      "output": "1, 16, 49280, 64, 128, 176, 25.555535, 389.239"
+    }
+  ],
+  "failed_results": [
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 7,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 7,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 7,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 7,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 7,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 7,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 8,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 8,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 8,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 8,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 8,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 8,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 9,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 9,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 9,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 10,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 10,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 10,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p18_prd24_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p18_prd24_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p18_prd24_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p18_prd24_cra232_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p18_prd24_cra240_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p18_prd32_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p18_prd32_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p18_prd32_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p18_prd32_cra232_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p18_prd48_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p18_prd48_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p18_prd48_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd24_cra200_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd24_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd24_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd24_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd24_cra232_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd24_cra240_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd32_cra200_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd32_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd32_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd32_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd32_cra232_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd48_cra200_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd48_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd48_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p19_prd48_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd24_cra200_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd24_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd24_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd24_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd24_cra232_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd24_cra240_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd32_cra200_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd32_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd32_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd32_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd32_cra232_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd48_cra200_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd48_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd48_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k2_b1_h16_s49280_d64_bm128_bn320_smem1_p20_prd48_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 2,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 7,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 7,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 7,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 7,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 7,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 7,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 8,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 8,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 8,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 8,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 8,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 192,
+        "P_SMEM_K_TILES": 8,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 9,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 9,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 9,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 10,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 10,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 49280,
+        "D": 64,
+        "BM": 128,
+        "BN": 224,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 184,
+        "P_SMEM_K_TILES": 10,
+        "KERNEL_IDX": 2,
+        "NUM_THREADS": 384
+      },
+      "error": "Discard compile due to ptxas warning: ptxas info    : (C7512) Potential Performance Loss"
+    }
+  ]
+}

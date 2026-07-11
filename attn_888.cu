@@ -2,16 +2,18 @@
 #include <type_traits>
 
 template <int BM, int BN, int DIM, int NUM_SMEM>
-struct SMemWS {
+union SMemWS {
+    struct {
     alignas(128) fp16 Q[BM*DIM];
     alignas(128) fp16 K[BN*DIM*NUM_SMEM];
     alignas(128) fp16 V[BN*DIM*NUM_SMEM];
-    alignas(128) fp16 O[BM*DIM];
     alignas(8) uint64_t Qmbar;
     alignas(8) uint64_t Kempty[NUM_SMEM];
     alignas(8) uint64_t Vempty[NUM_SMEM];
     alignas(8) uint64_t Kfull[NUM_SMEM];
     alignas(8) uint64_t Vfull[NUM_SMEM];
+    };
+    alignas(128) fp16 O[BM*DIM];
 };
 
 template <int BM, int BN, int DIM, int NUM_SMEM>
@@ -1815,7 +1817,7 @@ void runAttnWS2StageKernel(fp16 *Q, fp16 *K, fp16 *V, fp16 *O) {
     CUtensorMap d_tma_map_K = create_tensor_map<BN, D>(K, B, H, S, D);
     CUtensorMap d_tma_map_V = create_tensor_map<BN, D>(V, B, H, S, D);
     CUtensorMap d_tma_map_O = create_tensor_map<BM, D>(O, B, H, S, D);
-    static_assert(NUM_SMEM >= 2);
+    // static_assert(NUM_SMEM >= 2);
 
     auto* kernel = attnWS2StageKernel<
         BM, BN, D, NUM_THREADS, NUM_SMEM,
@@ -1954,16 +1956,16 @@ void benchmarkAttnRegSweep() {
         // benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 32, 224, NUM_THREADS, NUM_SMEM>();
         benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 24, 240, NUM_THREADS, NUM_SMEM>();
     } else {
-        benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 24, 184, NUM_THREADS, NUM_SMEM>();
-        benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 32, 184, NUM_THREADS, NUM_SMEM>();
-        benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 24, 192, NUM_THREADS, NUM_SMEM>();
-        benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 32, 192, NUM_THREADS, NUM_SMEM>();
-        benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 24, 208, NUM_THREADS, NUM_SMEM>();
-        benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 32, 208, NUM_THREADS, NUM_SMEM>();
-        benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 24, 216, NUM_THREADS, NUM_SMEM>();
-        benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 32, 216, NUM_THREADS, NUM_SMEM>();
-        benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 24, 224, NUM_THREADS, NUM_SMEM>();
-        benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 32, 224, NUM_THREADS, NUM_SMEM>();
+    //     benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 24, 184, NUM_THREADS, NUM_SMEM>();
+    //     benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 32, 184, NUM_THREADS, NUM_SMEM>();
+        // benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 24, 192, NUM_THREADS, NUM_SMEM>();
+        // benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 32, 192, NUM_THREADS, NUM_SMEM>();
+        // benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 24, 208, NUM_THREADS, NUM_SMEM>();
+        // benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 32, 208, NUM_THREADS, NUM_SMEM>();
+        // benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 24, 216, NUM_THREADS, NUM_SMEM>();
+        // benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 32, 216, NUM_THREADS, NUM_SMEM>();
+        // benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 24, 224, NUM_THREADS, NUM_SMEM>();
+        // benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 32, 224, NUM_THREADS, NUM_SMEM>();
         benchmarkAttnRegConfig<B, H, S, D, BM, BN, USE_SEGMENTED, 24, 240, NUM_THREADS, NUM_SMEM>();
     }
 }
@@ -1972,24 +1974,22 @@ void benchmarkAttnRegSweep() {
 // nvcc -std=c++17 -arch=sm_90a -O3 attn_888.cu -o attn_888 -lcuda -Xptxas=-v
 // ncu --set full --launch-skip 100 --launch-count 1 ./attn_888
 int main() {
+    constexpr int BM = 128;
+    constexpr int BN = 240;
     constexpr int B = 1;
     constexpr int H = 16;
-    constexpr int S = 114*160*2;
-    constexpr int D = 128;
-    constexpr int BM = 256;
-    // constexpr int BN = 176;
-    // constexpr int BM = 128;
-    // constexpr int BN = 128;
-    // constexpr int BN = 128;
+    constexpr int S = 160*176;
+    // constexpr int S = 1024;
+    constexpr int D = 64;
 
     // Tune the last two template args as:
     // <..., NUM_THREADS, NUM_SMEM, PRODUCER_REG_DEALLOC, CONSUMER_REG_ALLOC>
-    // auto *kernel = runAttnWS2StageKernel<B, H, S, D, BM, BN, 384, 2, 24, 240>;
-    // auto *kernel = runAttnWSCXForNKernel<B, H, S, D, BM, BN, 384, 2, 24, 192>;
+    auto *kernel = runAttnWS2StageKernel<B, H, S, D, BM, BN, 384, 1, 24, 240>;
+    // auto *kernel = runAttnWSCXForNKernel<B, H, S, D, BM, BN, 384, 2, 24, 240>;
     // auto *kernel = runAttnWSCXForNHalfQKernel<B, H, S, D, BM, BN, 384, 2, 24, 240>;
     // auto *kernel = runAttnWSCXForNHalfReuseQKernel<B, H, S, D, BM, BN, 384, 2, 24, 240>;
     // verify_attn<B, H, S, D, BN>(kernel);
-    // benchmark_attn<B, H, S, D, BM, BN>(kernel);
+    benchmark_attn<B, H, S, D, BM, BN>(kernel);
     // benchmarkAttnRegSweep<B, H, S, D, BM, BN, false>();
     // benchmarkAttnRegSweep<B, H, S, D, BM, BN, true>();
     // benchmark_attn_ncu<B, H, S, D, BM, BN>(kernel);

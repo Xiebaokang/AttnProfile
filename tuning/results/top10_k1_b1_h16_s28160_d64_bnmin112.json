@@ -1,0 +1,993 @@
+{
+  "rank": 10,
+  "total_configs": 1584,
+  "failed_count": 42,
+  "top_results": [
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 8.229059,
+        "tflops": 394.707
+      },
+      "output": "1, 16, 28160, 64, 128, 176, 8.229059, 394.707"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 8.229083,
+        "tflops": 394.706
+      },
+      "output": "1, 16, 28160, 64, 128, 176, 8.229083, 394.706"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 8.229088,
+        "tflops": 394.706
+      },
+      "output": "1, 16, 28160, 64, 128, 176, 8.229088, 394.706"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 8.229109,
+        "tflops": 394.705
+      },
+      "output": "1, 16, 28160, 64, 128, 176, 8.229109, 394.705"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 8.229109,
+        "tflops": 394.705
+      },
+      "output": "1, 16, 28160, 64, 128, 176, 8.229109, 394.705"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 8.229109,
+        "tflops": 394.705
+      },
+      "output": "1, 16, 28160, 64, 128, 176, 8.229109, 394.705"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 8.229102,
+        "tflops": 394.705
+      },
+      "output": "1, 16, 28160, 64, 128, 176, 8.229102, 394.705"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 8.229128,
+        "tflops": 394.704
+      },
+      "output": "1, 16, 28160, 64, 128, 176, 8.229128, 394.704"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 8.229119,
+        "tflops": 394.704
+      },
+      "output": "1, 16, 28160, 64, 128, 176, 8.229119, 394.704"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 7,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 176,
+        "avg_ms": 8.229118,
+        "tflops": 394.704
+      },
+      "output": "1, 16, 28160, 64, 128, 176, 8.229118, 394.704"
+    }
+  ],
+  "failed_results": [
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p18_prd24_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p18_prd24_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p18_prd24_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p18_prd24_cra232_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p18_prd24_cra240_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p18_prd32_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p18_prd32_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p18_prd32_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p18_prd32_cra232_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p18_prd48_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p18_prd48_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 18,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p18_prd48_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd24_cra200_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd24_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd24_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd24_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd24_cra232_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd24_cra240_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd32_cra200_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd32_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd32_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd32_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd32_cra232_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd48_cra200_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd48_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd48_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 19,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p19_prd48_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd24_cra200_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd24_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd24_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd24_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd24_cra232_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd24_cra240_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd32_cra200_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd32_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd32_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd32_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd32_cra232_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 200,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd48_cra200_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 208,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd48_cra208_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 216,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd48_cra216_nt384']' died with <Signals.SIGABRT: 6>."
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 28160,
+        "D": 64,
+        "BM": 128,
+        "BN": 320,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 48,
+        "CONSUMER_REG_ALLOC": 224,
+        "P_SMEM_K_TILES": 20,
+        "KERNEL_IDX": 1,
+        "NUM_THREADS": 384
+      },
+      "error": "Command '['/home/xiebaokang/projects/cuda/test/microbenchmarks/AttnProfile/tuning/build_run_attn/attn_test_k1_b1_h16_s28160_d64_bm128_bn320_smem1_p20_prd48_cra224_nt384']' died with <Signals.SIGABRT: 6>."
+    }
+  ]
+}
