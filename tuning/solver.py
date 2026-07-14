@@ -82,6 +82,7 @@ def estimate_registers_per_thread(
     estimated = combined_regs + overhead
 
     return {
+        "RegisterModel": "conservative",
         "AccSRegs": acc_s_regs,
         "AccORegs": acc_o_regs,
         "RegPRegs": reg_p_regs,
@@ -94,7 +95,44 @@ def estimate_registers_per_thread(
     }
 
 
-def solve(
+def estimate_registers_per_thread_reuse(
+    KernelIdx: int,
+    BM: int,
+    BN: int,
+    HD: int,
+    NumSmemP: int,
+    MMA_M: int = 64,
+    MMA_K: int = 16,
+    NumConsumer: int = 2,
+) -> dict[str, int]:
+    """按跨阶段生命周期复用估算单个 consumer thread 的寄存器数。
+
+    QK/softmax 与 PV 阶段分别计算，并取二者峰值；假设 acc_s 与
+    register P 可以在阶段切换后复用物理寄存器。
+    """
+    conservative = estimate_registers_per_thread(
+        KernelIdx=KernelIdx,
+        BM=BM,
+        BN=BN,
+        HD=HD,
+        NumSmemP=NumSmemP,
+        MMA_M=MMA_M,
+        MMA_K=MMA_K,
+        NumConsumer=NumConsumer,
+    )
+    optimistic = (
+        max(conservative["QKStageRegs"], conservative["PVStageRegs"])
+        + conservative["RegisterOverhead"]
+    )
+    return {
+        **conservative,
+        "RegisterModel": "reuse",
+        "ConservativeRegsPerThread": conservative["EstimatedRegsPerThread"],
+        "EstimatedRegsPerThread": optimistic,
+    }
+
+
+def _solve(
     HD: int = 64,
     NumSmem: int = 2,
     MMA_M: int = 64,
@@ -104,6 +142,7 @@ def solve(
     SmemLimit: int = 232_448,
     KernelIdx: int = 2,
     ConsumerRegLimit: int = 240,
+    RegisterEstimator=estimate_registers_per_thread,
 ):
     """
     求解所有满足约束的整数解：
@@ -116,8 +155,8 @@ def solve(
                    sizeof(SMemWS)          otherwise
             <= SmemLimit
 
-        EstimatedRegsPerThread 使用保守累加模型，将 acc_s、register P、
-        acc_o 和 softmax persistent state 全部计入。
+        EstimatedRegsPerThread 由调用方选择的寄存器模型给出；公开接口
+        solve() 使用保守累加模型，solve_reuse() 使用跨阶段复用模型。
 
         BN 是 MMA_K 的正整数倍
 
@@ -281,7 +320,7 @@ def solve(
                 # 分开检查两个除法项是否为整数，
                 # 避免无意中使用浮点数或向下取整。
                 # ---------------------------------------------
-                reg_estimate = estimate_registers_per_thread(
+                reg_estimate = RegisterEstimator(
                     KernelIdx=KernelIdx,
                     BM=BM,
                     BN=BN,
@@ -332,6 +371,44 @@ def solve(
                 )
 
     return solutions
+
+
+def solve(
+    HD: int = 64,
+    NumSmem: int = 2,
+    MMA_M: int = 64,
+    MMA_K: int = 16,
+    NumConsumer: int = 2,
+    ElementWidth: int = 2,
+    SmemLimit: int = 232_448,
+    KernelIdx: int = 2,
+    ConsumerRegLimit: int = 240,
+):
+    """使用保守累加寄存器模型求解（现有默认接口）。"""
+    return _solve(
+        HD, NumSmem, MMA_M, MMA_K, NumConsumer, ElementWidth,
+        SmemLimit, KernelIdx, ConsumerRegLimit,
+        RegisterEstimator=estimate_registers_per_thread,
+    )
+
+
+def solve_reuse(
+    HD: int = 64,
+    NumSmem: int = 2,
+    MMA_M: int = 64,
+    MMA_K: int = 16,
+    NumConsumer: int = 2,
+    ElementWidth: int = 2,
+    SmemLimit: int = 232_448,
+    KernelIdx: int = 2,
+    ConsumerRegLimit: int = 240,
+):
+    """使用跨阶段寄存器复用模型求解；参数接口与 solve() 相同。"""
+    return _solve(
+        HD, NumSmem, MMA_M, MMA_K, NumConsumer, ElementWidth,
+        SmemLimit, KernelIdx, ConsumerRegLimit,
+        RegisterEstimator=estimate_registers_per_thread_reuse,
+    )
 
 
 def print_solutions(solutions):

@@ -1,0 +1,443 @@
+{
+  "rank": 15,
+  "total_configs": 113,
+  "failed_count": 0,
+  "top_results": [
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 229504,
+        "RegSize": 245760
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "avg_ms": 17.164531,
+        "tflops": 512.458
+      },
+      "output": "1, 16, 32768, 128, 256, 128, 17.164531, 512.458"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 229504,
+        "RegSize": 241664
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "avg_ms": 17.261885,
+        "tflops": 509.567
+      },
+      "output": "1, 16, 32768, 128, 256, 128, 17.261885, 509.567"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 112,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 1,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 213120,
+        "RegSize": 241664
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 112,
+        "avg_ms": 17.384951,
+        "tflops": 505.96
+      },
+      "output": "1, 16, 32768, 128, 256, 112, 17.384951, 505.960"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 112,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 213120,
+        "RegSize": 233472
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 112,
+        "avg_ms": 17.509779,
+        "tflops": 502.353
+      },
+      "output": "1, 16, 32768, 128, 256, 112, 17.509779, 502.353"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 163968,
+        "RegSize": 241664
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "avg_ms": 17.670418,
+        "tflops": 497.786
+      },
+      "output": "1, 16, 32768, 128, 256, 128, 17.670418, 497.786"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 112,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 213120,
+        "RegSize": 233472
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 112,
+        "avg_ms": 17.683859,
+        "tflops": 497.408
+      },
+      "output": "1, 16, 32768, 128, 256, 112, 17.683859, 497.408"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 112,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 3,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 213120,
+        "RegSize": 233472
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 112,
+        "avg_ms": 17.690207,
+        "tflops": 497.23
+      },
+      "output": "1, 16, 32768, 128, 256, 112, 17.690207, 497.230"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 196736,
+        "RegSize": 237568
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "avg_ms": 17.786133,
+        "tflops": 494.548
+      },
+      "output": "1, 16, 32768, 128, 256, 128, 17.786133, 494.548"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 196736,
+        "RegSize": 237568
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "avg_ms": 17.786322,
+        "tflops": 494.543
+      },
+      "output": "1, 16, 32768, 128, 256, 128, 17.786322, 494.543"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 5,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 196736,
+        "RegSize": 237568
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "avg_ms": 17.839041,
+        "tflops": 493.081
+      },
+      "output": "1, 16, 32768, 128, 256, 128, 17.839041, 493.081"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 196736,
+        "RegSize": 233472
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "avg_ms": 17.897879,
+        "tflops": 491.46
+      },
+      "output": "1, 16, 32768, 128, 256, 128, 17.897879, 491.460"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 112,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 213120,
+        "RegSize": 229376
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 112,
+        "avg_ms": 17.899078,
+        "tflops": 491.427
+      },
+      "output": "1, 16, 32768, 128, 256, 112, 17.899078, 491.427"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 144,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 8,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 204928,
+        "RegSize": 237568
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 144,
+        "avg_ms": 17.902779,
+        "tflops": 491.326
+      },
+      "output": "1, 16, 32768, 128, 256, 144, 17.902779, 491.326"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "NUM_SMEM": 1,
+        "PRODUCER_REG_DEALLOC": 32,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 6,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 196736,
+        "RegSize": 233472
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "avg_ms": 17.947857,
+        "tflops": 490.092
+      },
+      "output": "1, 16, 32768, 128, 256, 128, 17.947857, 490.092"
+    },
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 112,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 232,
+        "P_SMEM_K_TILES": 4,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 213120,
+        "RegSize": 229376
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 112,
+        "avg_ms": 18.025498,
+        "tflops": 487.981
+      },
+      "output": "1, 16, 32768, 128, 256, 112, 18.025498, 487.981"
+    }
+  ],
+  "failed_results": []
+}

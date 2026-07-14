@@ -496,17 +496,17 @@ if __name__ == "__main__":
     for D in [64, 128]:
         if D == 128:
             bn_min = 96
-        # for cfg in get_configs(B, H, S, D, kernel_idx=3, bn_min=bn_min):
-        #     print(cfg)
-        for kernel_idx in range(1, 4):
-            benchmark_get_configs(
-                B,
-                H,
-                S,
-                D,
-                kernel_idx=kernel_idx,
-                rank=15,
-                bn_min=bn_min,
-            )
+        for cfg in get_configs(B, H, S, D, kernel_idx=3, bn_min=bn_min):
+            print(cfg)
+        # for kernel_idx in range(1, 4):
+        #     benchmark_get_configs(
+        #         B,
+        #         H,
+        #         S,
+        #         D,
+        #         kernel_idx=kernel_idx,
+        #         rank=15,
+        #         bn_min=bn_min,
+        #     )
 
     # main()

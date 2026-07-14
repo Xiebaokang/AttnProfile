@@ -1,0 +1,38 @@
+{
+  "rank": 10,
+  "total_configs": 1,
+  "failed_count": 0,
+  "top_results": [
+    {
+      "config": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "NUM_SMEM": 2,
+        "PRODUCER_REG_DEALLOC": 24,
+        "CONSUMER_REG_ALLOC": 240,
+        "P_SMEM_K_TILES": 4,
+        "Q_REG_K_TILES": 0,
+        "KERNEL_IDX": 3,
+        "NUM_THREADS": 384,
+        "SmemSize": 229504,
+        "RegSize": 241664
+      },
+      "metrics": {
+        "B": 1,
+        "H": 16,
+        "S": 32768,
+        "D": 128,
+        "BM": 256,
+        "BN": 128,
+        "avg_ms": 17.121895,
+        "tflops": 513.734
+      },
+      "output": "1, 16, 32768, 128, 256, 128, 17.121895, 513.734"
+    }
+  ],
+  "failed_results": []
+}
